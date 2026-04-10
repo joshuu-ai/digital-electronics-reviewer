@@ -1,0 +1,1857 @@
+[
+  {
+    "topic": "LECTURE NO. 3 – INSTRUCTION SET & ADDRESSING OF 8085 MICROPROCESSOR",
+    "reviewerFacts": [
+      "An instruction is a binary pattern stored in a microprocessor that directs it to perform a specific operation.",
+      "The 8085 microprocessor instructions are classified into five groups: Data Transfer, Arithmetic, Logical, Branch Control, and I/O and Machine Control.",
+      "Every instruction consists of two parts: the Opcode and the Operand.",
+      "Opcode (Operation Code) specifies the exact operation to be performed by the microprocessor.",
+      "Operand is the actual data or information that the operation will be performed on.",
+      "Addressing modes are defined as the methods used to specify exactly where the operand is located.",
+      "Addressing Modes are the techniques used by the CPU to identify the location of the operand(s) needed for executing an instruction.",
+      "They provide rules for interpreting the address field in an instruction, helping the CPU fetch operands correctly.",
+      "Opcode tells the CPU what operation to perform (e.g., ADD, MOV).",
+      "Operands are the data or addresses on which the operation is performed.",
+      "1. Implicit (Implied) Addressing: The instruction does not mention the operand directly. The CPU uses a special register like the accumulator or stack automatically (e.g., CMA, RAL, HLT).",
+      "2. Immediate Addressing: The operand is a part of the instruction itself. Used when the value is known while writing the program (e.g., MVI A, 25H; ADI 05H).",
+      "3. Direct Addressing: The instruction contains the exact memory address of the operand. The CPU accesses the data directly from that address (e.g., LDA 2050H, STA 3050H).",
+      "4. Indirect Addressing: The instruction contains the address of a register or memory location that holds the *actual* address of the operand.",
+      "5. Register Addressing: The operand is located in a CPU register specified by the instruction. The CPU takes the operand directly from that register (e.g., MOV A, B; ADD C).",
+      "6. Register Indirect Addressing: The register specified in the instruction contains the memory address of the operand (e.g., MOV A, M).",
+      "7. Displacement Addressing: The operand's effective address is calculated by adding a constant value (displacement) to the contents of a base register (e.g., MOV AX, [BX+05H]).",
+      "8. Stack Addressing: The operand is implicitly taken from the top of the stack using the stack pointer. No explicit operand field is needed (e.g., PUSH B, POP D).",
+      "An instruction is a command applied to the microprocessor to perform a specific function.",
+      "The instruction set of a microprocessor refers to the entire group of instructions that the microprocessor can understand and execute.",
+      "The Intel 8085 instruction set is classified into five major categories: Data Transfer Group, Arithmetic Group, Logical Group, Branch Control Group, and I/O and Machine Control Group.",
+      "MOV stands for Move.",
+      "MVI stands for Move immediate.",
+      "LDA stands for Load accumulator directly from memory.",
+      "STA stands for Store accumulator directly in memory.",
+      "LHLD stands for Load H and L registers directly from memory.",
+      "SHLD stands for Store H and L registers directly in memory.",
+      "LXI stands for Load register pair with 16-bit immediate data.",
+      "LDAX stands for Load accumulator from memory whose address is in a register pair (X).",
+      "STAX stands for Store content of A in memory whose address is in X.",
+      "XCHG stands for Exchange H and L with D and E.",
+      "XTHL stands for Exchange top of stack with H and L.",
+      "The example instruction for the 'Addition' type is 'ADD B'.",
+      "The example instruction for the 'Subtraction' type is 'SUI 05H'.",
+      "The example instruction for the 'Increment' type is 'INR B'.",
+      "The example instruction for the 'Decrement' type is 'DCR M'.",
+      "The example instruction for the '16-bit Increment' type is 'INX H'.",
+      "The example instruction for the '16-bit Decrement' type is 'DCX B'.",
+      "ADD stands for Add to accumulator.",
+      "ADI stands for Add immediate 8-bit data to accumulator.",
+      "ADC stands for Add to accumulator using carry flag.",
+      "ACI stands for Add immediate data to accumulator with carry.",
+      "SUB stands for Subtract from accumulator.",
+      "SUI stands for Subtract immediate data from accumulator.",
+      "SBB stands for Subtract from accumulator with borrow (carry) flag.",
+      "SBI stands for Subtract immediate from accumulator with borrow (carry) flag.",
+      "INR stands for Increment specified 8-bit data or byte by one.",
+      "DCR stands for Decrement specified 8-bit data or byte by one.",
+      "INX stands for Increment register pair by one.",
+      "DCX stands for Decrement register pair by one.",
+      "DAD stands for Double register addition: Add content of register pair to H-L register pair.",
+      "The example opcodes for the 'Move' operation are MOV and MVI.",
+      "The example opcodes for the 'Load' operation are LDA, LHLD, LXI, and LDAX.",
+      "The example opcodes for the 'Store' operation are STA, SHLD, and STAX.",
+      "The example opcodes for the 'Exchange' operation are XCHG and XTHL.",
+      "The example opcodes for the 'Addition' operation are ADD, ADI, ADC, and ACI.",
+      "The example opcodes for the 'Subtraction' operation are SUB, SUI, SBB, and SBI.",
+      "The example opcodes for the 'Increment' operation are INR and INX.",
+      "The example opcodes for the 'Decrement' operation are DCR and DCX.",
+      "The opcodes for the 'AND, OR, Exclusive-OR' operations are ANA, ANI, ORA, OR, XRA, and XRI.",
+      "The opcodes for the 'Rotate' operations are RLC, RRC, RAL, and RAR.",
+      "The opcodes for the 'Compare' operations are CMP and CPI.",
+      "The opcodes for the 'Complement' operations are CMA and CMC.",
+      "ANA stands for Logical AND with accumulator.",
+      "ANI stands for Logical AND with accumulator using immediate data.",
+      "ORA stands for Logical OR with accumulator.",
+      "ORI (listed as OR in the lecture) stands for Logical OR with accumulator using immediate data.",
+      "XRA stands for Exclusive logical OR with accumulator.",
+      "XRI stands for Exclusive OR using immediate data.",
+      "CMP stands for Compare.",
+      "CPI stands for Compare using immediate data.",
+      "RLC stands for Rotate accumulator left.",
+      "RRC stands for Rotate accumulator right.",
+      "RAL stands for Rotate left through carry.",
+      "RAR stands for Rotate right through carry.",
+      "CMA stands for Complement accumulator.",
+      "CMC stands for Complement carry flag.",
+      "The example code for an Unconditional Jump is 'JMP NEXT'.",
+      "The example code for a Call instruction is 'CALL ADD1'.",
+      "The example code for a Return instruction is 'RET'.",
+      "The example code for a Restart instruction is 'RST 2'.",
+      "The opcodes for the 'Zero (Z=1)' condition are JZ, CZ, and RZ.",
+      "The opcodes for the 'Not Zero (Z=0)' condition are JNZ, CNZ, and RNZ.",
+      "The opcodes for the 'Carry (C=1)' condition are JC, CC, and RC.",
+      "The opcodes for the 'No Carry (C=0)' condition are JNC, CNC, and RNC.",
+      "The opcodes for the 'Parity Even (P=1)' condition are JPE, CPE, and RPE.",
+      "The opcodes for the 'Parity Odd (P=0)' condition are JPO, CPO, and RPO.",
+      "The opcodes for the 'Plus (S=0)' condition are JP, CP, and RP.",
+      "The opcodes for the 'Minus (S=1)' condition are JM, CM, and RM.",
+      "PUSH stands for Push two bytes of data onto the stack.",
+      "POP stands for Pop two bytes of data off the stack.",
+      "XTHL stands for Exchange top of stack with H and L.",
+      "SPHL stands for Move content of H and L to stack pointer.",
+      "IN stands for Initiate input operation.",
+      "OUT stands for Initiate output operation.",
+      "EI stands for Enable interrupt system.",
+      "DI stands for Disable interrupt system.",
+      "HLT stands for Halt.",
+      "NOP stands for No operation.",
+      "Each instruction consists of two parts: the operation code (opcode) and the operand.",
+      "The opcode states the specific operation which will be performed.",
+      "The operand refers to the data with which the operation is always performed.",
+      "Instructions perform operations using either 8-bit data or 16-bit data.",
+      "8-bit data can be obtained from a register, a memory location, or an input port.",
+      "16-bit data may be available from a register pair or two consecutive memory locations.",
+      "Intel 8085 instructions are classified into three groups based on word size: One-byte (or 1-word) instructions, Two-byte (or 2-word) instructions, and Three-byte (or 3-word) instructions.",
+      "A one-byte instruction consists of the opcode and operand in the same byte.",
+      "The sample opcodes for one-byte instructions listed in the lecture are MOV, ADD, SUB, CMA, and RAR.",
+      "In a two-byte instruction, the first byte specifies the operation code (opcode) and the second byte specifies the operand (8-bit data or 8-bit port address).",
+      "The operand in the second byte is always an 8-bit value.",
+      "The sample opcodes for two-byte instructions provided in the lecture include MVI, ADI, SUI, ANI, ORI, XRI, CPI, IN, and OUT.",
+      "In a three-byte instruction, the first byte specifies the operation code (opcode) and the following two bytes specify the 16-bit operand.",
+      "The 16-bit operand is usually a memory address or 16-bit data.",
+      "The second byte of the instruction contains the low-order address or data, while the third byte contains the high-order address or data.",
+      "The sample opcodes for three-byte instructions listed in the lecture include LXI, LDA, STA, LHLD, SHLD, JMP, and CALL."
+    ],
+    "questions": [
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is defined as a binary pattern stored in a microprocessor that directs it to perform a specific operation?",
+        "choices": [
+          "Addressing Mode",
+          "Instruction",
+          "Opcode",
+          "Operand"
+        ],
+        "correctAnswer": "Instruction",
+        "explanation": "An instruction is the basic binary command that tells the microprocessor what specific action to do."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "The instructions of the 8085 microprocessor are classified into which five major groups?",
+        "choices": [
+          "Data Transfer",
+          "Arithmetic",
+          "Logical",
+          "Memory Access",
+          "Branch Control",
+          "I/O and Machine Control"
+        ],
+        "correctAnswer": [
+          "Data Transfer",
+          "Arithmetic",
+          "Logical",
+          "Branch Control",
+          "I/O and Machine Control"
+        ],
+        "explanation": "The 8085 instruction set is grouped into Data Transfer, Arithmetic, Logical, Branch Control, and I/O and Machine Control. 'Memory Access' is not a dedicated group name here."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the two essential parts that make up an instruction?",
+        "choices": [
+          "Address Bus",
+          "Opcode",
+          "Data Bus",
+          "Operand"
+        ],
+        "correctAnswer": [
+          "Opcode",
+          "Operand"
+        ],
+        "explanation": "Every instruction is divided into two parts: the Opcode (what to do) and the Operand (what to do it on)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the instruction specifies the actual operation to be performed?",
+        "choices": [
+          "Operand",
+          "Addressing Mode",
+          "Opcode",
+          "Binary Pattern"
+        ],
+        "correctAnswer": "Opcode",
+        "explanation": "The Opcode (Operation Code) dictates the specific mathematical or logical action the CPU needs to execute."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the instruction refers to the actual data or information to be operated on?",
+        "choices": [
+          "Opcode",
+          "Operand",
+          "Instruction Set",
+          "Register"
+        ],
+        "correctAnswer": "Operand",
+        "explanation": "The Operand is the specific data, value, or address that the Opcode manipulates."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What term refers to the specific methods used to specify where an operand is located?",
+        "choices": [
+          "Instruction Sets",
+          "Addressing Modes",
+          "Branch Controls",
+          "Opcodes"
+        ],
+        "correctAnswer": "Addressing Modes",
+        "explanation": "Addressing modes are the various techniques and rules the CPU uses to find exactly where the operand is stored."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What term refers to the techniques used by the CPU to identify the exact location of the operand(s) needed for executing an instruction?",
+        "choices": [
+          "Instruction Sets",
+          "Addressing Modes",
+          "Opcode Fetching",
+          "Data Sequencing"
+        ],
+        "correctAnswer": "Addressing Modes",
+        "explanation": "Addressing Modes are defined as the techniques used by the CPU to identify the location of the operands."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the primary purpose of Addressing Modes regarding the address field in an instruction?",
+        "choices": [
+          "To provide rules for interpreting the address field, helping the CPU fetch operands correctly.",
+          "To automatically convert opcodes into binary machine language.",
+          "To store the final computed data back into the memory address.",
+          "To determine if the instruction is 1-byte, 2-byte, or 3-byte."
+        ],
+        "correctAnswer": "To provide rules for interpreting the address field, helping the CPU fetch operands correctly.",
+        "explanation": "Addressing modes provide the rules for interpreting the address field, helping the CPU fetch operands correctly."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the instruction explicitly tells the CPU what operation to perform (for example, ADD or MOV)?",
+        "choices": [
+          "Address Bus",
+          "Operand",
+          "Opcode",
+          "Instruction Register"
+        ],
+        "correctAnswer": "Opcode",
+        "explanation": "The Opcode tells the CPU what operation to perform."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the instruction represents the actual data or addresses on which the operation is performed?",
+        "choices": [
+          "Program Counter",
+          "Opcode",
+          "Accumulator",
+          "Operand"
+        ],
+        "correctAnswer": "Operand",
+        "explanation": "Operands represent the data or addresses on which the operation is performed."
+      },
+      {
+        "type": "single",
+        "image": "ImpAdd1.png",
+        "question": "Which addressing mode does NOT mention the operand directly, relying instead on the CPU knowing what to use from the instruction itself (such as the accumulator)?",
+        "choices": [
+          "Direct Addressing",
+          "Implicit (Implied) Addressing",
+          "Immediate Addressing",
+          "Register Addressing"
+        ],
+        "correctAnswer": "Implicit (Implied) Addressing",
+        "explanation": "In Implicit Addressing, the operand is implied by the opcode itself, like complementing the accumulator (CMA)."
+      },
+      {
+        "type": "single",
+        "image": "ImpAdd2.png",
+        "question": "The instruction 'CMA' (Complement the accumulator) is an example of which addressing mode?",
+        "choices": [
+          "Register Addressing",
+          "Immediate Addressing",
+          "Implicit (Implied) Addressing",
+          "Direct Addressing"
+        ],
+        "correctAnswer": "Implicit (Implied) Addressing",
+        "explanation": "CMA only has an opcode. The operand (accumulator) is implicitly understood."
+      },
+      {
+        "type": "single",
+        "image": "ImmAdd1.png",
+        "question": "In which addressing mode is the operand actually a part of the instruction itself, typically used when the value is known while writing the program?",
+        "choices": [
+          "Immediate Addressing",
+          "Direct Addressing",
+          "Indirect Addressing",
+          "Stack Addressing"
+        ],
+        "correctAnswer": "Immediate Addressing",
+        "explanation": "In Immediate Addressing, the actual data (operand) immediately follows the opcode in the instruction."
+      },
+      {
+        "type": "single",
+        "image": "ImmAdd2.png",
+        "question": "The instruction 'ADI 05H' (Add immediate value 05H to accumulator) represents which addressing mode?",
+        "choices": [
+          "Direct Addressing",
+          "Displacement Addressing",
+          "Immediate Addressing",
+          "Register Addressing"
+        ],
+        "correctAnswer": "Immediate Addressing",
+        "explanation": "The 'I' in ADI stands for Immediate. The data '05H' is immediately provided in the instruction."
+      },
+      {
+        "type": "single",
+        "image": "DirAdd1.png",
+        "question": "Which addressing mode contains the exact memory address of the operand within the instruction, allowing the CPU to access data directly from that address?",
+        "choices": [
+          "Register Indirect Addressing",
+          "Direct Addressing",
+          "Immediate Addressing",
+          "Displacement Addressing"
+        ],
+        "correctAnswer": "Direct Addressing",
+        "explanation": "Direct Addressing provides the specific 16-bit memory address right inside the instruction."
+      },
+      {
+        "type": "multiple",
+        "image": "DirAdd2.png",
+        "question": "Which of the following instructions are examples of Direct Addressing?",
+        "choices": [
+          "LDA 2050H",
+          "MVI B, 10H",
+          "STA 3050H",
+          "MOV A, B",
+          "SHLD 5000H"
+        ],
+        "correctAnswer": [
+          "LDA 2050H",
+          "STA 3050H",
+          "SHLD 5000H"
+        ],
+        "explanation": "LDA, STA, and SHLD explicitly state the memory address (like 2050H) where the data should be loaded from or stored to."
+      },
+      {
+        "type": "single",
+        "image": "IndAdd1.png",
+        "question": "Which addressing mode contains the address of a register or memory location that holds the ACTUAL address of the operand?",
+        "choices": [
+          "Direct Addressing",
+          "Indirect Addressing",
+          "Register Addressing",
+          "Immediate Addressing"
+        ],
+        "correctAnswer": "Indirect Addressing",
+        "explanation": "Indirect Addressing uses a pointer. The CPU fetches the address, and then goes to that address to find the actual operand."
+      },
+      {
+        "type": "single",
+        "image": "RegAdd1.png",
+        "question": "In which addressing mode is the operand located strictly in a CPU register specified by the instruction?",
+        "choices": [
+          "Register Addressing",
+          "Register Indirect Addressing",
+          "Immediate Addressing",
+          "Stack Addressing"
+        ],
+        "correctAnswer": "Register Addressing",
+        "explanation": "Register Addressing involves moving or manipulating data that is already inside the CPU registers."
+      },
+      {
+        "type": "single",
+        "image": "RegAdd2.png",
+        "question": "The instruction 'MOV A, B' (Copy contents of B into accumulator) uses which addressing mode?",
+        "choices": [
+          "Register Indirect Addressing",
+          "Direct Addressing",
+          "Register Addressing",
+          "Implicit Addressing"
+        ],
+        "correctAnswer": "Register Addressing",
+        "explanation": "Both the source (B) and the destination (A) are CPU registers."
+      },
+      {
+        "type": "single",
+        "image": "RegIndAdd1.png",
+        "question": "Which addressing mode specifies a register that *contains* the memory address of the operand (for example, using the HL pair to point to a location)?",
+        "choices": [
+          "Register Addressing",
+          "Direct Addressing",
+          "Register Indirect Addressing",
+          "Displacement Addressing"
+        ],
+        "correctAnswer": "Register Indirect Addressing",
+        "explanation": "In Register Indirect, a register (like HL) acts as a pointer to the memory location where the data is stored."
+      },
+      {
+        "type": "single",
+        "image": "RegIndAdd2.png",
+        "question": "The instruction 'MOV A, M' (Move data from memory location pointed by HL to A) is an example of which addressing mode?",
+        "choices": [
+          "Direct Addressing",
+          "Register Indirect Addressing",
+          "Register Addressing",
+          "Stack Addressing"
+        ],
+        "correctAnswer": "Register Indirect Addressing",
+        "explanation": "The 'M' stands for Memory, but its address is indirectly provided by the HL register pair."
+      },
+      {
+        "type": "single",
+        "image": "DispAdd1.png",
+        "question": "How is the effective address calculated in Displacement Addressing?",
+        "choices": [
+          "By fetching the address from the top of the stack.",
+          "By adding a constant value (displacement) to the contents of one or more registers.",
+          "By multiplying the opcode with the operand.",
+          "By reading the address directly from the instruction."
+        ],
+        "correctAnswer": "By adding a constant value (displacement) to the contents of one or more registers.",
+        "explanation": "Displacement addressing takes a base register and adds a constant offset (displacement) to find the final address."
+      },
+      {
+        "type": "single",
+        "image": "DispAdd2.png",
+        "question": "The instruction 'MOV AX, [BX+05H]' demonstrates which addressing mode?",
+        "choices": [
+          "Displacement Addressing",
+          "Indirect Addressing",
+          "Register Addressing",
+          "Immediate Addressing"
+        ],
+        "correctAnswer": "Displacement Addressing",
+        "explanation": "The '[BX+05H]' shows a base register (BX) plus a displacement (+05H)."
+      },
+      {
+        "type": "single",
+        "image": "StaAdd1.png",
+        "question": "In which addressing mode is the operand implicitly taken from the top of the stack without needing an explicit operand field?",
+        "choices": [
+          "Register Indirect Addressing",
+          "Stack Addressing",
+          "Implicit (Implied) Addressing",
+          "Direct Addressing"
+        ],
+        "correctAnswer": "Stack Addressing",
+        "explanation": "Stack Addressing uses the Stack Pointer automatically to fetch or store data."
+      },
+      {
+        "type": "multiple",
+        "image": "StaAdd2.png",
+        "question": "Which of the following instructions fall under Stack Addressing?",
+        "choices": [
+          "PUSH B",
+          "MOV A, M",
+          "POP D",
+          "LHLD 4000H",
+          "CMA"
+        ],
+        "correctAnswer": [
+          "PUSH B",
+          "POP D"
+        ],
+        "explanation": "PUSH and POP are the classic instructions used in Stack Addressing."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "According to the lecture, what is the definition of an 'instruction'?",
+        "choices": [
+          "The entire group of commands a microprocessor can execute.",
+          "A memory address pointing to the stack.",
+          "A command applied to the microprocessor to perform a specific function.",
+          "A specific register used for arithmetic operations."
+        ],
+        "correctAnswer": "A command applied to the microprocessor to perform a specific function.",
+        "explanation": "An instruction is explicitly defined as a command applied to the microprocessor to perform a specific function."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the term 'instruction set' refer to?",
+        "choices": [
+          "The entire group of instructions of a microprocessor.",
+          "A specific sequence of ALU operations.",
+          "A set of registers used for data transfer.",
+          "The process of fetching and decoding a command."
+        ],
+        "correctAnswer": "The entire group of instructions of a microprocessor.",
+        "explanation": "The instruction set encompasses the entire group of commands or instructions that a specific microprocessor is built to understand."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "The 8085 microprocessor instruction set is officially classified into which five main groups?",
+        "choices": [
+          "Data Transfer Group",
+          "Arithmetic Group",
+          "Logical Group",
+          "Memory Access Group",
+          "Branch Control Group",
+          "I/O and Machine Control Group"
+        ],
+        "correctAnswer": [
+          "Data Transfer Group",
+          "Arithmetic Group",
+          "Logical Group",
+          "Branch Control Group",
+          "I/O and Machine Control Group"
+        ],
+        "explanation": "The five official groups are Data Transfer, Arithmetic, Logical, Branch Control, and I/O & Machine Control. 'Memory Access Group' is not one of the main classifications."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'LDA' instruction according to the lecture?",
+        "choices": [
+          "Load accumulator from memory whose address is in a register pair",
+          "Load H and L registers directly from memory",
+          "Load register pair with 16-bit immediate data",
+          "Load accumulator directly from memory"
+        ],
+        "correctAnswer": "Load accumulator directly from memory",
+        "explanation": "LDA simply means to Load accumulator directly from memory."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Store H and L registers directly in memory'?",
+        "choices": [
+          "STA",
+          "STAX",
+          "SHLD",
+          "XCHG"
+        ],
+        "correctAnswer": "SHLD",
+        "explanation": "SHLD stands for Store H and L registers directly in memory."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the instruction 'LXI' do?",
+        "choices": [
+          "Load H and L registers directly from memory",
+          "Load register pair with 16-bit immediate data",
+          "Load accumulator directly from memory",
+          "Exchange top of stack with H and L"
+        ],
+        "correctAnswer": "Load register pair with 16-bit immediate data",
+        "explanation": "LXI is used to Load register pair with 16-bit immediate data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Load accumulator from memory whose address is in a register pair (X)'?",
+        "choices": [
+          "LDA",
+          "LDAX",
+          "LHLD",
+          "LXI"
+        ],
+        "correctAnswer": "LDAX",
+        "explanation": "LDAX loads the accumulator indirectly using the address stored in a register pair."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the specific definition of the 'STAX' instruction?",
+        "choices": [
+          "Store accumulator directly in memory",
+          "Store H and L registers directly in memory",
+          "Store content of A in memory whose address is in X",
+          "Exchange H and L with D and E"
+        ],
+        "correctAnswer": "Store content of A in memory whose address is in X",
+        "explanation": "STAX stores the content of the Accumulator (A) into memory using the address found in a register pair (X)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction corresponds to 'Exchange top of stack with H and L'?",
+        "choices": [
+          "XCHG",
+          "XTHL",
+          "LHLD",
+          "SHLD"
+        ],
+        "correctAnswer": "XTHL",
+        "explanation": "XTHL is used to Exchange the top of the stack with the H and L registers."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'XCHG' instruction specifically exchange?",
+        "choices": [
+          "Top of stack with H and L",
+          "Accumulator with register B",
+          "H and L with D and E",
+          "Memory with Accumulator"
+        ],
+        "correctAnswer": "H and L with D and E",
+        "explanation": "XCHG exchanges the contents of the H and L register pair with the D and E register pair."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select the instructions that deal explicitly with the H and L (HL) register pair based on Page 13 definitions:",
+        "choices": [
+          "LHLD",
+          "SHLD",
+          "LDAX",
+          "XCHG",
+          "XTHL",
+          "STA"
+        ],
+        "correctAnswer": [
+          "LHLD",
+          "SHLD",
+          "XCHG",
+          "XTHL"
+        ],
+        "explanation": "LHLD, SHLD, XCHG, and XTHL all directly involve operations reading, storing, or exchanging the H and L registers."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Based on the lecture table, which example instruction corresponds to the 'Addition' type?",
+        "choices": [
+          "INR B",
+          "ADD B",
+          "SUI 05H",
+          "INX H"
+        ],
+        "correctAnswer": "ADD B",
+        "explanation": "ADD B is the example given for the Addition type, representing adding register B to the accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which example instruction is used to demonstrate the 'Subtraction' type?",
+        "choices": [
+          "SUB B",
+          "DCR M",
+          "SUI 05H",
+          "DCX B"
+        ],
+        "correctAnswer": "SUI 05H",
+        "explanation": "SUI 05H (Subtract Immediate) is the exact example provided for the Subtraction type."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the example instruction provided for the standard 8-bit 'Increment' type?",
+        "choices": [
+          "INX H",
+          "ADD B",
+          "DCR M",
+          "INR B"
+        ],
+        "correctAnswer": "INR B",
+        "explanation": "INR B is used to demonstrate incrementing a standard 8-bit register by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which example instruction is used to show the 'Decrement' type?",
+        "choices": [
+          "DCX B",
+          "DCR M",
+          "SUI 05H",
+          "INR B"
+        ],
+        "correctAnswer": "DCR M",
+        "explanation": "DCR M is the example for decrementing the 8-bit data stored in memory."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "For the '16-bit Increment' type, which example instruction is provided?",
+        "choices": [
+          "INR B",
+          "ADD B",
+          "INX H",
+          "DCX B"
+        ],
+        "correctAnswer": "INX H",
+        "explanation": "INX H specifically demonstrates how to increment a 16-bit register pair (HL) by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which example instruction is given for the '16-bit Decrement' type?",
+        "choices": [
+          "SUI 05H",
+          "DCX B",
+          "DCR M",
+          "INX H"
+        ],
+        "correctAnswer": "DCX B",
+        "explanation": "DCX B is used to show decrementing a 16-bit register pair (BC) by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'ADD' instruction?",
+        "choices": [
+          "Add to accumulator",
+          "Add immediate 8-bit data to accumulator",
+          "Add to accumulator using carry flag",
+          "Add immediate data to accumulator with carry"
+        ],
+        "correctAnswer": "Add to accumulator",
+        "explanation": "ADD simply means to Add to accumulator without any immediate data or carry flags."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Add immediate 8-bit data to accumulator'?",
+        "choices": [
+          "ADD",
+          "ADI",
+          "ADC",
+          "ACI"
+        ],
+        "correctAnswer": "ADI",
+        "explanation": "ADI stands for Add immediate 8-bit data to accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'ADC' instruction stand for?",
+        "choices": [
+          "Add to accumulator",
+          "Add immediate 8-bit data to accumulator",
+          "Add to accumulator using carry flag",
+          "Add immediate data to accumulator with carry"
+        ],
+        "correctAnswer": "Add to accumulator using carry flag",
+        "explanation": "ADC stands for Add to accumulator using carry flag."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Add immediate data to accumulator with carry'?",
+        "choices": [
+          "ADC",
+          "ACI",
+          "ADI",
+          "ADD"
+        ],
+        "correctAnswer": "ACI",
+        "explanation": "ACI stands for Add immediate data to accumulator with carry."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the specific definition of the 'SUB' instruction?",
+        "choices": [
+          "Subtract immediate data from accumulator",
+          "Subtract from accumulator with borrow (carry) flag",
+          "Subtract from accumulator",
+          "Subtract immediate from accumulator with borrow (carry) flag"
+        ],
+        "correctAnswer": "Subtract from accumulator",
+        "explanation": "SUB simply stands for Subtract from accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Subtract immediate data from accumulator'?",
+        "choices": [
+          "SUB",
+          "SUI",
+          "SBB",
+          "SBI"
+        ],
+        "correctAnswer": "SUI",
+        "explanation": "SUI stands for Subtract immediate data from accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'SBB' instruction stand for?",
+        "choices": [
+          "Subtract from accumulator with borrow (carry) flag",
+          "Subtract immediate from accumulator with borrow (carry) flag",
+          "Subtract from accumulator",
+          "Subtract immediate data from accumulator"
+        ],
+        "correctAnswer": "Subtract from accumulator with borrow (carry) flag",
+        "explanation": "SBB stands for Subtract from accumulator with borrow (carry) flag."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Subtract immediate from accumulator with borrow (carry) flag'?",
+        "choices": [
+          "SUI",
+          "SBB",
+          "SBI",
+          "SUB"
+        ],
+        "correctAnswer": "SBI",
+        "explanation": "SBI stands for Subtract immediate from accumulator with borrow (carry) flag."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'INR' instruction?",
+        "choices": [
+          "Increment register pair by one",
+          "Increment specified 8-bit data or byte by one",
+          "Decrement specified 8-bit data or byte by one",
+          "Double register addition"
+        ],
+        "correctAnswer": "Increment specified 8-bit data or byte by one",
+        "explanation": "INR stands for Increment specified 8-bit data or byte by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is used to 'Increment register pair by one'?",
+        "choices": [
+          "INR",
+          "INX",
+          "DCR",
+          "DCX"
+        ],
+        "correctAnswer": "INX",
+        "explanation": "INX stands for Increment register pair by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'DCR' instruction stand for?",
+        "choices": [
+          "Decrement register pair by one",
+          "Increment specified 8-bit data or byte by one",
+          "Decrement specified 8-bit data or byte by one",
+          "Double register addition"
+        ],
+        "correctAnswer": "Decrement specified 8-bit data or byte by one",
+        "explanation": "DCR stands for Decrement specified 8-bit data or byte by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Decrement register pair by one'?",
+        "choices": [
+          "DCR",
+          "DCX",
+          "INX",
+          "INR"
+        ],
+        "correctAnswer": "DCX",
+        "explanation": "DCX stands for Decrement register pair by one."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'DAD' instruction?",
+        "choices": [
+          "Double register addition: Add content of register pair to H-L register pair",
+          "Decrement register pair by one",
+          "Add immediate data to accumulator with carry",
+          "Add to accumulator using carry flag"
+        ],
+        "correctAnswer": "Double register addition: Add content of register pair to H-L register pair",
+        "explanation": "DAD stands for Double register addition, which adds the content of a register pair directly to the H-L register pair."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the example opcodes of the 'Move' operation?",
+        "choices": [
+          "MOV",
+          "LDA",
+          "MVI",
+          "STA",
+          "XCHG"
+        ],
+        "correctAnswer": [
+          "MOV",
+          "MVI"
+        ],
+        "explanation": "MOV (Move) and MVI (Move Immediate) are the opcodes used for moving data between registers or loading immediate data."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select all the example opcodes that belong to the 'Load' operation category:",
+        "choices": [
+          "LHLD",
+          "SHLD",
+          "LXI",
+          "LDAX",
+          "LDA",
+          "STA"
+        ],
+        "correctAnswer": [
+          "LDA",
+          "LHLD",
+          "LXI",
+          "LDAX"
+        ],
+        "explanation": "LDA, LHLD, LXI, and LDAX are all used to 'Load' data from memory or immediate values into registers."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the example opcodes of the 'Store' operation?",
+        "choices": [
+          "STA",
+          "LDA",
+          "STAX",
+          "SHLD",
+          "XTHL"
+        ],
+        "correctAnswer": [
+          "STA",
+          "SHLD",
+          "STAX"
+        ],
+        "explanation": "STA, SHLD, and STAX are the primary opcodes used to 'Store' data from registers directly into memory."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Identify the example opcodes used for the 'Exchange' operation:",
+        "choices": [
+          "XCHG",
+          "MOV",
+          "LXI",
+          "XTHL"
+        ],
+        "correctAnswer": [
+          "XCHG",
+          "XTHL"
+        ],
+        "explanation": "XCHG (Exchange register pairs) and XTHL (Exchange top of stack with HL) are the opcodes for the Exchange operation."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the example opcodes of the 'Addition' operation?",
+        "choices": [
+          "ADD",
+          "SUB",
+          "ADI",
+          "ADC",
+          "ACI",
+          "DAD"
+        ],
+        "correctAnswer": [
+          "ADD",
+          "ADI",
+          "ADC",
+          "ACI"
+        ],
+        "explanation": "ADD, ADI, ADC, and ACI are the main opcodes for 8-bit Addition (with or without carry/immediate data). Note: DAD is also addition but is for double/16-bit register addition."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select all the example opcodes that fall under the 'Subtraction' operation category:",
+        "choices": [
+          "SUB",
+          "SUI",
+          "SBB",
+          "SBI",
+          "ADI"
+        ],
+        "correctAnswer": [
+          "SUB",
+          "SUI",
+          "SBB",
+          "SBI"
+        ],
+        "explanation": "SUB, SUI, SBB, and SBI are the opcodes used for subtracting values from the accumulator."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the example opcodes of the 'Increment' operation?",
+        "choices": [
+          "INR",
+          "DCR",
+          "INX",
+          "DCX"
+        ],
+        "correctAnswer": [
+          "INR",
+          "INX"
+        ],
+        "explanation": "INR is used to increment 8-bit registers/memory, while INX is used to increment 16-bit register pairs."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the example opcodes of the 'Decrement' operation?",
+        "choices": [
+          "DCR",
+          "INR",
+          "DCX",
+          "SUB"
+        ],
+        "correctAnswer": [
+          "DCR",
+          "DCX"
+        ],
+        "explanation": "DCR is used to decrement 8-bit registers/memory, while DCX is used to decrement 16-bit register pairs."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following opcodes belong to the 'AND, OR, Exclusive-OR' logical operations?",
+        "choices": [
+          "ANA",
+          "ANI",
+          "ORA",
+          "OR",
+          "XRA",
+          "XRI",
+          "CMA",
+          "CMP"
+        ],
+        "correctAnswer": [
+          "ANA",
+          "ANI",
+          "ORA",
+          "OR",
+          "XRA",
+          "XRI"
+        ],
+        "explanation": "ANA/ANI are for AND, ORA/OR are for OR, and XRA/XRI are for Exclusive-OR (XOR). The 'I' variants are used when immediate data is involved."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select all the opcodes that fall under the 'Rotate' operation category:",
+        "choices": [
+          "RLC",
+          "RRC",
+          "RAL",
+          "RAR",
+          "CMA",
+          "XCHG"
+        ],
+        "correctAnswer": [
+          "RLC",
+          "RRC",
+          "RAL",
+          "RAR"
+        ],
+        "explanation": "RLC and RRC rotate the accumulator left/right, while RAL and RAR rotate it left/right through the carry flag."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Identify the opcodes used specifically for the 'Compare' operation:",
+        "choices": [
+          "CMP",
+          "CMA",
+          "CPI",
+          "CMC",
+          "XRA"
+        ],
+        "correctAnswer": [
+          "CMP",
+          "CPI"
+        ],
+        "explanation": "CMP compares a register/memory with the accumulator, while CPI compares immediate data with the accumulator."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the opcodes used for the 'Complement' operation?",
+        "choices": [
+          "CMA",
+          "CMC",
+          "CMP",
+          "CPI"
+        ],
+        "correctAnswer": [
+          "CMA",
+          "CMC"
+        ],
+        "explanation": "CMA is used to complement the accumulator, and CMC is used to complement the carry flag."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'ANA' instruction?",
+        "choices": [
+          "Logical AND with accumulator using immediate data",
+          "Logical OR with accumulator",
+          "Logical AND with accumulator",
+          "Exclusive logical OR with accumulator"
+        ],
+        "correctAnswer": "Logical AND with accumulator",
+        "explanation": "ANA stands for Logical AND with accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Logical AND with accumulator using immediate data'?",
+        "choices": [
+          "ANA",
+          "ANI",
+          "ORA",
+          "ORI"
+        ],
+        "correctAnswer": "ANI",
+        "explanation": "ANI stands for Logical AND with accumulator using immediate data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'ORA' instruction stand for?",
+        "choices": [
+          "Logical OR with accumulator using immediate data",
+          "Exclusive logical OR with accumulator",
+          "Logical AND with accumulator",
+          "Logical OR with accumulator"
+        ],
+        "correctAnswer": "Logical OR with accumulator",
+        "explanation": "ORA stands for Logical OR with accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Logical OR with accumulator using immediate data'?",
+        "choices": [
+          "ORA",
+          "ORI",
+          "XRA",
+          "XRI"
+        ],
+        "correctAnswer": "ORI",
+        "explanation": "ORI stands for Logical OR with accumulator using immediate data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to perform an 'Exclusive logical OR with accumulator'?",
+        "choices": [
+          "XRA",
+          "XRI",
+          "ORA",
+          "ANA"
+        ],
+        "correctAnswer": "XRA",
+        "explanation": "XRA stands for Exclusive logical OR with accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the specific definition of the 'XRI' instruction?",
+        "choices": [
+          "Exclusive OR using immediate data",
+          "Exclusive logical OR with accumulator",
+          "Logical OR with accumulator using immediate data",
+          "Compare using immediate data"
+        ],
+        "correctAnswer": "Exclusive OR using immediate data",
+        "explanation": "XRI stands for Exclusive OR using immediate data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'CMP' instruction?",
+        "choices": [
+          "Complement accumulator",
+          "Complement carry flag",
+          "Compare",
+          "Compare using immediate data"
+        ],
+        "correctAnswer": "Compare",
+        "explanation": "CMP simply stands for Compare."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Compare using immediate data'?",
+        "choices": [
+          "CMP",
+          "CPI",
+          "CMA",
+          "CMC"
+        ],
+        "correctAnswer": "CPI",
+        "explanation": "CPI stands for Compare using immediate data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'RLC' instruction?",
+        "choices": [
+          "Rotate left through carry",
+          "Rotate right through carry",
+          "Rotate accumulator left",
+          "Rotate accumulator right"
+        ],
+        "correctAnswer": "Rotate accumulator left",
+        "explanation": "RLC stands for Rotate accumulator left."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Rotate accumulator right'?",
+        "choices": [
+          "RLC",
+          "RRC",
+          "RAL",
+          "RAR"
+        ],
+        "correctAnswer": "RRC",
+        "explanation": "RRC stands for Rotate accumulator right."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Rotate left through carry'?",
+        "choices": [
+          "RLC",
+          "RRC",
+          "RAL",
+          "RAR"
+        ],
+        "correctAnswer": "RAL",
+        "explanation": "RAL stands for Rotate left through carry."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'RAR' instruction stand for?",
+        "choices": [
+          "Rotate accumulator right",
+          "Rotate accumulator left",
+          "Rotate right through carry",
+          "Rotate left through carry"
+        ],
+        "correctAnswer": "Rotate right through carry",
+        "explanation": "RAR stands for Rotate right through carry."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'CMA' instruction?",
+        "choices": [
+          "Complement carry flag",
+          "Compare using immediate data",
+          "Complement accumulator",
+          "Compare"
+        ],
+        "correctAnswer": "Complement accumulator",
+        "explanation": "CMA stands for Complement accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Complement carry flag'?",
+        "choices": [
+          "CMA",
+          "CMC",
+          "CMP",
+          "CPI"
+        ],
+        "correctAnswer": "CMC",
+        "explanation": "CMC stands for Complement carry flag."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Based on the lecture, what is the specific example code provided for the 'Unconditional Jump' instruction?",
+        "choices": [
+          "JMP NEXT",
+          "CALL ADD1",
+          "RST 2",
+          "RET"
+        ],
+        "correctAnswer": "JMP NEXT",
+        "explanation": "JMP NEXT is the example given to demonstrate an unconditional jump to the label 'NEXT'."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the specific example code provided for the 'Call' instruction?",
+        "choices": [
+          "RST 2",
+          "RET",
+          "CALL ADD1",
+          "JMP NEXT"
+        ],
+        "correctAnswer": "CALL ADD1",
+        "explanation": "CALL ADD1 is the example used to demonstrate calling a subroutine named 'ADD1'."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which of the following is the example code for the 'Restart' instruction?",
+        "choices": [
+          "RET",
+          "JMP NEXT",
+          "CALL ADD1",
+          "RST 2"
+        ],
+        "correctAnswer": "RST 2",
+        "explanation": "RST 2 is the example provided for the Restart instruction, which jumps to address 0010H."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the example code provided for the 'Return' instruction?",
+        "choices": [
+          "RET",
+          "RST 2",
+          "CALL ADD1",
+          "JMP NEXT"
+        ],
+        "correctAnswer": "RET",
+        "explanation": "RET is the instruction used to return to the main program."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following opcodes are executed under the 'Zero (Z=1)' condition?",
+        "choices": [
+          "JZ",
+          "CZ",
+          "JNZ",
+          "RZ",
+          "CNZ"
+        ],
+        "correctAnswer": [
+          "JZ",
+          "CZ",
+          "RZ"
+        ],
+        "explanation": "JZ (Jump on Zero), CZ (Call on Zero), and RZ (Return on Zero) are the opcodes used when the Zero flag is 1."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select all the opcodes that belong to the 'Not Zero (Z=0)' condition:",
+        "choices": [
+          "JNZ",
+          "CNZ",
+          "RNZ",
+          "JZ",
+          "CZ"
+        ],
+        "correctAnswer": [
+          "JNZ",
+          "CNZ",
+          "RNZ"
+        ],
+        "explanation": "The 'NZ' variants (JNZ, CNZ, RNZ) are executed when the Zero flag is 0 (Not Zero)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following opcodes are executed under the 'Carry (C=1)' condition?",
+        "choices": [
+          "JC",
+          "CC",
+          "RC",
+          "JNC",
+          "CNC"
+        ],
+        "correctAnswer": [
+          "JC",
+          "CC",
+          "RC"
+        ],
+        "explanation": "JC, CC, and RC are the opcodes used when the Carry flag is 1."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Identify the opcodes used specifically for the 'No Carry (C=0)' condition:",
+        "choices": [
+          "JNC",
+          "CNC",
+          "RNC",
+          "JC",
+          "RC"
+        ],
+        "correctAnswer": [
+          "JNC",
+          "CNC",
+          "RNC"
+        ],
+        "explanation": "The 'NC' variants (JNC, CNC, RNC) are triggered when there is No Carry (C=0)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which opcodes correspond to the 'Parity Even (P=1)' condition?",
+        "choices": [
+          "JPE",
+          "CPE",
+          "RPE",
+          "JPO",
+          "CPO"
+        ],
+        "correctAnswer": [
+          "JPE",
+          "CPE",
+          "RPE"
+        ],
+        "explanation": "The 'PE' variants (JPE, CPE, RPE) are used when the Parity flag is 1, indicating Even parity."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Select the opcodes that fall under the 'Parity Odd (P=0)' condition:",
+        "choices": [
+          "JPO",
+          "CPO",
+          "RPO",
+          "JPE",
+          "RPE"
+        ],
+        "correctAnswer": [
+          "JPO",
+          "CPO",
+          "RPO"
+        ],
+        "explanation": "The 'PO' variants (JPO, CPO, RPO) are executed when the Parity flag is 0, indicating Odd parity."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following opcodes are associated with the 'Plus (S=0)' condition?",
+        "choices": [
+          "JP",
+          "CP",
+          "RP",
+          "JM",
+          "CM"
+        ],
+        "correctAnswer": [
+          "JP",
+          "CP",
+          "RP"
+        ],
+        "explanation": "The 'P' variants (JP, CP, RP) stand for Plus and are triggered when the Sign flag is 0 (positive)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Identify the opcodes used for the 'Minus (S=1)' condition:",
+        "choices": [
+          "JM",
+          "CM",
+          "RM",
+          "JP",
+          "CP"
+        ],
+        "correctAnswer": [
+          "JM",
+          "CM",
+          "RM"
+        ],
+        "explanation": "The 'M' variants (JM, CM, RM) stand for Minus and are executed when the Sign flag is 1 (negative)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'PUSH' instruction?",
+        "choices": [
+          "Push two bytes of data onto the stack",
+          "Pop two bytes of data off the stack",
+          "Move content of H and L to stack pointer",
+          "Exchange top of stack with H and L"
+        ],
+        "correctAnswer": "Push two bytes of data onto the stack",
+        "explanation": "PUSH takes two bytes of data (usually from a register pair) and places them onto the top of the stack."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Pop two bytes of data off the stack'?",
+        "choices": [
+          "PUSH",
+          "POP",
+          "SPHL",
+          "XTHL"
+        ],
+        "correctAnswer": "POP",
+        "explanation": "POP retrieves two bytes of data from the top of the stack and stores them in a specified register pair."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'XTHL' instruction stand for?",
+        "choices": [
+          "Move content of H and L to stack pointer",
+          "Push two bytes of data onto the stack",
+          "Exchange top of stack with H and L",
+          "Exchange H and L with D and E"
+        ],
+        "correctAnswer": "Exchange top of stack with H and L",
+        "explanation": "XTHL swaps the 16-bit value currently at the top of the stack with the 16-bit value inside the HL register pair."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Move content of H and L to stack pointer'?",
+        "choices": [
+          "SPHL",
+          "XTHL",
+          "PUSH",
+          "POP"
+        ],
+        "correctAnswer": "SPHL",
+        "explanation": "SPHL takes the 16-bit address stored in the HL register pair and moves it directly into the Stack Pointer (SP)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the specific definition of the 'IN' instruction?",
+        "choices": [
+          "Initiate interrupt operation",
+          "Initiate input operation",
+          "Initiate output operation",
+          "Increment stack pointer"
+        ],
+        "correctAnswer": "Initiate input operation",
+        "explanation": "IN is used to initiate an input operation, receiving data from an external I/O port into the accumulator."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction means to 'Initiate output operation'?",
+        "choices": [
+          "IN",
+          "OUT",
+          "EI",
+          "DI"
+        ],
+        "correctAnswer": "OUT",
+        "explanation": "OUT is used to initiate an output operation, sending data from the accumulator to an external I/O port."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the exact definition of the 'EI' instruction?",
+        "choices": [
+          "Enable input system",
+          "Execute interrupt",
+          "Enable interrupt system",
+          "Exchange instructions"
+        ],
+        "correctAnswer": "Enable interrupt system",
+        "explanation": "EI stands for Enable interrupt system, which allows the microprocessor to respond to external interrupt requests."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'Disable interrupt system'?",
+        "choices": [
+          "EI",
+          "DI",
+          "HLT",
+          "NOP"
+        ],
+        "correctAnswer": "DI",
+        "explanation": "DI stands for Disable interrupt system, which prevents the microprocessor from acknowledging external interrupts."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the 'HLT' instruction stand for?",
+        "choices": [
+          "Hold",
+          "Halt",
+          "Half",
+          "Hardware Lock"
+        ],
+        "correctAnswer": "Halt",
+        "explanation": "HLT simply stands for Halt, which stops the microprocessor's execution until an interrupt or reset occurs."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which instruction is defined as 'No operation'?",
+        "choices": [
+          "HLT",
+          "NOP",
+          "DI",
+          "OUT"
+        ],
+        "correctAnswer": "NOP",
+        "explanation": "NOP stands for No operation. It does not affect any registers or memory, it simply consumes clock cycles to create a delay."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following instructions interact directly with the Stack or the Stack Pointer?",
+        "choices": [
+          "PUSH",
+          "POP",
+          "XTHL",
+          "SPHL",
+          "IN",
+          "EI"
+        ],
+        "correctAnswer": [
+          "PUSH",
+          "POP",
+          "XTHL",
+          "SPHL"
+        ],
+        "explanation": "PUSH, POP, XTHL, and SPHL all involve operations that push data to, pop data from, or manipulate the stack pointer."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "According to the lecture, every instruction consists of which two fundamental parts?",
+        "choices": [
+          "Address Bus",
+          "Opcode",
+          "Data Bus",
+          "Operand",
+          "Timing Signal"
+        ],
+        "correctAnswer": [
+          "Opcode",
+          "Operand"
+        ],
+        "explanation": "An instruction is always composed of the operation code (opcode) and the data to be operated on (operand)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the instruction explicitly states the operation that will be performed?",
+        "choices": [
+          "Operand",
+          "Address",
+          "Opcode",
+          "Register"
+        ],
+        "correctAnswer": "Opcode",
+        "explanation": "The opcode (operation code) dictates the specific function or action the microprocessor needs to execute."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which term refers to the data with which the operation is performed?",
+        "choices": [
+          "Opcode",
+          "Operand",
+          "Instruction Set",
+          "Mnemonic"
+        ],
+        "correctAnswer": "Operand",
+        "explanation": "The operand represents the actual data, register, or memory address that the opcode manipulates."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "From where can an 8-bit data be obtained during an operation?",
+        "choices": [
+          "A register",
+          "A memory location",
+          "A register pair",
+          "An input port",
+          "Two consecutive memory locations"
+        ],
+        "correctAnswer": [
+          "A register",
+          "A memory location",
+          "An input port"
+        ],
+        "explanation": "8-bit data can be sourced from a single register, a specific memory location, or an input port."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the possible sources for 16-bit data?",
+        "choices": [
+          "A single register",
+          "A register pair",
+          "An input port",
+          "Two consecutive memory locations"
+        ],
+        "correctAnswer": [
+          "A register pair",
+          "Two consecutive memory locations"
+        ],
+        "explanation": "Because it requires 16 bits, the data must be retrieved from a combined register pair or across two consecutive 8-bit memory locations."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "How are Intel 8085 instructions classified according to their format and size?",
+        "choices": [
+          "One-byte or 1-word instructions",
+          "Two-byte or 2-word instructions",
+          "Three-byte or 3-word instructions",
+          "Four-byte or 4-word instructions",
+          "Variable-byte instructions"
+        ],
+        "correctAnswer": [
+          "One-byte or 1-word instructions",
+          "Two-byte or 2-word instructions",
+          "Three-byte or 3-word instructions"
+        ],
+        "explanation": "The 8085 instruction set is strictly categorized into 1-byte, 2-byte, and 3-byte instructions."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the definition of a one-byte instruction?",
+        "choices": [
+          "It consists of the opcode and operand in the same byte.",
+          "It uses one byte for the opcode and a second byte for the operand.",
+          "It requires three bytes to specify a 16-bit address.",
+          "It is an instruction that contains only an operation code with no operand."
+        ],
+        "correctAnswer": "It consists of the opcode and operand in the same byte.",
+        "explanation": "According to the lecture, a one-byte instruction is characterized by having both the opcode and operand contained within a single byte."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the sample opcodes for one-byte instructions provided on Page 22?",
+        "choices": [
+          "MOV",
+          "ADD",
+          "SUB",
+          "CMA",
+          "RAR",
+          "MVI",
+          "LXI"
+        ],
+        "correctAnswer": [
+          "MOV",
+          "ADD",
+          "SUB",
+          "CMA",
+          "RAR"
+        ],
+        "explanation": "The lecture specifically lists MOV, ADD, SUB, CMA, and RAR as the example opcodes that function as one-byte instructions."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the definition of a two-byte instruction?",
+        "choices": [
+          "Both opcode and operand are contained within the first byte.",
+          "The first byte is the opcode and the second byte is the operand (8-bit data or address).",
+          "The first byte is the opcode and the next two bytes are a 16-bit address.",
+          "It consists of two opcodes performed simultaneously in one clock cycle."
+        ],
+        "correctAnswer": "The first byte is the opcode and the second byte is the operand (8-bit data or address).",
+        "explanation": "A two-byte instruction requires two memory locations: one for the operation code and another for the 8-bit data or I/O port address."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the sample opcodes for two-byte instructions?",
+        "choices": [
+          "MVI",
+          "ADI",
+          "IN",
+          "OUT",
+          "MOV",
+          "LXI"
+        ],
+        "correctAnswer": [
+          "MVI",
+          "ADI",
+          "IN",
+          "OUT"
+        ],
+        "explanation": "The lecture lists instructions that require an immediate 8-bit data or port address (like MVI, ADI, SUI, ANI, IN, and OUT) as examples of two-byte instructions."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In a two-byte instruction, what does the second byte specifically represent?",
+        "choices": [
+          "The second part of the opcode.",
+          "A 16-bit memory address.",
+          "8-bit data or an 8-bit port address.",
+          "The parity bit of the instruction."
+        ],
+        "correctAnswer": "8-bit data or an 8-bit port address.",
+        "explanation": "The second byte of a two-byte instruction is dedicated to the operand, which is either an 8-bit immediate value or a port number."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the definition of a three-byte instruction?",
+        "choices": [
+          "It consists of one byte for the opcode and two bytes for a 16-bit address or data.",
+          "It consists of three separate opcodes executed in a sequence.",
+          "It uses one byte for the opcode, one for the register, and one for the parity.",
+          "It is an instruction that always addresses three different memory locations."
+        ],
+        "correctAnswer": "It consists of one byte for the opcode and two bytes for a 16-bit address or data.",
+        "explanation": "A three-byte instruction uses the first byte for the opcode, and the remaining two bytes are required to represent a full 16-bit address or value."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the sample opcodes for three-byte instructions provided in the lecture?",
+        "choices": [
+          "LXI",
+          "LDA",
+          "JMP",
+          "MOV",
+          "MVI"
+        ],
+        "correctAnswer": [
+          "LXI",
+          "LDA",
+          "JMP"
+        ],
+        "explanation": "LXI, LDA, STA, JMP, and CALL all require a 16-bit address or data as an operand, making them three-byte instructions."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "How is a 16-bit address or data organized within a three-byte instruction?",
+        "choices": [
+          "The second byte is high-order and the third byte is low-order.",
+          "The second byte is low-order and the third byte is high-order.",
+          "The address is split across all three bytes including the opcode.",
+          "Both bytes 2 and 3 contain the same 16-bit value for redundancy."
+        ],
+        "correctAnswer": "The second byte is low-order and the third byte is high-order.",
+        "explanation": "In 8085 architecture, the low-order byte of the address or data is stored immediately after the opcode (byte 2), followed by the high-order byte (byte 3)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which specific instructions are used to load or store the HL register pair directly from/to memory as 3-byte instructions?",
+        "choices": [
+          "LHLD",
+          "SHLD",
+          "LDAX",
+          "STAX"
+        ],
+        "correctAnswer": [
+          "LHLD",
+          "SHLD"
+        ],
+        "explanation": "LHLD (Load HL Direct) and SHLD (Store HL Direct) are three-byte instructions because they require a 16-bit memory address operand."
+      }
+    ]
+  }
+]
