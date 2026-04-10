@@ -1,6 +1,6 @@
 [
   {
-    "topic": "Lesson 2: ARCHITECTURE OF 8085 MICROPROCESSORS",
+    "topic": "Lecture 2",
     "reviewerFacts": [
       "Step 1: Program counter sends address.",
       "Step 2: Address is placed on the bus.",
@@ -66,7 +66,31 @@
       "Zero Flag (Z) is set to 1 when the result of an 8-bit ALU operation is zero. It is reset to 0 if the result is non-zero.",
       "Sign Flag (S) indicates the sign of a signed arithmetic operation based on the Most Significant Bit (MSB). 1 means negative, 0 means positive.",
       "The combination of the 5 status flags and the 3 undefined bits is known as the Program Status Word (PSW).",
-      "The PSW and the Accumulator can be combined and used as a 16-bit unit for stack operations."
+      "The PSW and the Accumulator can be combined and used as a 16-bit unit for stack operations.",
+      "Example 1: When adding 07H (0000 0111) and CFH (1100 1111), the 8-bit sum is 1101 0110.",
+      "In Example 1 (07H + CFH), the result is non-zero, so the Zero Flag (Z) is set to 0.",
+      "In Example 1 (07H + CFH), the result has five 1s (odd parity), so the Parity Flag (P) is set to 0.",
+      "In Example 1 (07H + CFH), there is a carry from the 3rd bit to the 4th bit, so the Auxiliary Carry (AC) is set to 1.",
+      "In Example 1 (07H + CFH), the Most Significant Bit (MSB) is 1, so the Sign Flag (S) is set to 1.",
+      "Example 2: When adding CEH (1100 1110) and 9BH (1001 1011), the 9-bit sum is 1 0110 1001.",
+      "In Example 2 (CEH + 9BH), the 8-bit result is non-zero, so the Zero Flag (Z) is set to 0.",
+      "In Example 2 (CEH + 9BH), the 8-bit result (0110 1001) has four 1s (even parity), so the Parity Flag (P) is set to 1.",
+      "In Example 2 (CEH + 9BH), a final carry out of the 8th bit is generated, so the Carry Flag (CS/CY) is set to 1.",
+      "In Example 2 (CEH + 9BH), there is a carry from the 3rd bit to the 4th bit, so the Auxiliary Carry (AC) is set to 1.",
+      "In Example 2 (CEH + 9BH), the Most Significant Bit (MSB) of the 8-bit sum is 0, so the Sign Flag (S) is set to 0.",
+      "Pins A15 to A8 form the higher-order address bus. They are 3-state output pins.",
+      "Pins AD7 to AD0 form the lower-order multiplexed address/data bus. They carry the address during the first clock cycle and data during the second and third cycles.",
+      "ALE (Address Latch Enable) is an output signal that goes high during the first clock state to enable the address to get latched.",
+      "The IO/M signal differentiates between memory and I/O operations. When IO/M is high (1), I/O is performed; when low (0), memory operates.",
+      "Status Code for Memory Write: IO/M = 0, S1 = 0, S0 = 1.",
+      "Status Code for Memory Read: IO/M = 0, S1 = 1, S0 = 0.",
+      "Status Code for I/O Write: IO/M = 1, S1 = 0, S0 = 1.",
+      "Status Code for I/O Read: IO/M = 1, S1 = 1, S0 = 0.",
+      "Status Code for Opcode Fetch: IO/M = 0, S1 = 1, S0 = 1.",
+      "X1 and X2 are input pins connected to the external and internal clock generators.",
+      "CLK (Out) provides the system clock output to other devices.",
+      "SID is the Serial Input Data line (loaded on AX), and SOD is the Serial Output Data line.",
+      "VCC requires a +5 Volt supply to operate the microprocessor, and GND acts as the ground reference."
     ],
     "questions": [
       {
@@ -906,6 +930,231 @@
         ],
         "correctAnswer": "Accumulator",
         "explanation": "The Accumulator (8-bit) and the PSW (8-bit) are often pushed or popped together as a 16-bit pair during stack operations."
+      },
+      {
+        "type": "single",
+        "image": "Ex1Z.png",
+        "question": "In Example 1, after performing the addition of 07H and CFH, what is the status of the Zero Flag (Z)?",
+        "choices": [
+          "Z = 1, because the result is zero.",
+          "Z = 0, because the result is non-zero.",
+          "Z = 1, because the MSB is 1.",
+          "Z = 0, because a carry was generated."
+        ],
+        "correctAnswer": "Z = 0, because the result is non-zero.",
+        "explanation": "Since the binary sum is 1101 0110, the result is not zero, so the Z flag remains 0."
+      },
+      {
+        "type": "single",
+        "image": "Ex1P.png",
+        "question": "In Example 1 (07H + CFH), what is the status of the Parity Flag (P) and why?",
+        "choices": [
+          "P = 1, because there are four 1s (even parity).",
+          "P = 0, because there are five 1s (odd parity).",
+          "P = 1, because the result is positive.",
+          "P = 0, because there are zero 1s."
+        ],
+        "correctAnswer": "P = 0, because there are five 1s (odd parity).",
+        "explanation": "The result 1101 0110 contains exactly five 1s. Since 5 is an odd number, odd parity applies and P is set to 0."
+      },
+      {
+        "type": "single",
+        "image": "Ex1S.png",
+        "question": "In Example 1 (07H + CFH), what is the status of the Sign Flag (S)?",
+        "choices": [
+          "S = 0, indicating a positive number.",
+          "S = 1, indicating a negative number.",
+          "S = 0, because the Z flag is 0.",
+          "S = 1, because there is an even number of 1s."
+        ],
+        "correctAnswer": "S = 1, indicating a negative number.",
+        "explanation": "The Most Significant Bit (MSB) of the result 1101 0110 is 1, which sets the Sign flag to 1."
+      },
+      {
+        "type": "single",
+        "image": "Ex2CS.png",
+        "question": "In Example 2, after adding CEH and 9BH, the sum generates a 9th bit. What happens to the Carry Flag (CS/CY)?",
+        "choices": [
+          "CS = 0, because no carry was generated.",
+          "CS = 1, because a carry is generated out of the 8th bit.",
+          "CS = 0, because the Auxiliary Carry handled it.",
+          "CS = 1, because the MSB is 0."
+        ],
+        "correctAnswer": "CS = 1, because a carry is generated out of the 8th bit.",
+        "explanation": "Adding CEH and 9BH produces a sum that exceeds 8 bits (1 0110 1001), triggering the main Carry Flag to 1."
+      },
+      {
+        "type": "single",
+        "image": "Ex2P.png",
+        "question": "In Example 2 (CEH + 9BH), what is the status of the Parity Flag (P)?",
+        "choices": [
+          "P = 0, because there are five 1s.",
+          "P = 1, because there are four 1s (even parity).",
+          "P = 0, because the result is non-zero.",
+          "P = 1, because the Sign flag is 0."
+        ],
+        "correctAnswer": "P = 1, because there are four 1s (even parity).",
+        "explanation": "Looking at the 8-bit result (0110 1001), there are exactly four 1s. Four is an even number, so the Parity flag is set to 1."
+      },
+      {
+        "type": "single",
+        "image": "Ex2S.png",
+        "question": "In Example 2 (CEH + 9BH), the 8-bit result is 0110 1001. What is the status of the Sign Flag (S)?",
+        "choices": [
+          "S = 1",
+          "S = 0",
+          "S = Undefined",
+          "S = 8"
+        ],
+        "correctAnswer": "S = 0",
+        "explanation": "The Most Significant Bit (the leftmost bit of the 8-bit result 0110 1001) is 0, so the Sign Flag is set to 0."
+      },
+      {
+        "type": "single",
+        "image": "Ex1Ex2AC",
+        "question": "In BOTH Example 1 and Example 2, what happens to the Auxiliary Carry (AC) flag?",
+        "choices": [
+          "It is set to 0 in both examples.",
+          "It is set to 1 in both examples because a carry from the 3rd bit to the 4th bit occurs in both additions.",
+          "It is 1 in Example 1, but 0 in Example 2.",
+          "It is undefined because BCD addition is not being used."
+        ],
+        "correctAnswer": "It is set to 1 in both examples because a carry from the 3rd bit to the 4th bit occurs in both additions.",
+        "explanation": "In both the addition of 07H+CFH and CEH+9BH, the lower nibbles generate a carry over to the upper nibbles (from D3 to D4), setting AC=1."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which set of pins is responsible for carrying the higher-order Address Bus?",
+        "choices": [
+          "AD7 to AD0",
+          "A15 to A8",
+          "SID and SOD",
+          "X1 and X2"
+        ],
+        "correctAnswer": "A15 to A8",
+        "explanation": "Pins A15 to A8 are dedicated solely to outputting the higher-order 8 bits of a 16-bit address."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Why are the AD7 to AD0 pins referred to as 'multiplexed'?",
+        "choices": [
+          "They carry both power (VCC) and ground (GND) signals simultaneously.",
+          "They carry the address during the first cycle, and data during the second and third cycles.",
+          "They act as both serial inputs and serial outputs.",
+          "They can connect to multiple microprocessors at once."
+        ],
+        "correctAnswer": "They carry the address during the first cycle, and data during the second and third cycles.",
+        "explanation": "To save physical pins on the chip, AD7-AD0 share functions: carrying lower-order address bits first, then carrying actual data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the primary function of the ALE (Address Latch Enable) pin?",
+        "choices": [
+          "To provide a +5 Volt power supply.",
+          "To generate the system clock.",
+          "To go high during the first clock state and enable the address to get latched.",
+          "To read serial input data."
+        ],
+        "correctAnswer": "To go high during the first clock state and enable the address to get latched.",
+        "explanation": "ALE alerts external latches that the multiplexed AD lines currently hold a valid address that needs to be captured."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If the IO/M signal is LOW (0), what type of operation is the microprocessor targeting?",
+        "choices": [
+          "Input/Output (I/O) operation",
+          "Memory operation",
+          "Halt operation",
+          "Reset operation"
+        ],
+        "correctAnswer": "Memory operation",
+        "explanation": "The bar over the 'M' in IO/M means Memory is active-low. So a 0 indicates a memory operation."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Based on the Status Codes table, what operation corresponds to IO/M = 0, S1 = 1, and S0 = 0?",
+        "choices": [
+          "Opcode Fetch",
+          "Memory Write",
+          "Memory Read",
+          "I/O Read"
+        ],
+        "correctAnswer": "Memory Read",
+        "explanation": "The combination of IO/M=0 (Memory), S1=1 (Read status), and S0=0 results in a Memory Read operation."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Based on the Status Codes table, what is happening when IO/M = 0, S1 = 1, and S0 = 1?",
+        "choices": [
+          "Memory Write",
+          "Memory Read",
+          "I/O Write",
+          "Opcode Fetch"
+        ],
+        "correctAnswer": "Opcode Fetch",
+        "explanation": "When both S1 and S0 are 1 alongside a Memory operation (IO/M=0), the CPU is performing an Opcode Fetch to get the next instruction."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If you want to perform an I/O Write operation, what must the status of IO/M, S1, and S0 be?",
+        "choices": [
+          "IO/M = 1, S1 = 0, S0 = 1",
+          "IO/M = 1, S1 = 1, S0 = 0",
+          "IO/M = 0, S1 = 0, S0 = 1",
+          "IO/M = 0, S1 = 1, S0 = 1"
+        ],
+        "correctAnswer": "IO/M = 1, S1 = 0, S0 = 1",
+        "explanation": "For an I/O Write, IO/M must be 1 (I/O active), S1=0, and S0=1 (Write status)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which pins are specifically utilized for serial data communication in the 8085?",
+        "choices": [
+          "ALE",
+          "SID",
+          "SOD",
+          "X1 and X2",
+          "READY"
+        ],
+        "correctAnswer": [
+          "SID",
+          "SOD"
+        ],
+        "explanation": "SID (Serial Input Data) and SOD (Serial Output Data) are the dedicated pins for serial communication."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the standard operating voltage required at the VCC pin of the 8085 Microprocessor?",
+        "choices": [
+          "+3.3 Volts",
+          "+5 Volts",
+          "+12 Volts",
+          "-5 Volts"
+        ],
+        "correctAnswer": "+5 Volts",
+        "explanation": "The 8085 is designed to operate on a standard +5 Volt DC supply via the VCC pin."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the purpose of the X1 and X2 pins on the 8085?",
+        "choices": [
+          "They output the system clock to peripherals.",
+          "They are used for external and internal clock generation.",
+          "They handle interrupt requests.",
+          "They act as ground references."
+        ],
+        "correctAnswer": "They are used for external and internal clock generation.",
+        "explanation": "A crystal oscillator or external clock source is connected across X1 and X2 to drive the internal clock generator."
       }
     ]
   }
