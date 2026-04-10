@@ -473,6 +473,452 @@
         ],
         "correctAnswer": "Its own Address Bus (to locate instructions) and Data Bus (to retrieve instructions).",
         "explanation": "Because memories are separate, the Program Memory has its own dedicated Address Bus and Data Bus, completely separate from the Data Memory's buses."
+      },
+{
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the basic components that make up the block diagram of a computer?",
+        "choices": [
+          "Input Devices",
+          "Central Processing Unit (CPU)",
+          "Network Router",
+          "Memory",
+          "Output Devices",
+          "Surge Protector"
+        ],
+        "correctAnswer": [
+          "Input Devices",
+          "Central Processing Unit (CPU)",
+          "Memory",
+          "Output Devices"
+        ],
+        "explanation": "A basic computer block diagram comprises input devices, memory, output devices, and the central processing unit (CPU)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which pointing device detects changes in brightness on the screen to calculate its exact position and is used to draw directly on a monitor?",
+        "choices": [
+          "Mouse",
+          "Touch-screen",
+          "Light Pen",
+          "Joystick"
+        ],
+        "correctAnswer": "Light Pen",
+        "explanation": "A Light Pen is a light-sensitive wand that detects changes in brightness on the screen to calculate its position."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which source data device reads characters printed with special magnetic ink and is primarily used in banking to securely process checks?",
+        "choices": [
+          "OCR (Optical Character Recognition)",
+          "MICR (Magnetic Ink Character Recognition)",
+          "Light Pen",
+          "Microfilm"
+        ],
+        "correctAnswer": "MICR (Magnetic Ink Character Recognition)",
+        "explanation": "MICR reads characters printed with special magnetic ink and is heavily used in the banking industry for check processing."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What type of primary memory permanently stores crucial system instructions, such as boot firmware, and is non-volatile?",
+        "choices": [
+          "RAM",
+          "Cache Memory",
+          "ROM",
+          "Registers"
+        ],
+        "correctAnswer": "ROM",
+        "explanation": "Read Only Memory (ROM) is non-volatile and permanently stores crucial system instructions like boot firmware."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the smallest and fastest storage location built directly into the CPU to hold immediate data and instructions during execution?",
+        "choices": [
+          "Cache Memory",
+          "RAM",
+          "Registers",
+          "Hard Disk"
+        ],
+        "correctAnswer": "Registers",
+        "explanation": "Registers are the smallest, fastest storage locations built directly into the CPU."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which secondary memory medium is an older, sequential-access storage typically used for massive data archiving and backups?",
+        "choices": [
+          "Floppy Disk",
+          "Hard Disk",
+          "CD ROM",
+          "Magnetic Tape"
+        ],
+        "correctAnswer": "Magnetic Tape",
+        "explanation": "Magnetic Tape is an older, sequential-access storage medium used heavily for massive data archiving and backups."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which printed output device processes and prints an entire page at once, such as a modern laser printer?",
+        "choices": [
+          "Line Printer",
+          "Character Printer",
+          "Page Printer",
+          "Plotter"
+        ],
+        "correctAnswer": "Page Printer",
+        "explanation": "A Page Printer is a hardware device that processes and prints an entire page at once."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What specialized output machine uses pens to draw continuous, high-precision vector lines for creating large engineering schematics and architectural blueprints?",
+        "choices": [
+          "Page Printer",
+          "Plotter",
+          "Line Printer",
+          "Microfilm"
+        ],
+        "correctAnswer": "Plotter",
+        "explanation": "A Plotter is a specialized machine that uses pens to draw high-precision vector lines for schematics and blueprints."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is an analog output medium that stores highly scaled-down photographic copies of documents on a film reel for compact, long-term archiving?",
+        "choices": [
+          "Magnetic Tape",
+          "Microfilm",
+          "CD ROM",
+          "Floppy Disk"
+        ],
+        "correctAnswer": "Microfilm",
+        "explanation": "Microfilm is an analog medium used to store highly scaled-down photographic copies of documents on a reel."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which part of the CPU is responsible for performing all mathematical and logical operations?",
+        "choices": [
+          "Timing and Control Unit",
+          "Accumulator",
+          "Arithmetic Logic Unit (ALU)",
+          "Instruction Cache"
+        ],
+        "correctAnswer": "Arithmetic Logic Unit (ALU)",
+        "explanation": "The Arithmetic Logic Unit (ALU) is the specific part of the CPU that performs all arithmetic and logical operations."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which specific CPU register is designed to store the immediate results of arithmetic and logic operations?",
+        "choices": [
+          "General-Purpose Register",
+          "Accumulator",
+          "Program Counter",
+          "Timing Register"
+        ],
+        "correctAnswer": "Accumulator",
+        "explanation": "The Accumulator is a special register specifically designed to hold the immediate results generated by the ALU."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which CPU component coordinates and manages the overall execution of instructions across the system?",
+        "choices": [
+          "Timing and Control Unit",
+          "Accumulator",
+          "ALU",
+          "General-Purpose Registers"
+        ],
+        "correctAnswer": "Timing and Control Unit",
+        "explanation": "The Timing and Control Unit coordinates and manages the overall execution of instructions across the system."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is defined as a multipurpose, programmable, and clock-driven integrated circuit (IC) that serves as the CPU for digital computers?",
+        "choices": [
+          "Microcontroller",
+          "Microprocessor",
+          "Microfilm",
+          "Memory Controller"
+        ],
+        "correctAnswer": "Microprocessor",
+        "explanation": "A microprocessor is a multipurpose, programmable, and clock-driven integrated circuit (IC)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What was the world's first microprocessor, developed by Intel in 1971?",
+        "choices": [
+          "TMS 1000",
+          "Intel 8085",
+          "Intel 4004",
+          "Intel Core i3"
+        ],
+        "correctAnswer": "Intel 4004",
+        "explanation": "The Intel 4004 was successfully developed in 1971 by engineers at Intel, making it the world's first microprocessor."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Who were the four engineers involved in developing the first microprocessor at Intel?",
+        "choices": [
+          "Gary Boone",
+          "Federico Faggin",
+          "Marcian Hoff",
+          "Michael Cochran",
+          "Stanley Mazor",
+          "Masatoshi Shima"
+        ],
+        "correctAnswer": [
+          "Federico Faggin",
+          "Marcian Hoff",
+          "Stanley Mazor",
+          "Masatoshi Shima"
+        ],
+        "explanation": "Federico Faggin, Marcian Hoff, Stanley Mazor, and Masatoshi Shima were the team at Intel who developed the Intel 4004."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following functions can the Arithmetic Logic Unit (ALU) perform?",
+        "choices": [
+          "Add and Subtract",
+          "AND, OR, XOR",
+          "Compare, Increment, Decrement",
+          "Fetch instruction from external memory"
+        ],
+        "correctAnswer": [
+          "Add and Subtract",
+          "AND, OR, XOR",
+          "Compare, Increment, Decrement"
+        ],
+        "explanation": "The ALU performs math and logic (Add, Subtract, AND, OR, XOR, Compare, Increment, Decrement). It does not fetch instructions; that is the job of the Control Unit and Address Bus."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the correct 4-step sequence technique of a microprocessor's operation?",
+        "choices": [
+          "Fetch, Decode, Instruct, Execute",
+          "Instruct, Fetch, Decode, Execute",
+          "Fetch, Control logic instructs, Decode, Execute",
+          "Decode, Fetch, Control logic instructs, Execute"
+        ],
+        "correctAnswer": "Fetch, Control logic instructs, Decode, Execute",
+        "explanation": "The correct steps: 1) Fetch instruction, 2) Control logic instructs on how to decode/execute, 3) Decode instruction, 4) Execute instruction."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "How many bits make up a 'Nibble'?",
+        "choices": [
+          "2 bits",
+          "4 bits",
+          "8 bits",
+          "16 bits"
+        ],
+        "correctAnswer": "4 bits",
+        "explanation": "A Nibble is a group of exactly 4 bits."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "How many bits make up a 'Byte'?",
+        "choices": [
+          "4 bits",
+          "8 bits",
+          "16 bits",
+          "32 bits"
+        ],
+        "correctAnswer": "8 bits",
+        "explanation": "A Byte is a group of exactly 8 bits."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are considered general-purpose registers used to store data and addresses temporarily during the execution of a program?",
+        "choices": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "H",
+          "L",
+          "A",
+          "Z"
+        ],
+        "correctAnswer": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "H",
+          "L",
+          "A"
+        ],
+        "explanation": "The general-purpose registers in typical microcomputer components are B, C, D, E, H, L, and A."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which of the three system buses is strictly unidirectional?",
+        "choices": [
+          "Data Bus",
+          "Control Bus",
+          "Address Bus",
+          "Universal Bus"
+        ],
+        "correctAnswer": "Address Bus",
+        "explanation": "The Address Bus is unidirectional because it only carries address information OUT from the processor to locate memory destinations."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which component of the System Bus provides the timing of the signal to synchronize operations and is bi-directional?",
+        "choices": [
+          "Address Bus",
+          "Data Bus",
+          "Control Bus",
+          "Clock Bus"
+        ],
+        "correctAnswer": "Control Bus",
+        "explanation": "The Control Bus carries control and status information to coordinate timing and operations."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What piece of hardware is provided in the lecture as an example of a microcomputer?",
+        "choices": [
+          "Arduino UNO",
+          "Raspberry Pi 3 Model B",
+          "ESP32",
+          "PIC Board"
+        ],
+        "correctAnswer": "Raspberry Pi 3 Model B",
+        "explanation": "The Raspberry Pi 3 Model B was provided as the hardware example for a microcomputer containing a microprocessor."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following statements define a Microcontroller?",
+        "choices": [
+          "It requires external RAM, ROM, and Timers to function.",
+          "It integrates CPU, RAM, ROM, and I/O ports all on a single chip.",
+          "It is primarily used for embedded applications, automation, and IoT.",
+          "It is stored in a single Integrated Circuit (IC) dedicated to performing a particular task."
+        ],
+        "correctAnswer": [
+          "It integrates CPU, RAM, ROM, and I/O ports all on a single chip.",
+          "It is primarily used for embedded applications, automation, and IoT.",
+          "It is stored in a single Integrated Circuit (IC) dedicated to performing a particular task."
+        ],
+        "explanation": "A microcontroller contains the memory, processor, and programmable I/O all on the same chip, dedicated to specific tasks like IoT."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Who developed the first microcontroller (TMS 1000) in 1971?",
+        "choices": [
+          "Federico Faggin",
+          "Marcian Hoff",
+          "Gary Boone",
+          "Michael Cochran",
+          "Stanley Mazor"
+        ],
+        "correctAnswer": [
+          "Gary Boone",
+          "Michael Cochran"
+        ],
+        "explanation": "Gary Boone and Michael Cochran, engineers at Texas Instruments (TI), developed the first microcontroller in 1971."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following hardware boards are given as examples of Microcontrollers in the lecture?",
+        "choices": [
+          "Arduino UNO",
+          "Raspberry Pi 3 Model B",
+          "PIC/Microcontroller Project Board",
+          "ESP32/ESP-12E",
+          "Intel Core i7"
+        ],
+        "correctAnswer": [
+          "Arduino UNO",
+          "PIC/Microcontroller Project Board",
+          "ESP32/ESP-12E"
+        ],
+        "explanation": "Arduino UNO, PIC boards, and ESP32 are given as microcontroller examples. The Raspberry Pi was an example for microcomputers."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which processor architecture uses a single, unified memory chip to store both program instructions and data?",
+        "choices": [
+          "Harvard Architecture",
+          "Super Harvard Architecture (SHARC)",
+          "Von Neumann Architecture",
+          "RISC Architecture"
+        ],
+        "correctAnswer": "Von Neumann Architecture",
+        "explanation": "Von Neumann Architecture's defining feature is its single unified memory for both instructions and data, fetched sequentially through shared buses."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Why does standard Harvard Architecture have a performance advantage over Von Neumann Architecture?",
+        "choices": [
+          "Because it uses one large memory block for everything.",
+          "Because instructions and data are stored separately, allowing the CPU to access both at the same time.",
+          "Because it relies heavily on secondary storage like magnetic tapes.",
+          "Because the Address Bus is eliminated completely."
+        ],
+        "correctAnswer": "Because instructions and data are stored separately, allowing the CPU to access both at the same time.",
+        "explanation": "By having completely separate memories and dedicated buses for instructions and data, the CPU can read/write data and fetch instructions simultaneously."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What problem does the Super Harvard Architecture (SHARC) primarily solve compared to standard Harvard Architecture?",
+        "choices": [
+          "Lack of Address Buses",
+          "The Memory Imbalance Problem (Data memory overworked compared to program memory)",
+          "Lack of Unified Memory",
+          "Inability to connect to Output Devices"
+        ],
+        "correctAnswer": "The Memory Imbalance Problem (Data memory overworked compared to program memory)",
+        "explanation": "SHARC solves the Memory Imbalance Problem by allowing the Program Memory to also store secondary data, preventing the Data Memory from being overworked."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In Super Harvard Architecture (SHARC), what built-in CPU feature acts as an ultra-fast buffer so the CPU doesn't always need to use external buses to fetch instructions?",
+        "choices": [
+          "General-Purpose Register",
+          "Instruction Cache",
+          "Accumulator",
+          "Arithmetic Logic Unit (ALU)"
+        ],
+        "correctAnswer": "Instruction Cache",
+        "explanation": "The Instruction Cache is a defining feature of SHARC built inside the CPU block. It stores frequently used instructions, avoiding external bus bottlenecks."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Because of its high speed and efficiency with complex math, the Super Harvard Architecture (SHARC) is most commonly used in what field?",
+        "choices": [
+          "Basic Word Processing",
+          "Digital Signal Processing (DSP)",
+          "Simple IoT Temperature Sensors",
+          "Database Management"
+        ],
+        "correctAnswer": "Digital Signal Processing (DSP)",
+        "explanation": "SHARC is most commonly used in Digital Signal Processing (DSP) because of its high speed and efficiency with complex mathematical operations."
       }
     ]
   }
