@@ -1,19 +1,72 @@
 [
   {
-    "topic": "Lecture 2",
+    "topic": "Lesson 2: ARCHITECTURE OF 8085 MICROPROCESSORS",
     "reviewerFacts": [
-      "Step 1: Program counter sends address[cite: 238].",
-      "Step 2: Address is placed on the bus[cite: 239].",
-      "Step 3: Instruction is fetched from the memory[cite: 240].",
-      "Step 4: Instruction stored in Instruction Register[cite: 241].",
-      "Step 5: Instruction is decoded[cite: 242].",
-      "Step 6: Operands are fetched[cite: 243].",
-      "Step 7: ALU performs the operation (AX and TR)[cite: 244].",
-      "Step 8: Flags are updated (Set or Reset)[cite: 245].",
-      "Step 9: Result is stored in AX[cite: 246].",
-      "Step 10: Interrupts are checked[cite: 247].",
-      "Step 11: Program counter updates[cite: 248].",
-      "Step 12: Process repeats[cite: 249]."
+      "Step 1: Program counter sends address.",
+      "Step 2: Address is placed on the bus.",
+      "Step 3: Instruction is fetched from the memory.",
+      "Step 4: Instruction stored in Instruction Register.",
+      "Step 5: Instruction is decoded.",
+      "Step 6: Operands are fetched.",
+      "Step 7: ALU performs the operation (AX and TR).",
+      "Step 8: Flags are updated (Set or Reset).",
+      "Step 9: Result is stored in AX.",
+      "Step 10: Interrupts are checked.",
+      "Step 11: Program counter updates.",
+      "Step 12: Process repeats.",
+      "The operation of the 8085 Microprocessor consists of four main tasks: Memory Read, Memory Write, Input (I/O) Read, and Output (I/O) Write.",
+      "Memory Read means data is read from a memory location.",
+      "Memory Write means data is written into a memory location.",
+      "Input (I/O) Read means data is read from an input device.",
+      "Output (I/O) Write means data is sent to an output device.",
+      "The system uses 3 System Buses: Address Bus, Data Bus, and Control Bus.",
+      "The Address Bus carries the address of the memory or I/O device and is unidirectional.",
+      "The Data Bus carries the actual data and is bidirectional.",
+      "The Control Bus carries control and timing signals. Common controls include RD, WR, IO/M, and ALE.",
+      "Step 1: The 16-bit address of the required memory location is stored in the Program Counter (PC).",
+      "Step 2: The Program Counter places this address on the address bus.",
+      "Step 3: The address decoder decodes the address and selects the specific memory location.",
+      "Step 4: The control unit activates the RD (Read) control signal.",
+      "Step 5: The memory IC is enabled for two clock cycles. (Read Data and Places to Data Bus)",
+      "Step 6: The selected memory location places its data on the data bus (AD7-AD0).",
+      "Step 7: The data is transferred from the memory to the microprocessor.",
+      "The four main components of the ALU section are: Accumulator (A), Temporary Register (TR), Flag Register (FR), and the Arithmetic Logic Unit (ALU) itself.",
+      "ALU Sequence Step 1: One operand is already present in the Accumulator.",
+      "ALU Sequence Step 2: Second operand is fetched from register or memory and placed in the TR.",
+      "ALU Sequence Step 3: The ALU receives inputs from Accumulator and TR.",
+      "ALU Sequence Step 4: The specified arithmetic or logical operation is performed.",
+      "ALU Sequence Step 5: The result is sent back to the Accumulator through the internal data bus.",
+      "ALU Sequence Step 6: Flag bits are updated based on the result.",
+      "Operations performed by the ALU include: Addition, Subtraction, Logical AND, Logical OR, Logical XOR, Complement, Increment and Decrement, Rotate Left and Right, and Clear.",
+      "The RD (Read) signal is used to read data from the memory or I/O devices.",
+      "The WR (Write) signal is used to write data into memory or I/O devices.",
+      "The IO/M signal selects between Memory and I/O operation. 0 means Memory, 1 means I/O.",
+      "ALE (Address Latch Enable) is used to separate address and data on multiplexed lines.",
+      "INTA (Interrupt Acknowledge) indicates that the microprocessor has accepted an interrupt request.",
+      "RESET IN resets the microprocessor, clears registers, and sets the Program Counter (PC) to 0000H.",
+      "RESET OUT is used to reset external devices connected to the microprocessor.",
+      "READY indicates that a peripheral device is ready for data transfer.",
+      "HOLD is a request from the DMA controller to take control of the buses.",
+      "HLDA (Hold Acknowledge) acknowledges the hold request, indicating buses are ready for DMA operation.",
+      "There are six 8-bit General-Purpose Registers: B, C, D, E, H, and L.",
+      "General-Purpose Registers can be combined into register pairs for 16-bit data: BC, DE, and HL.",
+      "The HL register pair is specifically used as a memory address pointer.",
+      "The Accumulator (A) is an 8-bit register in the ALU that performs operations and stores the final result.",
+      "The Program Counter (PC) is a 16-bit register that holds the address of the next instruction.",
+      "The Stack Pointer (SP) is a 16-bit register that points to stack memory for storing/retrieving registers and flags.",
+      "The Flags/Status Register (SR) contains 5 flags: Carry (CY), Zero (Z), Sign (S), Parity (P), and Auxiliary Carry (AC).",
+      "The Accumulator (A or ACC) performs arithmetic and logical operations.",
+      "The Accumulator (A or ACC) stores the final result of ALU operations.",
+      "The Instruction Register (IR), Memory Address Register (MAR), Temporary Register (TR), and Memory Buffer Register (MBR) are classified as Special-Purpose Registers.",
+      "The Flag Register contains five status flags: Sign (S), Zero (Z), Auxiliary Carry (AC), Parity (P), and Carry (CY).",
+      "Three bits in the 8-bit flag register are undefined: D5, D3, and D1.",
+      "Carry Flag (CY or CS) is set to 1 when an arithmetic operation generates a carry (addition) or a borrow (subtraction).",
+      "Parity Flag (P) is set to 1 for even parity (even number of 1s in the result) and reset to 0 for odd parity.",
+      "Auxiliary Carry Flag (AC) is set when a carry is passed from bit D3 to bit D4 during arithmetic. It is mainly used for Binary Coded Decimal (BCD) operations.",
+      "Zero Flag (Z) is set to 1 when the result of an 8-bit ALU operation is zero. It is reset to 0 if the result is non-zero.",
+      "Sign Flag (S) indicates the sign of a signed arithmetic operation based on the Most Significant Bit (MSB). 1 means negative, 0 means positive.",
+      "The combination of the 5 status flags and the 3 undefined bits is known as the Program Status Word (PSW).",
+      "The PSW and the Accumulator can be combined and used as a 16-bit unit for stack operations."
     ],
     "questions": [
       {
@@ -27,7 +80,7 @@
           "ALU performs the operation"
         ],
         "correctAnswer": "Program counter sends address",
-        "explanation": "The sequence begins when the Program counter sends the address[cite: 238]."
+        "explanation": "The sequence begins when the Program counter sends the address."
       },
       {
         "type": "single",
@@ -40,7 +93,7 @@
           "Result is stored in AX"
         ],
         "correctAnswer": "Address is placed on the bus",
-        "explanation": "After the PC sends it, the address is placed on the bus[cite: 239]."
+        "explanation": "After the PC sends it, the address is placed on the bus."
       },
       {
         "type": "single",
@@ -53,7 +106,7 @@
           "Flags are updated"
         ],
         "correctAnswer": "Instruction is fetched from the memory",
-        "explanation": "Once the address is on the bus, the instruction is fetched from the memory[cite: 240]."
+        "explanation": "Once the address is on the bus, the instruction is fetched from the memory."
       },
       {
         "type": "single",
@@ -66,7 +119,7 @@
           "Process repeats"
         ],
         "correctAnswer": "Instruction stored in Instruction Register",
-        "explanation": "After being fetched, the instruction is stored in the Instruction Register[cite: 241]."
+        "explanation": "After being fetched, the instruction is stored in the Instruction Register."
       },
       {
         "type": "single",
@@ -79,7 +132,7 @@
           "Instruction is decoded"
         ],
         "correctAnswer": "Instruction is decoded",
-        "explanation": "The stored instruction is then decoded so the processor understands what to do[cite: 242]."
+        "explanation": "The stored instruction is then decoded so the processor understands what to do."
       },
       {
         "type": "single",
@@ -92,7 +145,7 @@
           "Program counter updates"
         ],
         "correctAnswer": "Operands are fetched",
-        "explanation": "Following decoding, the necessary operands are fetched[cite: 243]."
+        "explanation": "Following decoding, the necessary operands are fetched."
       },
       {
         "type": "single",
@@ -105,7 +158,7 @@
           "Address is placed on the bus"
         ],
         "correctAnswer": "ALU performs the operation (AX and TR)",
-        "explanation": "With the operands ready, the ALU performs the operation using AX and TR[cite: 244]."
+        "explanation": "With the operands ready, the ALU performs the operation using AX and TR."
       },
       {
         "type": "single",
@@ -118,7 +171,7 @@
           "Program counter sends address"
         ],
         "correctAnswer": "Flags are updated (Set or Reset)",
-        "explanation": "Based on the ALU's operation, the flags are updated (Set or Reset)[cite: 245]."
+        "explanation": "Based on the ALU's operation, the flags are updated (Set or Reset)."
       },
       {
         "type": "single",
@@ -131,7 +184,7 @@
           "Process repeats"
         ],
         "correctAnswer": "Result is stored in AX",
-        "explanation": "The final computed result is stored in AX[cite: 246]."
+        "explanation": "The final computed result is stored in AX."
       },
       {
         "type": "single",
@@ -144,7 +197,7 @@
           "Interrupts are checked"
         ],
         "correctAnswer": "Interrupts are checked",
-        "explanation": "Before moving to the next cycle, interrupts are checked[cite: 247]."
+        "explanation": "Before moving to the next cycle, interrupts are checked."
       },
       {
         "type": "single",
@@ -157,7 +210,7 @@
           "Operands are fetched"
         ],
         "correctAnswer": "Program counter updates",
-        "explanation": "The Program counter updates to point to the next instruction[cite: 248]."
+        "explanation": "The Program counter updates to point to the next instruction."
       },
       {
         "type": "single",
@@ -170,7 +223,689 @@
           "Instruction is fetched from memory"
         ],
         "correctAnswer": "Process repeats",
-        "explanation": "Finally, the entire process repeats for the next instruction[cite: 249]."
+        "explanation": "Finally, the entire process repeats for the next instruction."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the four operations of the 8085 microprocessor?",
+        "choices": [
+          "Memory Read",
+          "Instruction Fetch",
+          "Memory Write",
+          "Input (I/O) Read",
+          "Data Execute",
+          "Output (I/O) Write"
+        ],
+        "correctAnswer": [
+          "Memory Read",
+          "Memory Write",
+          "Input (I/O) Read",
+          "Output (I/O) Write"
+        ],
+        "explanation": "The four main operations of the 8085 microprocessor are Memory Read, Memory Write, Input (I/O) Read, and Output (I/O) Write."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the 3 system buses used in the 8085 microprocessor architecture?",
+        "choices": [
+          "Address Bus",
+          "Memory Bus",
+          "Data Bus",
+          "Timing Bus",
+          "Control Bus"
+        ],
+        "correctAnswer": [
+          "Address Bus",
+          "Data Bus",
+          "Control Bus"
+        ],
+        "explanation": "The 3 system buses are the Address Bus, Data Bus, and Control Bus."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the definition of a 'Memory Read' operation?",
+        "choices": [
+          "Data is sent to an output device.",
+          "Data is written into a memory location.",
+          "Data is read from an input device.",
+          "Data is read from a memory location."
+        ],
+        "correctAnswer": "Data is read from a memory location.",
+        "explanation": "In a Memory Read operation, data is read directly from a memory location."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which of the following system buses carries the address of the memory or I/O device and is unidirectional?",
+        "choices": [
+          "Data Bus",
+          "Control Bus",
+          "Address Bus",
+          "System Bus"
+        ],
+        "correctAnswer": "Address Bus",
+        "explanation": "The Address Bus carries the address of the memory or I/O device and is unidirectional."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which operation involves data being written into a memory location?",
+        "choices": [
+          "Memory Read",
+          "Memory Write",
+          "Input (I/O) Read",
+          "Output (I/O) Write"
+        ],
+        "correctAnswer": "Memory Write",
+        "explanation": "Memory Write is the operation where data is written into a memory location."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which system bus carries the actual data and is bidirectional?",
+        "choices": [
+          "Address Bus",
+          "Data Bus",
+          "Control Bus",
+          "I/O Bus"
+        ],
+        "correctAnswer": "Data Bus",
+        "explanation": "The Data Bus carries actual data and is bidirectional, meaning data can flow in both directions."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which operation involves data being sent to an output device?",
+        "choices": [
+          "Output (I/O) Write",
+          "Input (I/O) Read",
+          "Memory Write",
+          "Memory Read"
+        ],
+        "correctAnswer": "Output (I/O) Write",
+        "explanation": "Output (I/O) Write is the operation where data is sent to an output device."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which system bus carries control and timing signals?",
+        "choices": [
+          "Data Bus",
+          "Address Bus",
+          "Control Bus",
+          "Signal Bus"
+        ],
+        "correctAnswer": "Control Bus",
+        "explanation": "The Control Bus carries control and timing signals."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are common controls found on the Control Bus?",
+        "choices": [
+          "RD (Read)",
+          "WR (Write)",
+          "AX",
+          "IO/M",
+          "ALE"
+        ],
+        "correctAnswer": [
+          "RD (Read)",
+          "WR (Write)",
+          "IO/M",
+          "ALE"
+        ],
+        "explanation": "Common control signals on the Control Bus include RD, WR, IO/M, and ALE."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If data is being read from an input device, what specific operation is occurring?",
+        "choices": [
+          "Input (I/O) Read",
+          "Memory Read",
+          "Output (I/O) Write",
+          "Memory Write"
+        ],
+        "correctAnswer": "Input (I/O) Read",
+        "explanation": "Input (I/O) Read is the operation where data is read from an input device."
+      },
+      {
+        "type": "single",
+        "image": "MRO1.png",
+        "question": "In Step 1 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The Program Counter places this address on the address bus.",
+          "The 16-bit address of the required memory location is stored in the Program Counter (PC).",
+          "The control unit activates the RD control signal.",
+          "The data is transferred from the memory to the microprocessor."
+        ],
+        "correctAnswer": "The 16-bit address of the required memory location is stored in the Program Counter (PC).",
+        "explanation": "The operation starts with the Program Counter holding the 16-bit address of the target memory location."
+      },
+      {
+        "type": "single",
+        "image": "MRO2.png",
+        "question": "In Step 2 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The address decoder decodes the address.",
+          "The selected memory location places its data on the data bus.",
+          "The Program Counter places this address on the address bus.",
+          "The memory IC is enabled for two clock cycles."
+        ],
+        "correctAnswer": "The Program Counter places this address on the address bus.",
+        "explanation": "Once the address is ready, the Program Counter sends it out onto the external address bus."
+      },
+      {
+        "type": "single",
+        "image": "MRO3.png",
+        "question": "In Step 3 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The memory IC is enabled for two clock cycles.",
+          "The control unit activates the RD (Read) control signal.",
+          "The data is transferred from the memory to the microprocessor.",
+          "The address decoder decodes the address and selects the specific memory location."
+        ],
+        "correctAnswer": "The address decoder decodes the address and selects the specific memory location.",
+        "explanation": "The memory's address decoder reads the bus and pinpoints the exact memory location requested."
+      },
+      {
+        "type": "single",
+        "image": "MRO4.png",
+        "question": "In Step 4 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The control unit activates the RD (Read) control signal.",
+          "The data is transferred from the memory to the microprocessor.",
+          "The Program Counter places this address on the address bus.",
+          "The selected memory location places its data on the data bus."
+        ],
+        "correctAnswer": "The control unit activates the RD (Read) control signal.",
+        "explanation": "The microprocessor tells the memory it wants to read by asserting the active-low RD signal."
+      },
+      {
+        "type": "single",
+        "image": "MRO5.png",
+        "question": "In Step 5 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The address decoder decodes the address.",
+          "The memory IC is enabled for two clock cycles. (Read Data and Places to Data Bus)",
+          "The 16-bit address is stored in the Program Counter.",
+          "The data is transferred from the memory to the microprocessor."
+        ],
+        "correctAnswer": "The memory IC is enabled for two clock cycles. (Read Data and Places to Data Bus)",
+        "explanation": "The memory IC needs time to process the read request, taking about two clock cycles to fetch the data."
+      },
+      {
+        "type": "single",
+        "image": "MRO6.png",
+        "question": "In Step 6 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The control unit activates the RD control signal.",
+          "The Program Counter places this address on the address bus.",
+          "The selected memory location places its data on the data bus (AD7-AD0).",
+          "The 16-bit address of the required memory location is stored in the Program Counter (PC)."
+        ],
+        "correctAnswer": "The selected memory location places its data on the data bus (AD7-AD0).",
+        "explanation": "The fetched data from the memory location is finally pushed onto the multiplexed address/data bus lines (AD7-AD0)."
+      },
+      {
+        "type": "single",
+        "image": "MRO7.png",
+        "question": "In Step 7 of the Memory Read Operation, what happens?",
+        "choices": [
+          "The memory IC is enabled for two clock cycles.",
+          "The data is transferred from the memory to the microprocessor.",
+          "The address decoder decodes the address.",
+          "The control unit activates the RD (Read) control signal."
+        ],
+        "correctAnswer": "The data is transferred from the memory to the microprocessor.",
+        "explanation": "The cycle concludes when the microprocessor officially receives and internalizes the data from the data bus."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What are the four main components associated with the Arithmetic Logic Unit section?",
+        "choices": [
+          "Accumulator (A)",
+          "Instruction Decoder",
+          "Temporary Register (TR)",
+          "Program Counter",
+          "Flag Register (FR)",
+          "Arithmetic Logic Unit (ALU)"
+        ],
+        "correctAnswer": [
+          "Accumulator (A)",
+          "Temporary Register (TR)",
+          "Flag Register (FR)",
+          "Arithmetic Logic Unit (ALU)"
+        ],
+        "explanation": "The ALU section primarily consists of the Accumulator, Temporary Register, Flag Register, and the actual ALU."
+      },
+      {
+        "type": "single",
+        "image": "SAO1.png",
+        "question": "In Step 1 of the Sequence of ALU Operation, what is the initial state?",
+        "choices": [
+          "Second operand is fetched from register or memory.",
+          "One operand is already present in the Accumulator.",
+          "The ALU receives inputs from Accumulator and TR.",
+          "Flag bits are updated based on the result."
+        ],
+        "correctAnswer": "One operand is already present in the Accumulator.",
+        "explanation": "Before the ALU can do anything, it assumes that one operand is already sitting waiting in the Accumulator."
+      },
+      {
+        "type": "single",
+        "image": "SAO2.png",
+        "question": "In Step 2 of the Sequence of ALU Operation, what happens to the second operand?",
+        "choices": [
+          "It is sent back to the Accumulator.",
+          "It is fetched from register or memory and placed in the TR (Temporary Register).",
+          "It is moved directly into the Flag Register.",
+          "It is fetched and sent directly to the Data Bus."
+        ],
+        "correctAnswer": "It is fetched from register or memory and placed in the TR (Temporary Register).",
+        "explanation": "The second operand is fetched and safely parked in the Temporary Register (TR) so the ALU can access it simultaneously with the Accumulator."
+      },
+      {
+        "type": "single",
+        "image": "SAO3.png",
+        "question": "In Step 3 of the Sequence of ALU Operation, what does the ALU do?",
+        "choices": [
+          "The specified arithmetic or logical operation is performed.",
+          "Flag bits are updated.",
+          "The result is sent back to the Accumulator.",
+          "The ALU receives inputs from Accumulator and TR."
+        ],
+        "correctAnswer": "The ALU receives inputs from Accumulator and TR.",
+        "explanation": "With both operands ready, the ALU receives them simultaneously from the Accumulator and the Temporary Register."
+      },
+      {
+        "type": "single",
+        "image": "SAO4.png",
+        "question": "In Step 4 of the Sequence of ALU Operation, what takes place?",
+        "choices": [
+          "The result is sent back to the Accumulator.",
+          "The specified arithmetic or logical operation is performed.",
+          "Flag bits are updated based on the result.",
+          "The instruction is decoded."
+        ],
+        "correctAnswer": "The specified arithmetic or logical operation is performed.",
+        "explanation": "The actual computation or logical comparison happens at this step inside the ALU."
+      },
+      {
+        "type": "single",
+        "image": "SAO5.png",
+        "question": "In Step 5 of the Sequence of ALU Operation, where does the result go?",
+        "choices": [
+          "The result is stored permanently in the Flag Register.",
+          "The result is sent directly to the Output Device.",
+          "The result is sent back to the Accumulator through the internal data bus.",
+          "The result stays in the Temporary Register."
+        ],
+        "correctAnswer": "The result is sent back to the Accumulator through the internal data bus.",
+        "explanation": "After processing, the ALU overwrites the original operand in the Accumulator with the newly computed result via the internal data bus."
+      },
+      {
+        "type": "single",
+        "image": "SAO6.png",
+        "question": "In Step 6 of the Sequence of ALU Operation, what is the final action?",
+        "choices": [
+          "The Program Counter increments.",
+          "Interrupts are checked.",
+          "The ALU clears the Temporary Register.",
+          "Flag bits are updated based on the result."
+        ],
+        "correctAnswer": "Flag bits are updated based on the result.",
+        "explanation": "Finally, the Flag Flip-Flops (Flag Register) update their status (e.g., Carry, Zero) based on what the ALU just computed."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "According to the lecture, which of the following are valid operations that the ALU can perform? (Select all that apply)",
+        "choices": [
+          "Addition and Subtraction",
+          "Multiplication and Division",
+          "Logical AND, OR, XOR",
+          "Complement",
+          "Increment and Decrement",
+          "Rotate Left and Right",
+          "Clear"
+        ],
+        "correctAnswer": [
+          "Addition and Subtraction",
+          "Logical AND, OR, XOR",
+          "Complement",
+          "Increment and Decrement",
+          "Rotate Left and Right",
+          "Clear"
+        ],
+        "explanation": "The 8085 ALU natively performs Addition, Subtraction, Logical operations (AND, OR, XOR), Complement, Increment/Decrement, Rotate shifts, and Clear. Multiplication and Division are typically handled via software loops using Add/Subtract, not natively by this basic ALU."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What happens when the IO/M signal is set to 0?",
+        "choices": [
+          "The microprocessor performs an Input/Output (I/O) operation.",
+          "The microprocessor halts.",
+          "The microprocessor performs a Memory operation.",
+          "The Accumulator is cleared."
+        ],
+        "correctAnswer": "The microprocessor performs a Memory operation.",
+        "explanation": "When IO/M = 0, it selects Memory operation. When it is 1, it selects I/O operation."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which control signal is responsible for separating the address and data on multiplexed lines?",
+        "choices": [
+          "HLDA",
+          "ALE (Address Latch Enable)",
+          "READY",
+          "INTA"
+        ],
+        "correctAnswer": "ALE (Address Latch Enable)",
+        "explanation": "ALE (Address Latch Enable) is used to demultiplex or separate the address and data lines."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "When the RESET IN signal is triggered, what specific value is the Program Counter (PC) set to?",
+        "choices": [
+          "FFFFH",
+          "0000H",
+          "8085H",
+          "It retains its last address"
+        ],
+        "correctAnswer": "0000H",
+        "explanation": "RESET IN resets the microprocessor, clears registers, and forces the PC back to starting address 0000H."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which signal represents a request from the DMA controller to take control of the system buses?",
+        "choices": [
+          "HOLD",
+          "HLDA",
+          "READY",
+          "INTA"
+        ],
+        "correctAnswer": "HOLD",
+        "explanation": "HOLD is the input request from the DMA controller to take over the buses."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which signal is sent by the microprocessor to acknowledge that it has accepted a DMA HOLD request?",
+        "choices": [
+          "INTA",
+          "READY",
+          "HLDA (Hold Acknowledge)",
+          "RESET OUT"
+        ],
+        "correctAnswer": "HLDA (Hold Acknowledge)",
+        "explanation": "HLDA (Hold Acknowledge) is outputted by the microprocessor to confirm the buses are ready for DMA operation."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following are the six 8-bit General-Purpose Registers in the 8085?",
+        "choices": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "H",
+          "L"
+        ],
+        "correctAnswer": [
+          "B",
+          "C",
+          "D",
+          "E",
+          "H",
+          "L"
+        ],
+        "explanation": "The six general-purpose registers are B, C, D, E, H, and L. (A is the Accumulator, F is sometimes used for Flags)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which specific register pair is frequently used to hold a memory address?",
+        "choices": [
+          "BC",
+          "DE",
+          "HL",
+          "SP"
+        ],
+        "correctAnswer": "HL",
+        "explanation": "While BC and DE are used for 16-bit data, the HL pair is the standard pair used as a memory address pointer."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following statements are true about the Accumulator (A)?",
+        "choices": [
+          "It is a 16-bit register.",
+          "It is an 8-bit register located in the ALU.",
+          "It stores the final result of ALU operations.",
+          "It holds the address of the next instruction."
+        ],
+        "correctAnswer": [
+          "It is an 8-bit register located in the ALU.",
+          "It stores the final result of ALU operations."
+        ],
+        "explanation": "The Accumulator is an 8-bit register in the ALU used for math/logic operations and storing the final result. The PC holds the next address."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the primary function of the Program Counter (PC)?",
+        "choices": [
+          "To point to the stack memory.",
+          "To store the final result of an addition.",
+          "To hold the 16-bit address of the next instruction to be executed.",
+          "To track the number of active interrupts."
+        ],
+        "correctAnswer": "To hold the 16-bit address of the next instruction to be executed.",
+        "explanation": "The Program Counter (PC) is a 16-bit register specifically tasked with holding the address of the next instruction."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which 16-bit special-purpose register points to a specific area in memory used for storing and retrieving registers and flags?",
+        "choices": [
+          "Program Counter (PC)",
+          "Stack Pointer (SP)",
+          "Memory Address Register (MAR)",
+          "Instruction Register (IR)"
+        ],
+        "correctAnswer": "Stack Pointer (SP)",
+        "explanation": "The Stack Pointer (SP) points to the top of the stack memory."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Identify the 5 flags found in the Flags/Status Register (SR) of the 8085:",
+        "choices": [
+          "Carry (CY)",
+          "Zero (Z)",
+          "Overflow (O)",
+          "Sign (S)",
+          "Parity (P)",
+          "Interrupt (I)",
+          "Auxiliary Carry (AC)"
+        ],
+        "correctAnswer": [
+          "Carry (CY)",
+          "Zero (Z)",
+          "Sign (S)",
+          "Parity (P)",
+          "Auxiliary Carry (AC)"
+        ],
+        "explanation": "The 8085 has exactly 5 flags: Carry, Zero, Sign, Parity, and Auxiliary Carry."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which specific register is responsible for performing arithmetic and logical operations AND storing the final result of those ALU operations?",
+        "choices": [
+          "Instruction Register (IR)",
+          "Accumulator (A or ACC)",
+          "Temporary Register (TR)",
+          "Program Counter (PC)"
+        ],
+        "correctAnswer": "Accumulator (A or ACC)",
+        "explanation": "The Accumulator is the primary 8-bit register in the ALU tasked with executing math/logic operations and holding the final computed answer."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Aside from the Program Counter (PC), Stack Pointer (SP), and Flags, which of the following are also classified as Special-Purpose Registers in the 8085?",
+        "choices": [
+          "Instruction Register (IR)",
+          "General-Purpose Register (B)",
+          "Memory Address Register (MAR)",
+          "Temporary Register (TR)",
+          "Memory Buffer Register (MBR)",
+          "Accumulator (A)"
+        ],
+        "correctAnswer": [
+          "Instruction Register (IR)",
+          "Memory Address Register (MAR)",
+          "Temporary Register (TR)",
+          "Memory Buffer Register (MBR)"
+        ],
+        "explanation": "IR, MAR, TR, and MBR are internal special-purpose registers used by the microprocessor to handle instructions and memory buffering."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which flag is set to 1 when an arithmetic operation generates a carry during addition or a borrow during subtraction?",
+        "choices": [
+          "Auxiliary Carry Flag (AC)",
+          "Parity Flag (P)",
+          "Carry Flag (CY)",
+          "Sign Flag (S)"
+        ],
+        "correctAnswer": "Carry Flag (CY)",
+        "explanation": "The Carry Flag (CY or CS) handles standard carry and borrow conditions for the overall 8-bit operation."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If the result of an ALU operation has an EVEN number of 1s, what happens to the Parity Flag (P)?",
+        "choices": [
+          "It is reset to 0.",
+          "It is set to 1.",
+          "It becomes undefined.",
+          "It triggers an interrupt."
+        ],
+        "correctAnswer": "It is set to 1.",
+        "explanation": "The Parity Flag (P) is set to 1 to indicate even parity (an even number of 1s in the binary result)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Auxiliary Carry Flag (AC) is set when a carry is passed between which specific bits during arithmetic?",
+        "choices": [
+          "From bit D0 to D1",
+          "From bit D7 to the Carry Flag",
+          "From bit D4 to D5",
+          "From bit D3 to D4"
+        ],
+        "correctAnswer": "From bit D3 to D4",
+        "explanation": "The AC flag specifically monitors the 'half-carry' from the lower nibble (D3) to the upper nibble (D4)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which flag is primarily used for Binary Coded Decimal (BCD) operations?",
+        "choices": [
+          "Zero Flag (Z)",
+          "Auxiliary Carry Flag (AC)",
+          "Sign Flag (S)",
+          "Carry Flag (CY)"
+        ],
+        "correctAnswer": "Auxiliary Carry Flag (AC)",
+        "explanation": "The Auxiliary Carry (AC) is essential for adjusting results when performing BCD arithmetic."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What happens to the Zero Flag (Z) if the final result of an 8-bit ALU operation is exactly 00000000?",
+        "choices": [
+          "It is reset to 0.",
+          "It is set to 1.",
+          "It shifts to the Accumulator.",
+          "It causes a Halt state."
+        ],
+        "correctAnswer": "It is set to 1.",
+        "explanation": "It sounds counter-intuitive, but the Zero Flag (Z) is SET to 1 when the mathematical result is 0. If the result is non-zero, Z is 0."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "For the Sign Flag (S), if the Most Significant Bit (MSB) of the result is 1, what does this indicate about the number?",
+        "choices": [
+          "It is a positive number.",
+          "It is an even number.",
+          "It is a negative number.",
+          "It is equal to zero."
+        ],
+        "correctAnswer": "It is a negative number.",
+        "explanation": "In signed arithmetic, an MSB of 1 triggers the Sign Flag to 1, indicating a negative number."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does the acronym 'PSW' stand for in the 8085 microprocessor?",
+        "choices": [
+          "Program Stack Word",
+          "Primary Status Window",
+          "Processor Signal Wave",
+          "Program Status Word"
+        ],
+        "correctAnswer": "Program Status Word",
+        "explanation": "PSW stands for Program Status Word, which represents the entire 8-bit flag register layout."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following bit positions in the 8-bit Flag Register are considered 'undefined' or unused?",
+        "choices": [
+          "D0",
+          "D1",
+          "D3",
+          "D5",
+          "D6",
+          "D7"
+        ],
+        "correctAnswer": [
+          "D1",
+          "D3",
+          "D5"
+        ],
+        "explanation": "The bits D1, D3, and D5 have no assigned flags and are considered undefined in the 8085 architecture."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Program Status Word (PSW) can be combined with which other register to function as a 16-bit unit for stack operations?",
+        "choices": [
+          "Temporary Register (TR)",
+          "Instruction Register (IR)",
+          "Accumulator",
+          "Stack Pointer (SP)"
+        ],
+        "correctAnswer": "Accumulator",
+        "explanation": "The Accumulator (8-bit) and the PSW (8-bit) are often pushed or popped together as a 16-bit pair during stack operations."
       }
     ]
   }
