@@ -1,0 +1,479 @@
+[
+  {
+    "topic": "Lecture 1: Introduction to Microprocessors and Microcontrollers",
+    "reviewerFacts": [
+      "COMPUTER: A machine that processes data to generate information with speed and accuracy.",
+      "A basic computer block diagram consists of Input Devices, Memory, Output Devices, and a Central Processing Unit (CPU).",
+      "INPUT DEVICES: Accept data from the environment, convert it into digital form, and send it to the computer's memory.",
+      "Keyboard: A standard device used to type alphanumeric data and commands.",
+      "Pointing Devices: Allow users to interact with graphical interfaces by selecting, drawing, or pointing.",
+      "Mouse: Handheld pointing device that detects motion relative to a surface.",
+      "Light Pen: Light-sensitive wand used to point/draw directly on a monitor by detecting brightness changes.",
+      "Touch-screen: Interactive display that registers physical contact (swipe/tap) as an input command.",
+      "Source Data Devices: Capture data directly from physical documents without manual typing (e.g., OCR, MICR).",
+      "OCR (Optical Character Recognition): Scans printed/handwritten text and converts it into editable digital text.",
+      "MICR (Magnetic Ink Character Recognition): Reads characters printed with special magnetic ink, primarily used in banking.",
+      "Speech Input: Microphones that capture voice/analog audio and convert them into digital signals.",
+      "Remote Control Unit: Handheld device sending wireless signals (infrared/radio) to operate a machine.",
+      "MEMORY: Stores information (programs/data) to be processed by the CPU. Can receive, hold, and deliver data when instructed.",
+      "ROM (Read Only Memory): Primary, non-volatile memory that permanently stores crucial system instructions (e.g., boot firmware).",
+      "RAM (Random Access Memory): Primary, volatile memory that temporarily holds data and running programs actively used by the CPU.",
+      "Cache Memory: Very high-speed, small-capacity primary memory close to the CPU storing frequently accessed data.",
+      "Registers (Memory context): Smallest, fastest storage locations built directly into the CPU for immediate data/instructions.",
+      "Magnetic Tape: Older, sequential-access secondary storage for massive archiving and backups.",
+      "Magnetic Disk: Secondary storage using a magnetized surface to store/retrieve digital data.",
+      "Hard Disk: High-capacity, rigid magnetic drive for long-term storage of OS, apps, and files.",
+      "Floppy Disk: Older, portable magnetic disk in a plastic case holding very small amounts of data.",
+      "CD ROM: Optical disc format read by a laser to distribute software, audio, and large files permanently.",
+      "OUTPUT DEVICES: Display computed information to the user.",
+      "Display Devices (Monitor): Electronic visual screens presenting data, text, and graphics.",
+      "Printed Output Devices: Hardware producing hard physical copies on paper.",
+      "Line Printer: High-speed printer that prints one entire line of text at a time.",
+      "Character Printer: Prints one character at a time sequentially.",
+      "Page Printer: Processes and prints an entire page at once (e.g., laser printer).",
+      "Plotter: Specialized machine using pens to draw continuous, high-precision vector lines (for engineering/architecture).",
+      "Speech Output: Audio hardware (speakers/headphones) converting digital data back into sound/language.",
+      "Microfilm: Analog medium storing highly scaled-down photographic copies on a reel for long-term compact archiving.",
+      "CPU (Central Processing Unit): Brain of the computer. Executes software, controls memory/IO. Fetches, decodes, and executes sequentially.",
+      "When a CPU is built onto a single Integrated Circuit (IC), it is referred to as a MICROPROCESSOR.",
+      "ALU (Arithmetic Logic Unit): Part of CPU performing Add, Subtract, AND, OR, XOR, Compare, Increment, and Decrement. Requires control signals to operate.",
+      "Accumulator: A specific register designed to store the immediate results of ALU operations.",
+      "Timing and Control Unit: Coordinates and manages the overall execution of instructions.",
+      "Control Unit: Instructs the microprocessor on how to decode and execute the program.",
+      "Program: A set of instructions required by a computer to perform any given task.",
+      "Control Logic: Sends signals instructing the microprocessor exactly how to operate and execute memory-stored instructions.",
+      "Microprocessor Operation 4 Steps: 1) Fetch instruction to register, 2) Control logic instructs decoding, 3) Decode, 4) Execute.",
+      "Bits: Binary digits (0 or 1), the most basic unit of computing data.",
+      "Nibble: 4 bits. Byte: 8 bits.",
+      "Word: Larger group of bits. Word length classifies processors (8-bit, 16-bit, 32-bit, 64-bit).",
+      "Address Bus: Locates devices/memory. Strictly UNIDIRECTIONAL (flows out from processor).",
+      "Data Bus: Transfers actual binary data. BI-DIRECTIONAL.",
+      "Control Bus: Provides signal timing to synchronize operations. BI-DIRECTIONAL.",
+      "Microprocessor History: Invented at Intel in 1971. First was Intel 4004. Team: Federico Faggin, Marcian Hoff, Stanley Mazor, Masatoshi Shima.",
+      "Hardware Example (Microcomputer): Raspberry Pi 3 Model B.",
+      "MICROCONTROLLER: Chip optimized to control electronic devices. Contains CPU, memory (RAM/ROM/EEPROM), Timer, and programmable I/O all on one chip.",
+      "Microcontroller History: Invented at Texas Instruments (TI) in 1971 by Gary Boone and Michael Cochran. First board: TMS 1000 (available 1974).",
+      "Microcontroller Use Cases: Embedded applications, automation, and IoT.",
+      "Architectural Difference: Microprocessors need external RAM, ROM, Timers, I/O. Microcontrollers have them all integrated.",
+      "Microcontroller Hardware Examples: Arduino UNO, PIC boards, ESP32/ESP-12E.",
+      "Von Neumann Architecture: Unified memory chip for both program instructions and data. Fetched sequentially.",
+      "Harvard Architecture: Separate memory chips for programs and data. Allows simultaneous access (faster than Von Neumann). Has dedicated buses for each memory.",
+      "Super Harvard Architecture (SHARC): Fixes Memory Imbalance Problem (data memory overworked). Program memory can store secondary data.",
+      "SHARC Instruction Cache: Ultra-fast internal CPU memory storing frequent instructions so external buses aren't needed.",
+      "SHARC Primary Use Case: Digital Signal Processing (DSP) due to speed with complex math."
+    ],
+    "questions": [
+      {
+        "type": "single",
+        "image": "",
+        "question": "By definition in the lecture, what is a machine that processes data to generate information with speed and accuracy?",
+        "choices": [
+          "Computer",
+          "Microfilm",
+          "Network Switch",
+          "System Bus"
+        ],
+        "correctAnswer": "Computer",
+        "explanation": "A computer is formally defined in the lecture as a machine that processes data to generate information with speed and accuracy."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the standard input device used to type alphanumeric data and commands into the system?",
+        "choices": [
+          "Mouse",
+          "Touch-screen",
+          "Keyboard",
+          "Light Pen"
+        ],
+        "correctAnswer": "Keyboard",
+        "explanation": "The keyboard is the standard device used for typing alphanumeric data and commands."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What broad category of input devices allows users to interact with graphical interfaces by selecting, drawing, or pointing?",
+        "choices": [
+          "Source Data Devices",
+          "Pointing Devices",
+          "Speech Devices",
+          "Printed Output Devices"
+        ],
+        "correctAnswer": "Pointing Devices",
+        "explanation": "Pointing Devices (like Mouse, Light Pen, and Touch-screen) allow interaction with graphical interfaces."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which input device registers physical contact, such as a finger swipe or tap, as an input command?",
+        "choices": [
+          "Light Pen",
+          "Mouse",
+          "Touch-screen",
+          "Microphone"
+        ],
+        "correctAnswer": "Touch-screen",
+        "explanation": "A touch-screen is an interactive display that registers physical contact like swipes or taps."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which specific input device captures voice and analog audio and converts them into digital signals for the computer?",
+        "choices": [
+          "Speech Input (Microphones)",
+          "Speech Output (Speakers)",
+          "Remote Control Unit",
+          "MICR"
+        ],
+        "correctAnswer": "Speech Input (Microphones)",
+        "explanation": "Speech input devices, like microphones, capture voice and convert it into digital signals."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What input device sends wireless signals, usually infrared or radio frequency, to operate a machine from a short distance?",
+        "choices": [
+          "Remote Control Unit",
+          "Mouse",
+          "Light Pen",
+          "Plotter"
+        ],
+        "correctAnswer": "Remote Control Unit",
+        "explanation": "A Remote Control Unit operates machines from a short distance using infrared or radio frequencies."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "According to the lecture, which of the following are true about 'Memory'?",
+        "choices": [
+          "It stores information to be processed by the CPU.",
+          "It consists of the program and/or data.",
+          "It can only send data but never receive it.",
+          "It can receive data, hold them, and deliver them when instructed."
+        ],
+        "correctAnswer": [
+          "It stores information to be processed by the CPU.",
+          "It consists of the program and/or data.",
+          "It can receive data, hold them, and deliver them when instructed."
+        ],
+        "explanation": "Memory stores programs and data for the CPU, and is capable of receiving, holding, and delivering that data."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which primary memory is described as 'volatile'?",
+        "choices": [
+          "ROM",
+          "RAM",
+          "Magnetic Tape",
+          "CD ROM"
+        ],
+        "correctAnswer": "RAM",
+        "explanation": "Random Access Memory (RAM) is volatile, meaning it temporarily holds data and loses it when power is turned off."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which memory is described as a very high-speed, small-capacity memory located close to the CPU to store frequently accessed data?",
+        "choices": [
+          "Registers",
+          "RAM",
+          "Cache Memory",
+          "Floppy Disk"
+        ],
+        "correctAnswer": "Cache Memory",
+        "explanation": "Cache memory is a small-capacity, very high-speed memory placed close to the CPU to speed up processing."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following fall under the category of 'Magnetic Disk'?",
+        "choices": [
+          "Hard Disk",
+          "Magnetic Tape",
+          "Floppy Disk",
+          "CD ROM"
+        ],
+        "correctAnswer": [
+          "Hard Disk",
+          "Floppy Disk"
+        ],
+        "explanation": "Hard Disks and Floppy Disks are types of Magnetic Disks. Magnetic Tape is sequential and not a 'disk', and CD ROM is optical."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which optical disc format is read by a laser and used to distribute software, audio, and large files permanently?",
+        "choices": [
+          "Floppy Disk",
+          "Magnetic Tape",
+          "CD ROM",
+          "Microfilm"
+        ],
+        "correctAnswer": "CD ROM",
+        "explanation": "CD ROM (Compact Disc Read-Only Memory) is an optical disc format read by lasers."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the primary function of Output Devices?",
+        "choices": [
+          "To capture data directly from physical source documents.",
+          "To store the information to be processed by the CPU.",
+          "To display computed information and make results readily available to the user.",
+          "To coordinate the timing of the system buses."
+        ],
+        "correctAnswer": "To display computed information and make results readily available to the user.",
+        "explanation": "Output devices display the computed information and make results readily available to the user."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which type of printer prints one entirely complete line of text at a time?",
+        "choices": [
+          "Page Printer",
+          "Character Printer",
+          "Line Printer",
+          "Plotter"
+        ],
+        "correctAnswer": "Line Printer",
+        "explanation": "A Line Printer is a high-speed printer designed to print one entire line of text at a time."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which type of printer prints one character at a time sequentially across the page?",
+        "choices": [
+          "Page Printer",
+          "Line Printer",
+          "Plotter",
+          "Character Printer"
+        ],
+        "correctAnswer": "Character Printer",
+        "explanation": "A Character Printer operates by printing one character at a time."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "When a Central Processing Unit (CPU) is built onto a single Integrated Circuit (IC), what is it officially called?",
+        "choices": [
+          "Microcontroller",
+          "Microprocessor",
+          "System Bus",
+          "Accumulator"
+        ],
+        "correctAnswer": "Microprocessor",
+        "explanation": "A microprocessor is defined as a CPU built onto a single Integrated Circuit (IC)."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "What operations can the Arithmetic Logic Unit (ALU) perform according to the lecture?",
+        "choices": [
+          "Add and Subtract",
+          "AND, OR, XOR",
+          "Compare, Increment, and Decrement",
+          "Store data permanently"
+        ],
+        "correctAnswer": [
+          "Add and Subtract",
+          "AND, OR, XOR",
+          "Compare, Increment, and Decrement"
+        ],
+        "explanation": "The ALU performs Add, Subtract, AND, OR, XOR, Compare, Increment, and Decrement. It does not store data permanently."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Can the ALU perform arithmetic and logical operations independently on its own?",
+        "choices": [
+          "Yes, it runs continuously without input.",
+          "No, it cannot perform these operations without receiving specific control signals first."
+        ],
+        "correctAnswer": "No, it cannot perform these operations without receiving specific control signals first.",
+        "explanation": "The lecture specifically notes that the ALU cannot perform these operations without receiving specific control signals first."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "How does the lecture define a 'Program'?",
+        "choices": [
+          "A hardware component that outputs audio.",
+          "A set of instructions required by a computer to perform any given task.",
+          "The immediate results of an arithmetic operation.",
+          "A chip optimized to control electronic devices."
+        ],
+        "correctAnswer": "A set of instructions required by a computer to perform any given task.",
+        "explanation": "A 'program' is defined as the set of instructions required by a computer to perform any given task."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which specific component sends signals to the microprocessor, instructing it on exactly how to operate and execute the instructions stored in memory?",
+        "choices": [
+          "Arithmetic Logic Unit",
+          "Control Logic",
+          "Address Bus",
+          "Accumulator"
+        ],
+        "correctAnswer": "Control Logic",
+        "explanation": "Control Logic is responsible for sending signals that instruct the microprocessor exactly how to operate and execute."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the 4-step sequence of a microprocessor, what happens in Step 1?",
+        "choices": [
+          "Decode the instruction.",
+          "Fetch the instruction from the memory and move it to a register.",
+          "Execute the instruction.",
+          "Print the instruction to a line printer."
+        ],
+        "correctAnswer": "Fetch the instruction from the memory and move it to a register.",
+        "explanation": "Step 1 is to Fetch the instruction from the memory and move it to a register."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the most basic unit of data in computing, represented as either a 0 or a 1?",
+        "choices": [
+          "Bit",
+          "Nibble",
+          "Byte",
+          "Word"
+        ],
+        "correctAnswer": "Bit",
+        "explanation": "A Binary Digit (Bit) is the most basic unit of data, represented as 0 or 1."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which term classifies the microprocessor's processing capability, typically defined as 8-bit, 16-bit, 32-bit, or 64-bit?",
+        "choices": [
+          "Word Length",
+          "Nibble Size",
+          "Byte Range",
+          "Bus Width"
+        ],
+        "correctAnswer": "Word Length",
+        "explanation": "The 'word length' classifies the microprocessor's processing capability (e.g., 8-bit, 16-bit, 32-bit, 64-bit)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which system bus is defined as 'strictly unidirectional'?",
+        "choices": [
+          "Data Bus",
+          "Control Bus",
+          "Address Bus"
+        ],
+        "correctAnswer": "Address Bus",
+        "explanation": "The Address Bus is strictly unidirectional, meaning data only flows out from the processor to locate destinations."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "Which of the following system buses are 'bi-directional'?",
+        "choices": [
+          "Address Bus",
+          "Data Bus",
+          "Control Bus"
+        ],
+        "correctAnswer": [
+          "Data Bus",
+          "Control Bus"
+        ],
+        "explanation": "Both the Data Bus (carrying actual data) and the Control Bus (carrying control/status info) are bi-directional."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "If you look at the architectural diagram of a Microprocessor system, which of the following are EXTERNAL supporting chips that need to be connected to the CPU?",
+        "choices": [
+          "External RAM",
+          "External ROM",
+          "Timers",
+          "Input/Output Interfaces",
+          "ALU"
+        ],
+        "correctAnswer": [
+          "External RAM",
+          "External ROM",
+          "Timers",
+          "Input/Output Interfaces"
+        ],
+        "explanation": "In a microprocessor, the RAM, ROM, Timers, and I/O are external chips. The ALU is internal to the CPU."
+      },
+      {
+        "type": "multiple",
+        "image": "",
+        "question": "If you look at the architectural diagram of a Microcontroller, which of the following components are integrated directly on the SINGLE chip along with the CPU?",
+        "choices": [
+          "RAM",
+          "ROM / EEPROM",
+          "Timers",
+          "I/O Ports",
+          "Serial Interfaces"
+        ],
+        "correctAnswer": [
+          "RAM",
+          "ROM / EEPROM",
+          "Timers",
+          "I/O Ports",
+          "Serial Interfaces"
+        ],
+        "explanation": "Unlike microprocessors, a microcontroller integrates RAM, ROM, EEPROM, Timers, I/O ports, and Serial Interfaces all on one single chip."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "When was the first commercial microcontroller board (TMS 1000) made commercially available?",
+        "choices": [
+          "1971",
+          "1974",
+          "1981",
+          "1990"
+        ],
+        "correctAnswer": "1974",
+        "explanation": "Developed in 1971, the TMS 1000 became commercially available in 1974."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which architecture has a 'Memory Imbalance Problem' where the Data Memory gets overworked compared to the Program Memory?",
+        "choices": [
+          "Von Neumann Architecture",
+          "Standard Harvard Architecture",
+          "Super Harvard Architecture (SHARC)"
+        ],
+        "correctAnswer": "Standard Harvard Architecture",
+        "explanation": "Standard Harvard Architecture suffers from the Memory Imbalance Problem, which SHARC was designed to fix."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "How does Super Harvard Architecture (SHARC) solve the memory imbalance problem?",
+        "choices": [
+          "By reverting back to Von Neumann's single unified memory.",
+          "By removing the Address Bus completely.",
+          "By allowing the Program Memory to also store secondary data.",
+          "By increasing the size of the Nibble."
+        ],
+        "correctAnswer": "By allowing the Program Memory to also store secondary data.",
+        "explanation": "SHARC balances the workload by allowing the Program Memory to store secondary data, preventing the Data Memory from bottlenecking."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In standard Harvard Architecture, what specific buses are dedicated to the 'Program Memory' block?",
+        "choices": [
+          "Only a single bi-directional Address Bus.",
+          "Its own Address Bus (to locate instructions) and Data Bus (to retrieve instructions).",
+          "A Control Bus and a Timing Bus."
+        ],
+        "correctAnswer": "Its own Address Bus (to locate instructions) and Data Bus (to retrieve instructions).",
+        "explanation": "Because memories are separate, the Program Memory has its own dedicated Address Bus and Data Bus, completely separate from the Data Memory's buses."
+      }
+    ]
+  }
+]
