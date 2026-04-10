@@ -1,0 +1,177 @@
+[
+  {
+    "topic": "Lecture 2",
+    "reviewerFacts": [
+      "Step 1: Program counter sends address[cite: 238].",
+      "Step 2: Address is placed on the bus[cite: 239].",
+      "Step 3: Instruction is fetched from the memory[cite: 240].",
+      "Step 4: Instruction stored in Instruction Register[cite: 241].",
+      "Step 5: Instruction is decoded[cite: 242].",
+      "Step 6: Operands are fetched[cite: 243].",
+      "Step 7: ALU performs the operation (AX and TR)[cite: 244].",
+      "Step 8: Flags are updated (Set or Reset)[cite: 245].",
+      "Step 9: Result is stored in AX[cite: 246].",
+      "Step 10: Interrupts are checked[cite: 247].",
+      "Step 11: Program counter updates[cite: 248].",
+      "Step 12: Process repeats[cite: 249]."
+    ],
+    "questions": [
+      {
+        "type": "single",
+        "image": "image/Step1.png",
+        "question": "In Step 1 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Address is placed on the bus",
+          "Program counter sends address",
+          "Operands are fetched",
+          "ALU performs the operation"
+        ],
+        "correctAnswer": "Program counter sends address",
+        "explanation": "The sequence begins when the Program counter sends the address[cite: 238]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step2.png",
+        "question": "In Step 2 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Instruction is decoded",
+          "Program counter updates",
+          "Address is placed on the bus",
+          "Result is stored in AX"
+        ],
+        "correctAnswer": "Address is placed on the bus",
+        "explanation": "After the PC sends it, the address is placed on the bus[cite: 239]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step3.png",
+        "question": "In Step 3 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Instruction is fetched from the memory",
+          "Instruction stored in Instruction Register",
+          "Interrupts are checked",
+          "Flags are updated"
+        ],
+        "correctAnswer": "Instruction is fetched from the memory",
+        "explanation": "Once the address is on the bus, the instruction is fetched from the memory[cite: 240]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step4.png",
+        "question": "In Step 4 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Operands are fetched",
+          "Instruction stored in Instruction Register",
+          "Program counter sends address",
+          "Process repeats"
+        ],
+        "correctAnswer": "Instruction stored in Instruction Register",
+        "explanation": "After being fetched, the instruction is stored in the Instruction Register[cite: 241]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step5.png",
+        "question": "In Step 5 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Flags are updated",
+          "ALU performs the operation",
+          "Address is placed on the bus",
+          "Instruction is decoded"
+        ],
+        "correctAnswer": "Instruction is decoded",
+        "explanation": "The stored instruction is then decoded so the processor understands what to do[cite: 242]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step6.png",
+        "question": "In Step 6 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Operands are fetched",
+          "Instruction is decoded",
+          "Result is stored in AX",
+          "Program counter updates"
+        ],
+        "correctAnswer": "Operands are fetched",
+        "explanation": "Following decoding, the necessary operands are fetched[cite: 243]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step7.png",
+        "question": "In Step 7 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Instruction is fetched from the memory",
+          "Interrupts are checked",
+          "ALU performs the operation (AX and TR)",
+          "Address is placed on the bus"
+        ],
+        "correctAnswer": "ALU performs the operation (AX and TR)",
+        "explanation": "With the operands ready, the ALU performs the operation using AX and TR[cite: 244]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step8.png",
+        "question": "In Step 8 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Operands are fetched",
+          "Instruction is stored in Instruction Register",
+          "Flags are updated (Set or Reset)",
+          "Program counter sends address"
+        ],
+        "correctAnswer": "Flags are updated (Set or Reset)",
+        "explanation": "Based on the ALU's operation, the flags are updated (Set or Reset)[cite: 245]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step9.png",
+        "question": "In Step 9 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Flags are updated",
+          "Result is stored in AX",
+          "Instruction is decoded",
+          "Process repeats"
+        ],
+        "correctAnswer": "Result is stored in AX",
+        "explanation": "The final computed result is stored in AX[cite: 246]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step10.png",
+        "question": "In Step 10 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "ALU performs the operation",
+          "Program counter updates",
+          "Address is placed on the bus",
+          "Interrupts are checked"
+        ],
+        "correctAnswer": "Interrupts are checked",
+        "explanation": "Before moving to the next cycle, interrupts are checked[cite: 247]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step11.png",
+        "question": "In Step 11 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Program counter updates",
+          "Interrupts are checked",
+          "Result is stored in AX",
+          "Operands are fetched"
+        ],
+        "correctAnswer": "Program counter updates",
+        "explanation": "The Program counter updates to point to the next instruction[cite: 248]."
+      },
+      {
+        "type": "single",
+        "image": "image/Step12.png",
+        "question": "In Step 12 of the 8085 Microprocessor operation, what happens?",
+        "choices": [
+          "Program counter sends address",
+          "Flags are updated",
+          "Process repeats",
+          "Instruction is fetched from memory"
+        ],
+        "correctAnswer": "Process repeats",
+        "explanation": "Finally, the entire process repeats for the next instruction[cite: 249]."
+      }
+    ]
+  }
+]
