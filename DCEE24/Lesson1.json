@@ -1,0 +1,698 @@
+[
+  {
+    "topic": "Lesson 1: Introduction to Feedbacks and Control System",
+    "reviewerFacts": [
+      "Control Systems Engineering focuses on the implementation of control systems mainly derived by mathematical modeling of a diverse set of systems.",
+      "It is an interdisciplinary field that deals with control systems, applying control theory to design systems with desired behavior.",
+      "A Control System is a device or set of devices that manages, commands, directs, or regulates the behavior of other devices or systems.",
+      "Sensors are used in practice to measure the output of the process being controlled, providing corrective feedback to achieve desired performance.",
+      "The 1st feedback control device was Ktesibios's water clock, invented in 300 BCE by Greek Engineer Ctesibius of Alexandria in Egypt.",
+      "In 1620, Drebbel invented the thermostat for the incubation of eggs using mercury.",
+      "The Industrial Revolution (1769) was a period of major technological and economic change that transformed societies from agrarian to industrial.",
+      "In 1788, Watt's Centrifugal Flyball Governor was used for the speed regulation of steam engines.",
+      "In 1793, Breguet (a watchmaker) invented the Pendule Sympathique, a closed-loop feedback system to synchronize pocket watches.",
+      "Up to the Industrial Revolution, the design of feedback control systems was based on Trial-and-Error and a great deal of Engineering Intuition, making it 'More of an ART than science'.",
+      "The Birth of Mathematical Control Theory happened in 1868 when James Clark Maxwell's paper 'On Governors' explained the instabilities of the flyball governor using Differential Equations (Time-Domain).",
+      "James Clark Maxwell is considered the Father of Control Theory because his work is the first significant work to mathematically analyze a control system.",
+      "In 1877, E. J. Routh provided a numerical technique to determine stable roots called the Routh Stability Criterion.",
+      "In 1895, A. Hurwitz provided his own stability criterion. Both Routh and Hurwitz's works contributed to the Routh-Hurwitz Criterion.",
+      "In the late 19th Century, Euler, Laplace, Heaviside, and Fourier developed different methods for mathematical modeling.",
+      "In the early 20th Century, two important occurrences related to control theory were the Development of the telephone and mass communications, and the World Wars.",
+      "Frequency Domain Analysis (developed by Fourier, Laplace, Cauchy, and others) was heavily used in communication systems.",
+      "WW1 was characterized by the maturation of the battleship and the introduction of submarines.",
+      "In 1910, Sperry invented the Gyroscope for the stabilization & steering of ships.",
+      "WW2 saw the dominance of aircraft carriers, radar-guided weaponry, and specialized amphibious vessels.",
+      "Prior to WWII (1922), N. Minorsky introduced the PID Controller, his 3-term controller for ship steering.",
+      "In 1934, Hazen coined 'Servomechanism', which implies a master/slave relationship in systems.",
+      "In the aftermath of WWII (1947), N. B. Nichols developed the Nichols Chart for the design of feedback systems.",
+      "In 1948, W. R. Evans presented his Root Locus technique providing a direct way to locate closed-loop poles in the s-plane.",
+      "During the 1950s (Laplace Domain), much controls work was focused on the s-plane and obtaining a desirable closed-loop Step Response.",
+      "1950s milestones include the theory of sampled data systems, computer-controlled oil refinery at Port Arthur, and the development of Nuclear Reactors which motivated works in industrial process control.",
+      "The Space Age began in 1957 when the Soviet Union launched Sputnik (the world's 1st artificial satellite), giving rise to activities in the USA on automatic control design.",
+      "During the Space Age, systems became advance non-linear Multivariable, making design impossible in the frequency-domain, resulting in a Return to Time Domain techniques.",
+      "In 1960, major developments independently occurred in the theory of communication & control (Time-domain), including the Inertial Navigation System.",
+      "Under Optimal Control in 1960, the Kalman Filter was developed.",
+      "In Nonlinear Control Theory in the 1960s, the US extended the work of Popov and Lyapunov in nonlinear stability.",
+      "Digital Computer Timeline: 1830 (Babbage introduced modern computer principle), 1948 (Neumann directed construction of IAS stored program), 1960 (2nd Gen. Computers using solid-state tech).",
+      "Digital Computer Timeline cont.: 1965 (DEC built PDP-8, beginning of Microcomputer industry), 1969 (Hoff invented the microprocessor).",
+      "Computers have two main purposes in Modern Control: Solve Matrix Design Equations and Implement modern control & filtering schemes on actual systems.",
+      "In 1970 (Information Age), Astrom et. al. established digital control in process applications. The era was defined by 'Solve problem using computer'.",
+      "In 1960, R. F. Kalman became associated with the State Space Model under Modern Control Theory.",
+      "In 1974, the application of digital filtering theory was investigated.",
+      "In 1983, the introduction of PC-made design of modern control systems made it possible for individual engineers to use software like MATLAB.",
+      "Control Theory deals with the control of dynamical systems in engineered processes and machines."
+    ],
+    "questions": [
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is Control System Engineering? Focus on implementation of control systems mainly derived by ________ of a diverse set of systems.",
+        "choices": [
+          "trial-and-error",
+          "mathematical modeling",
+          "hardware prototyping",
+          "engineering intuition"
+        ],
+        "correctAnswer": "mathematical modeling",
+        "explanation": "Based on the presentation, Control System Engineering focuses on implementation mainly derived by mathematical modeling of a diverse set of systems."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Control Systems Engineering is an interdisciplinary field that deals with control systems, applying ________ to design system with desired behavior.",
+        "choices": [
+          "matrix equations",
+          "physical mechanics",
+          "control theory",
+          "computer programming"
+        ],
+        "correctAnswer": "control theory",
+        "explanation": "The slide defines it as an interdisciplinary field applying control theory to design systems with desired behavior."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is a device or set of devices that manages, commands, directs, or regulates the behavior of other devices or systems?",
+        "choices": [
+          "Control System",
+          "Mathematical Model",
+          "Sensor",
+          "Thermostat"
+        ],
+        "correctAnswer": "Control System",
+        "explanation": "This is the exact definition of a Control System provided in the slides."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In practice, ________ are used to measure the output of the process being controlled.",
+        "choices": [
+          "microprocessors",
+          "sensors",
+          "thermostats",
+          "gyroscopes"
+        ],
+        "correctAnswer": "sensors",
+        "explanation": "The presentation states that sensors are used to measure the output of the process being controlled."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What do sensors provide to achieve desired performance?",
+        "choices": [
+          "corrective feedback",
+          "digital conversion",
+          "power regulation",
+          "mathematical analysis"
+        ],
+        "correctAnswer": "corrective feedback",
+        "explanation": "Sensors provide corrective feedback to achieve desired performance."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is considered the 1st feedback control device invented in 300 BCE?",
+        "choices": [
+          "Drebbel Thermostat",
+          "Centrifugal Flyball Governor",
+          "Ktesibios's water clock",
+          "Pendule Sympathique"
+        ],
+        "correctAnswer": "Ktesibios's water clock",
+        "explanation": "Ktesibios's water clock is identified as the 1st feedback control device invented in 300 BCE."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Who invented the 1st feedback control device (water clock) in Alexandria, Egypt?",
+        "choices": [
+          "Greek Engineer Ctesibius",
+          "James Clark Maxwell",
+          "Drebbel",
+          "E. J. Routh"
+        ],
+        "correctAnswer": "Greek Engineer Ctesibius",
+        "explanation": "It was invented by Greek Engineer Ctesibius of Alexandria in Egypt."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1620, Drebbel invented the ________ for the incubation of eggs using mercury.",
+        "choices": [
+          "Water clock",
+          "Thermostat",
+          "PID Controller",
+          "Gyroscope"
+        ],
+        "correctAnswer": "Thermostat",
+        "explanation": "Drebbel invented the thermostat for the incubation of eggs using mercury in 1620."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What period of major technological and economic change began in the 18th century and transformed societies from agrarian to industrial?",
+        "choices": [
+          "The Space Age",
+          "The Information Age",
+          "The World Wars",
+          "Industrial Revolution - 1769"
+        ],
+        "correctAnswer": "Industrial Revolution - 1769",
+        "explanation": "The Industrial Revolution in 1769 was a period of major technological and economic change that transformed societies from agrarian to industrial."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What device was used for speed regulation of steam engine in 1788?",
+        "choices": [
+          "Breguet's Pendule Sympathique",
+          "Watt's Centrifugal Flyball Governor",
+          "Sperry's Gyroscope",
+          "Drebbel Thermostat"
+        ],
+        "correctAnswer": "Watt's Centrifugal Flyball Governor",
+        "explanation": "Watt's Centrifugal Flyball Governor was used for speed regulation of the steam engine in 1788."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1793, Breguet (a watchmaker) invented the Pendule Sympathique. What is it?",
+        "choices": [
+          "An open-loop system to regulate pressure",
+          "A closed-loop feedback system to synchronize pocket watches",
+          "A mechanical calculator for mathematical modeling",
+          "A sensor to measure temperature"
+        ],
+        "correctAnswer": "A closed-loop feedback system to synchronize pocket watches",
+        "explanation": "Pendule Sympathique is a closed-loop feedback system to synchronize pocket watches."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Design of feedback control systems up to the Industrial Revolution was by ________ + great deal of Engineering Intuition.",
+        "choices": [
+          "Trial-and-Error",
+          "Mathematical Modeling",
+          "Differential Equations",
+          "Frequency Domain Analysis"
+        ],
+        "correctAnswer": "Trial-and-Error",
+        "explanation": "The design of feedback control systems up to the Industrial Revolution was by Trial-and-Error and a great deal of Engineering Intuition."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Up to the Industrial Revolution, the design of feedback control systems was considered \"More of an ________ than science.\"",
+        "choices": [
+          "illusion",
+          "experiment",
+          "ART",
+          "observation"
+        ],
+        "correctAnswer": "ART",
+        "explanation": "The slides explicitly state it was \"More of an ART than science\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Who explained the instabilities of the flyball governor using Differential Equations in an 1868 paper?",
+        "choices": [
+          "W. R. Evans",
+          "N. Minorsky",
+          "E. J. Routh",
+          "James Clark Maxwell"
+        ],
+        "correctAnswer": "James Clark Maxwell",
+        "explanation": "James Clark Maxwell's 1868 paper \"On Governors\" explained the instabilities of the flyball governor using Differential Equations."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Who is considered the Father of Control Theory?",
+        "choices": [
+          "N. Minorsky",
+          "R. F. Kalman",
+          "James Clark Maxwell",
+          "A. Hurwitz"
+        ],
+        "correctAnswer": "James Clark Maxwell",
+        "explanation": "James Clark Maxwell is considered the Father of Control Theory."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Why is Maxwell considered the Father of Control Theory?",
+        "choices": [
+          "He invented the first thermostat.",
+          "His work is the first significant work to mathematically analyze a control system.",
+          "He coined the term servomechanism.",
+          "He developed the PID controller."
+        ],
+        "correctAnswer": "His work is the first significant work to mathematically analyze a control system.",
+        "explanation": "He is considered the Father of Control Theory because his work is the first significant work to mathematically analyze a control system."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What does Maxwell's 1868 paper represent in the evolution timeline?",
+        "choices": [
+          "Return to Time Domain",
+          "Birth of Mathematical Control Theory",
+          "The Space Age",
+          "State Space Model"
+        ],
+        "correctAnswer": "Birth of Mathematical Control Theory",
+        "explanation": "The timeline points to 1868 and Maxwell's work as the \"Birth of Mathematical Control Theory\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1877, E. J. Routh provided a numerical technique to determine stable roots. What is this called?",
+        "choices": [
+          "Routh Stability Criterion",
+          "Root Locus technique",
+          "Nichols Chart",
+          "Laplace Transform"
+        ],
+        "correctAnswer": "Routh Stability Criterion",
+        "explanation": "E. J. Routh provided the Routh Stability Criterion to determine stable roots."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1895, who provided his own stability criterion that, together with Routh's, contributed to the Routh-Hurwitz Criterion?",
+        "choices": [
+          "A. Hurwitz",
+          "N. B. Nichols",
+          "Hazen",
+          "Lyapunov"
+        ],
+        "correctAnswer": "A. Hurwitz",
+        "explanation": "A. Hurwitz provides his own stability criterion in 1895, contributing to the Routh-Hurwitz Criterion."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the Late 19th Century, who among the following developed different methods for mathematical modeling?",
+        "choices": [
+          "Hoff, Neumann, Babbage",
+          "Minorsky, Hazen, Sperry",
+          "Euler, Laplace, Heaviside & Fourier",
+          "Astrom, Kalman, Lyapunov"
+        ],
+        "correctAnswer": "Euler, Laplace, Heaviside & Fourier",
+        "explanation": "Euler, Laplace, Heaviside & Fourier developed different methods for mathematical modeling in the late 19th Century."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What were the two important occurrences related to control theory in the Early 20th Century?",
+        "choices": [
+          "Industrial Revolution and the Renaissance",
+          "Invention of computers and the Space Age",
+          "Development of the telephone and mass communications, and World Wars",
+          "Invention of the thermostat and the steam engine"
+        ],
+        "correctAnswer": "Development of the telephone and mass communications, and World Wars",
+        "explanation": "The early 20th century saw the development of the telephone and mass communications, and the World Wars."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "________ developed by Fourier, Laplace, Cauchy and others were used in communication systems.",
+        "choices": [
+          "Time Domain Analysis",
+          "Frequency Domain Analysis",
+          "Root Locus technique",
+          "Digital filtering"
+        ],
+        "correctAnswer": "Frequency Domain Analysis",
+        "explanation": "Frequency Domain Analysis was developed and used in communication systems."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "WW1 was characterized by the maturation of the battleship and the introduction of submarines. In 1910, what did Sperry invent for stabilization & steering of ships?",
+        "choices": [
+          "PID Controller",
+          "Gyroscope",
+          "Servomechanism",
+          "Radar"
+        ],
+        "correctAnswer": "Gyroscope",
+        "explanation": "In 1910, Sperry invented the Gyroscope for stabilization & steering of ships."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1922 (Pre WWII), N. Minorsky introduced his 3-term controller for ship steering. What is this controller called?",
+        "choices": [
+          "PI Controller",
+          "Servomechanism",
+          "PID Controller",
+          "Inertial Navigation System"
+        ],
+        "correctAnswer": "PID Controller",
+        "explanation": "N. Minorsky introduced the PID Controller (his 3-term controller) for ship steering in 1922."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1934, Hazen coined the term ________ which implies a master/slave relationship in systems.",
+        "choices": [
+          "Feedback loop",
+          "PID Controller",
+          "Gyroscope",
+          "Servomechanism"
+        ],
+        "correctAnswer": "Servomechanism",
+        "explanation": "Hazen coined \"Servomechanism\" which implies a master/slave relationship in systems."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the aftermath of WWII (1947), N. B. Nichols developed the ________ for the design of feedback systems.",
+        "choices": [
+          "Nichols Chart",
+          "Bode Plot",
+          "Nyquist Plot",
+          "State Space Model"
+        ],
+        "correctAnswer": "Nichols Chart",
+        "explanation": "N. B. Nichols developed the Nichols Chart for the design of feedback systems."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1948, W. R. Evans presented his ________ technique providing a direct way to locate closed-loop poles in s-plane.",
+        "choices": [
+          "State Space",
+          "Nichols Chart",
+          "Root Locus",
+          "Nyquist"
+        ],
+        "correctAnswer": "Root Locus",
+        "explanation": "W. R. Evans presented the Root Locus technique to locate closed-loop poles."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "During the 1950s (Laplace Domain), much controls work was focused on s-plane and obtaining desirable closed-loop ________.",
+        "choices": [
+          "Step Response",
+          "Bode Plot",
+          "Feedback Error",
+          "Time domain"
+        ],
+        "correctAnswer": "Step Response",
+        "explanation": "The slide explicitly mentions work was focused on the s-plane and obtaining desirable closed-loop Step Response."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What event in 1957 marked the start of the Space Age and gave rise to activities in the USA on automatic control design?",
+        "choices": [
+          "Invention of the microprocessor",
+          "Soviet Union launched Sputnik",
+          "Creation of the Kalman Filter",
+          "Development of MATLAB"
+        ],
+        "correctAnswer": "Soviet Union launched Sputnik",
+        "explanation": "In 1957, the Soviet Union launched Sputnik, the world's 1st artificial satellite, sparking control design activities in the USA."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Why did control design return to time domain techniques during the Space Age?",
+        "choices": [
+          "Because frequency domain analysis was too expensive.",
+          "Because design of control system for advance non-linear multivariable systems is impossible in the freq-domain.",
+          "Because computers could not process Laplace transforms.",
+          "Because the Soviet Union banned frequency domain methods."
+        ],
+        "correctAnswer": "Because design of control system for advance non-linear multivariable systems is impossible in the freq-domain.",
+        "explanation": "The slide notes that design for advance non-linear multivariable systems is impossible in the frequency-domain, thus turning back to time domain techniques."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1960, major development independently occurred in the theory of communication & control in what domain?",
+        "choices": [
+          "Frequency-domain",
+          "Laplace-domain",
+          "Time-domain",
+          "Digital-domain"
+        ],
+        "correctAnswer": "Time-domain",
+        "explanation": "Major development independently occurred in the theory of communication & control in the time-domain."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "For Navigation in 1960, what system was developed?",
+        "choices": [
+          "Inertial Navigation System",
+          "Radar Guidance System",
+          "GPS",
+          "Sonar"
+        ],
+        "correctAnswer": "Inertial Navigation System",
+        "explanation": "Navigation developments in 1960 included the Inertial Navigation System."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Under Optimal Control in 1960, what specific filter was developed?",
+        "choices": [
+          "Nichols Filter",
+          "Kalman Filter",
+          "Nyquist Filter",
+          "Bode Filter"
+        ],
+        "correctAnswer": "Kalman Filter",
+        "explanation": "Optimal Control saw the development of the Kalman Filter."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In Nonlinear Control Theory in the 1960s, the US extended the work of Popov and ________ in nonlinear stability.",
+        "choices": [
+          "Lyapunov",
+          "Cauchy",
+          "Routh",
+          "Astrom"
+        ],
+        "correctAnswer": "Lyapunov",
+        "explanation": "The US extended the work of Popov and Lyapunov in nonlinear stability."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the history of the digital computer, who introduced the modern computer principle in 1830?",
+        "choices": [
+          "Neumann",
+          "Babbage",
+          "Hoff",
+          "DEC"
+        ],
+        "correctAnswer": "Babbage",
+        "explanation": "Babbage introduced the modern computer principle in 1830."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Who directed the construction of the IAS stored program in 1948?",
+        "choices": [
+          "Babbage",
+          "Neumann",
+          "Hoff",
+          "Astrom"
+        ],
+        "correctAnswer": "Neumann",
+        "explanation": "Neumann directed the construction of the IAS stored program in 1948."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What type of technology did the 2nd Generation Computers use in 1960?",
+        "choices": [
+          "vacuum tubes",
+          "solid-state tech",
+          "microprocessors",
+          "relays"
+        ],
+        "correctAnswer": "solid-state tech",
+        "explanation": "1960 2nd Gen. Computers used solid-state tech."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What did Hoff invent in 1969?",
+        "choices": [
+          "Solid-state computer",
+          "PDP-8",
+          "Microprocessor",
+          "MATLAB"
+        ],
+        "correctAnswer": "Microprocessor",
+        "explanation": "Hoff invented the microprocessor in 1969."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What are the two main purposes of Computers in Modern Control?",
+        "choices": [
+          "Write codes and compile algorithms",
+          "Solve Matrix Design Equations & Implement modern control & filtering schemes on actual system",
+          "Plot Root Locus and draw Nichols Charts",
+          "Design thermostats and gyroscopes"
+        ],
+        "correctAnswer": "Solve Matrix Design Equations & Implement modern control & filtering schemes on actual system",
+        "explanation": "The two main purposes are to Solve Matrix Design Equations and Implement modern control & filtering schemes on actual systems."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the 1950s, developments included the theory of sampled data systems and computer-controlled oil refinery at ________.",
+        "choices": [
+          "Port Arthur",
+          "Alexandria",
+          "London",
+          "New York"
+        ],
+        "correctAnswer": "Port Arthur",
+        "explanation": "The slide mentions a computer-controlled oil refinery at Port Arthur."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The 1950s motivated works in industrial process control & instrumentation partly due to the development of ________.",
+        "choices": [
+          "microprocessors",
+          "Nuclear Reactors",
+          "artificial satellites",
+          "the telephone"
+        ],
+        "correctAnswer": "Nuclear Reactors",
+        "explanation": "Development of Nuclear Reactors motivated works in industrial process control & instrumentation."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In 1970, Astrom et. al. established ________ in process applications.",
+        "choices": [
+          "digital control",
+          "analog control",
+          "optimal control",
+          "time-domain control"
+        ],
+        "correctAnswer": "digital control",
+        "explanation": "Astrom et. al. established the digital control in process applications."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What theory's application was investigated in 1974?",
+        "choices": [
+          "Optimal filtering theory",
+          "Digital filtering theory",
+          "Root Locus theory",
+          "Non-linear stability theory"
+        ],
+        "correctAnswer": "Digital filtering theory",
+        "explanation": "Application of digital filtering theory was investigated in 1974."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What was introduced in 1983 that made the design of modern control systems possible for individual engineers?",
+        "choices": [
+          "Mainframe computers",
+          "Microprocessors",
+          "PC-made design",
+          "Internet"
+        ],
+        "correctAnswer": "PC-made design",
+        "explanation": "Introduction of PC-made design of modern control systems made it possible for individual engineers."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which of the following is an example of control system software developed in the Information Age?",
+        "choices": [
+          "MATLAB",
+          "Windows",
+          "Python",
+          "AutoCAD"
+        ],
+        "correctAnswer": "MATLAB",
+        "explanation": "The slide lists ProgramCC, Easy5, MATRIX, SIMNON, and MATLAB as control system softwares developed."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "According to the \"Classical & Modern Control Theory\" timeline, what model is associated with R. F. Kalman in 1960?",
+        "choices": [
+          "Frequency Domain Model",
+          "Differential Equation Model",
+          "State Space Model",
+          "Root Locus Model"
+        ],
+        "correctAnswer": "State Space Model",
+        "explanation": "R. F. Kalman is associated with the State Space Model in 1960 (Modern Control Theory)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "According to the timeline, what was the primary approach in 1920 (Classical Control Theory)?",
+        "choices": [
+          "Application & Development of math methods in Frequency Domain",
+          "Solving problems using computers",
+          "Maxwell using Differential Equations",
+          "State Space Modeling"
+        ],
+        "correctAnswer": "Application & Development of math methods in Frequency Domain",
+        "explanation": "In 1920, the approach was the Application & Development of math methods in Frequency Domain (Nyquist, Nichols, Root Locus, Bode Plot)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Control Theory deals with the control of ________ in engineered processes and machines.",
+        "choices": [
+          "static elements",
+          "dynamical systems",
+          "mathematical constants",
+          "structural designs"
+        ],
+        "correctAnswer": "dynamical systems",
+        "explanation": "Slide 31 states Control Theory deals with control of dynamical systems in engineered processes and machines."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Classical Control Theory relies on tools like Nyquist, Nichols, Root Locus, and ________.",
+        "choices": [
+          "Kalman Filter",
+          "Bode Plot",
+          "State Space Model",
+          "Lyapunov stability"
+        ],
+        "correctAnswer": "Bode Plot",
+        "explanation": "The timeline lists Nyquist, Nichols, Root Locus, and Bode Plot under the 1920 Frequency Domain section."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "During the 1970s (Information Age), control theory evolved to ________.",
+        "choices": [
+          "Solve problem using computer",
+          "Rely solely on Trial-and-Error",
+          "Abandon mathematical modeling",
+          "Use analog mercury thermostats"
+        ],
+        "correctAnswer": "Solve problem using computer",
+        "explanation": "The timeline for 1970 (Information Age) explicitly says \"Solve problem using computer\"."
+      }
+    ]
+  }
+]
