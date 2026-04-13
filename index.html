@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BSECE 3-2: Review & Quiz App</title>
-    <!-- Tailwind CSS para sa styling -->
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para sa mga icons -->
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
@@ -19,7 +19,7 @@
             background-image: radial-gradient(circle at 50% 0%, #0f172a 0%, #020617 70%);
         }
 
-        /* Mga Animasyon */
+        /* Animations */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             20%, 60% { transform: translateX(-10px); }
@@ -45,7 +45,7 @@
             animation: slideUp 0.4s ease-out forwards;
         }
 
-        /* Estilo ng mga Option Buttons */
+        /* Option Button Styles */
         .option-btn {
             transition: all 0.2s ease;
             transform: scale(1);
@@ -117,11 +117,11 @@
     <div class="grid-bg"></div>
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- PANGUNAHING APP CONTAINER -->
+    <!-- MAIN APP CONTAINER -->
     <div class="max-w-4xl w-full bg-slate-900/90 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-[0_0_40px_rgba(6,182,212,0.15)] overflow-hidden border border-slate-800 relative z-10 flex flex-col h-full max-h-full sm:max-h-[95vh]">
         
         <!-- ==============================
-             SCREEN 0: SUBJECT SELECTION (BAGONG FEATURE)
+             SCREEN 0: SUBJECT SELECTION
              ============================== -->
         <div id="screen-subjects" class="p-6 sm:p-8 md:p-12 text-center flex-grow flex flex-col justify-center overflow-y-auto animate-pop">
             <div class="text-4xl sm:text-6xl mb-3 sm:mb-4 text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0">
@@ -131,12 +131,12 @@
                 BSECE 3-2 Reviewer
             </h1>
             <p class="text-slate-400 mb-8 sm:mb-10 text-sm sm:text-base md:text-lg max-w-2xl mx-auto shrink-0 font-semibold tracking-wider uppercase">
-                Pumili ng Subject na I-rereview
+                Select a Subject to Review
             </p>
             
-            <!-- Dito lilitaw ang mga subjects dynamically mula sa JS -->
+            <!-- Subjects will appear dynamically here from JS -->
             <div id="subject-buttons-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto w-full">
-                <!-- Pupunuin ng JS -->
+                <!-- Populated by JS -->
             </div>
         </div>
 
@@ -145,18 +145,26 @@
              ============================== -->
         <div id="screen-main" class="hidden p-6 sm:p-8 md:p-16 text-center flex-grow flex flex-col justify-center overflow-y-auto">
             
-            <!-- Button pabalik sa subjects -->
+            <!-- Back to subjects button -->
             <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
                 <button onclick="switchScreen('screen-subjects')" class="text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-2 font-semibold text-sm sm:text-base bg-slate-900/50 px-3 py-2 rounded-lg border border-slate-800 backdrop-blur-sm">
-                    <i class="fa-solid fa-arrow-left"></i> <span class="hidden sm:inline">Palitan ang Subject</span>
+                    <i class="fa-solid fa-arrow-left"></i> <span class="hidden sm:inline">Change Subject</span>
                 </button>
             </div>
 
             <!-- Loading Indicator -->
             <div id="loading-indicator" class="flex flex-col items-center justify-center animate-pop">
                 <i class="fa-solid fa-circle-notch fa-spin text-5xl text-cyan-500 mb-4"></i>
-                <h2 class="text-xl text-slate-300 font-bold">Kinukuha ang modules...</h2>
-                <p id="loading-text" class="text-sm text-slate-500 mt-2">Nilo-load ang data files...</p>
+                <h2 class="text-xl text-slate-300 font-bold">Fetching modules...</h2>
+                <p id="loading-text" class="text-sm text-slate-500 mt-2">Loading data files...</p>
+            </div>
+
+            <!-- Error Indicator -->
+            <div id="error-indicator" class="hidden flex flex-col items-center justify-center animate-pop">
+                <i class="fa-solid fa-triangle-exclamation text-5xl text-rose-500 mb-4"></i>
+                <h2 class="text-xl text-slate-300 font-bold">Data Error</h2>
+                <p id="error-text" class="text-sm text-rose-400 mt-2 text-center max-w-xs">An error occurred.</p>
+                <button onclick="switchScreen('screen-subjects')" class="mt-6 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-lg text-sm transition-colors border border-slate-700">Go Back</button>
             </div>
 
             <!-- Main Menu Content -->
@@ -176,7 +184,7 @@
                         <i class="fa-solid fa-database text-cyan-400"></i> Reviewer Logs
                     </button>
                     <button onclick="switchScreen('screen-mode')" class="w-full md:w-auto bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-black text-lg sm:text-xl py-3 sm:py-4 px-6 sm:px-10 rounded-xl sm:rounded-2xl shadow-lg transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 uppercase tracking-wider">
-                        <i class="fa-solid fa-power-off"></i> Simulan ang Quiz
+                        <i class="fa-solid fa-power-off"></i> Initialize
                     </button>
                 </div>
             </div>
@@ -194,12 +202,12 @@
             </div>
             
             <div class="overflow-y-auto p-4 sm:p-6 md:p-8 flex-grow min-h-0 space-y-6" id="review-content-container">
-                <!-- Pupunuin ito nang pabago-bago ng JS -->
+                <!-- Populated dynamically by JS -->
             </div>
 
             <div class="bg-slate-950 p-4 sm:p-6 border-t border-slate-800 shrink-0 text-center">
                 <button onclick="switchScreen('screen-mode')" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-base sm:text-lg py-3 px-8 sm:px-12 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
-                    Tumungo sa Diagnostics <i class="fa-solid fa-angles-right ml-2"></i>
+                    Run Diagnostics <i class="fa-solid fa-angles-right ml-2"></i>
                 </button>
             </div>
         </div>
@@ -210,8 +218,8 @@
         <div id="screen-mode" class="hidden flex flex-col h-full animate-pop flex-grow p-4 sm:p-8 md:p-12 overflow-y-auto relative">
             <div class="flex justify-between items-start mb-6 sm:mb-8 shrink-0">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white mb-1 sm:mb-2 tracking-wide">Piliin ang Diagnostic Mode</h2>
-                    <p class="text-sm sm:text-base text-cyan-200/60 font-semibold tracking-wider uppercase">I-configure ang mga testing parameters</p>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mb-1 sm:mb-2 tracking-wide">Select Diagnostic Mode</h2>
+                    <p class="text-sm sm:text-base text-cyan-200/60 font-semibold tracking-wider uppercase">Configure testing parameters</p>
                 </div>
                 <button onclick="switchScreen('screen-main')" class="text-slate-500 hover:text-rose-400 transition-colors p-1">
                     <i class="fa-solid fa-xmark text-2xl"></i>
@@ -235,18 +243,18 @@
                         <div class="bg-white/20 p-3 sm:p-4 rounded-xl text-xl sm:text-2xl shrink-0"><i class="fa-solid fa-network-wired"></i></div>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-bold mb-0 sm:mb-1 tracking-widest uppercase">Full System Test</h3>
-                            <p class="text-emerald-100 text-xs sm:text-sm hidden sm:block font-medium">Komprehensibong pagsubok sa buong subject na ito.</p>
+                            <p class="text-emerald-100 text-xs sm:text-sm hidden sm:block font-medium">Comprehensive test across this entire subject.</p>
                         </div>
                     </div>
                 </button>
 
                 <div class="flex items-center gap-4 my-2 sm:my-4 shrink-0">
                     <div class="h-px bg-slate-800 flex-grow"></div>
-                    <span class="text-cyan-600 font-bold text-xs sm:text-sm uppercase tracking-widest text-center">Partikular na Modules</span>
+                    <span class="text-cyan-600 font-bold text-xs sm:text-sm uppercase tracking-widest text-center">Specific Modules</span>
                     <div class="h-px bg-slate-800 flex-grow"></div>
                 </div>
 
-                <!-- Mga Button ng Topic na pupunuin ng JS -->
+                <!-- Topic Buttons populated by JS -->
                 <div id="topic-buttons-container" class="grid grid-cols-1 gap-3 sm:gap-4"></div>
             </div>
         </div>
@@ -264,7 +272,7 @@
                 
                 <!-- HUD: LIVES (Battery bars) -->
                 <div id="lives-display" class="text-emerald-400 text-lg sm:text-xl flex gap-1 items-center justify-center flex-grow drop-shadow-[0_0_5px_rgba(16,185,129,0.5)]">
-                    <!-- Maa-update ng JS -->
+                    <!-- Populated by JS -->
                 </div>
 
                 <div class="flex items-center gap-2 sm:gap-3">
@@ -275,7 +283,7 @@
                     <div class="text-slate-500 font-bold tracking-widest text-center px-1 sm:px-3 text-xs sm:text-base uppercase">
                         SEQ <span id="q-current" class="text-cyan-300">1</span>/<span id="q-total">10</span>
                     </div>
-                    <button onclick="quitGame()" class="text-slate-600 hover:text-rose-500 ml-1 sm:ml-2 p-1 transition-colors" title="Itigil ang Pagsusuri">
+                    <button onclick="quitGame()" class="text-slate-600 hover:text-rose-500 ml-1 sm:ml-2 p-1 transition-colors" title="Abort Test">
                         <i class="fa-solid fa-eject text-lg sm:text-xl"></i>
                     </button>
                 </div>
@@ -286,25 +294,25 @@
                 <div id="timer-bar" class="h-full bg-cyan-400 w-full timer-transition shadow-[0_0_10px_rgba(6,182,212,0.8)]"></div>
             </div>
 
-            <!-- Area ng Tanong -->
+            <!-- Question Area -->
             <div id="question-scroll-area" class="p-4 sm:p-6 md:p-10 flex-grow overflow-y-auto min-h-0">
                 <div class="mb-3 sm:mb-4 text-center sm:text-left flex items-center justify-between">
                     <span id="topic-display" class="inline-block bg-slate-800 text-cyan-300 border border-slate-700 px-3 py-1 rounded-sm text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-1 sm:mb-2">Module</span>
                     <span id="q-type-badge" class="inline-block bg-blue-900/40 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-sm text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-1 sm:mb-2 hidden">Multi-Select</span>
                 </div>
                 
-                <!-- Dynamic Image Container para sa Quiz -->
+                <!-- Dynamic Image Container -->
                 <div id="image-container" class="hidden w-full max-w-4xl mx-auto mb-6 border-2 border-slate-700 rounded-xl overflow-hidden bg-slate-950 p-2 sm:p-4 shadow-lg">
-                    <img id="question-image" src="" alt="Sanggunian ng Tanong" class="w-full h-auto object-contain max-h-96 sm:max-h-[450px] md:max-h-[550px] rounded-lg bg-slate-100">
+                    <img id="question-image" src="" alt="Question Reference" class="w-full h-auto object-contain max-h-96 sm:max-h-[450px] md:max-h-[550px] rounded-lg bg-slate-100">
                 </div>
 
                 <h2 id="question-text" class="text-lg sm:text-xl md:text-2xl font-semibold mb-6 sm:mb-8 leading-snug sm:leading-relaxed min-h-[3rem] sm:min-h-[4rem] text-slate-100">
-                    Nilo-load ang Sequence...
+                    Loading Sequence...
                 </h2>
 
-                <!-- Grid ng Options -->
+                <!-- Options Grid -->
                 <div id="options-container" class="grid grid-cols-1 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <!-- Mga Option na pupunuin ng JS -->
+                    <!-- Options populated by JS -->
                 </div>
 
                 <!-- Explanation Box -->
@@ -321,11 +329,11 @@
                 <!-- Next / Submit Button -->
                 <div class="text-right pt-2 pb-6 sm:pb-8 flex justify-end gap-3">
                     <button id="submit-multi-btn" onclick="submitMultiAnswer()" class="hidden bg-blue-600 hover:bg-blue-500 border border-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.4)] text-white font-bold py-3 px-6 sm:px-8 rounded-xl transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base w-full sm:w-auto uppercase tracking-widest">
-                        I-execute <i class="fa-solid fa-gears ml-2"></i>
+                        Execute <i class="fa-solid fa-gears ml-2"></i>
                     </button>
                     
                     <button id="next-btn" onclick="nextQuestion()" class="hidden bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base w-full sm:w-auto uppercase tracking-widest">
-                        Magpatuloy <i class="fa-solid fa-forward-step ml-2"></i>
+                        Proceed <i class="fa-solid fa-forward-step ml-2"></i>
                     </button>
                 </div>
             </div>
@@ -338,19 +346,19 @@
             <div id="end-icon" class="text-5xl sm:text-7xl mb-4 sm:mb-6 text-cyan-400 shrink-0 drop-shadow-[0_0_20px_rgba(6,182,212,0.6)]">
                 <i class="fa-solid fa-microchip"></i>
             </div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-white" id="end-title">Tapos na ang Diagnostics</h2>
-            <p class="text-cyan-200/70 mb-6 sm:mb-8 text-sm sm:text-lg shrink-0 font-semibold uppercase tracking-wider" id="end-message">Matagumpay na nasuri ang lahat ng system.</p>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-white" id="end-title">Diagnostics Complete</h2>
+            <p class="text-cyan-200/70 mb-6 sm:mb-8 text-sm sm:text-lg shrink-0 font-semibold uppercase tracking-wider" id="end-message">All systems analyzed successfully.</p>
             
             <div class="bg-slate-950 rounded-2xl p-6 sm:p-8 inline-block mx-auto mb-6 sm:mb-8 border border-slate-800 shadow-inner w-full max-w-md shrink-0 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent pointer-events-none"></div>
-                <div class="text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest mb-2">Marka ng System</div>
+                <div class="text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest mb-2">System Score</div>
                 <div class="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 drop-shadow-sm" id="final-score">
                     0
                 </div>
                 <div class="grid grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm divide-x divide-slate-800">
                     <div class="text-center">
                         <span class="block text-emerald-500 font-bold text-xl sm:text-2xl" id="final-correct">0</span>
-                        <span class="text-slate-500 uppercase font-bold text-[10px] sm:text-xs tracking-widest">Wasto</span>
+                        <span class="text-slate-500 uppercase font-bold text-[10px] sm:text-xs tracking-widest">Valid</span>
                     </div>
                     <div class="text-center">
                         <span class="block text-rose-500 font-bold text-xl sm:text-2xl" id="final-wrong">0</span>
@@ -368,7 +376,7 @@
                     Main Terminal
                 </button>
                 <button onclick="switchScreen('screen-mode')" class="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-widest">
-                    Ulitin
+                    Run Again
                 </button>
             </div>
         </div>
@@ -382,14 +390,14 @@
                 <div class="text-5xl sm:text-6xl text-rose-500 mb-3 sm:mb-4 drop-shadow-lg">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-2 uppercase tracking-widest">Itigil ang Proseso?</h3>
-                <p class="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8 font-medium">Sigurado ka bang nais mong itigil ang kasalukuyang diagnostics?</p>
+                <h3 class="text-xl sm:text-2xl font-black text-white mb-2 uppercase tracking-widest">Abort Process?</h3>
+                <p class="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8 font-medium">Are you sure you want to terminate the current diagnostic sequence?</p>
                 <div class="flex flex-col-reverse sm:flex-row justify-center gap-3 sm:gap-4">
                     <button onclick="cancelQuit()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-wider">
-                        Kanselahin
+                        Cancel
                     </button>
                     <button onclick="confirmQuit()" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-wider">
-                        Itigil
+                        Terminate
                     </button>
                 </div>
             </div>
@@ -400,8 +408,8 @@
     <!-- Application Logic -->
     <script>
         // ==========================================
-        // 🚨 CONFIGURATION NG MGA SUBJECTS 🚨
-        // Dito mo idadagdag ang mga JSON files para sa bawat subject
+        // 🚨 SUBJECTS CONFIGURATION 🚨
+        // Add the JSON files for each subject here
         // ==========================================
         const subjectsConfig = {
             "CPEN": {
@@ -409,10 +417,10 @@
                 icon: "fa-microchip",
                 color: "from-cyan-500 to-blue-500",
                 files: [
-                    'CPEN/Lecture1.json',
-                    'CPEN/Lecture2.json',
-                    'CPEN/Lecture3.json',
-                    'CPEN/Lecture4.json'
+                    'Lecture1.json',
+                    'Lecture2.json',
+                    'Lecture3.json',
+                    'Lecture4.json'
                 ]
             },
             "GNED": {
@@ -420,7 +428,7 @@
                 icon: "fa-book-open",
                 color: "from-emerald-500 to-teal-500",
                 files: [
-                    'GNED.json' // Halimbawa lang: gumawa ka ng GNED.json
+                    'GNED.json' // Example: create GNED.json
                 ]
             },
             "DCEE24": {
@@ -428,7 +436,7 @@
                 icon: "fa-tower-cell",
                 color: "from-purple-500 to-pink-500",
                 files: [
-                    'DCEE24.json' // Halimbawa
+                    'DCEE24.json' // Example
                 ]
             },
             "ECEN196": {
@@ -436,7 +444,7 @@
                 icon: "fa-satellite-dish",
                 color: "from-rose-500 to-orange-500",
                 files: [
-                    'ECEN196.json' // Halimbawa
+                    'ECEN196.json' // Example
                 ]
             }
         };
@@ -477,12 +485,12 @@
             { icon: "fa-laptop-code", color: "from-rose-500 to-orange-500", text: "text-rose-400" }
         ];
 
-        // Initialization: Ipakita ang Subject Selection Screen
+        // Initialization: Show Subject Selection Screen
         window.onload = () => {
             renderSubjectButtons();
         };
 
-        // Function para i-render ang mga Subject Buttons sa Screen 0
+        // Function to render Subject Buttons on Screen 0
         function renderSubjectButtons() {
             const container = document.getElementById('subject-buttons-container');
             container.innerHTML = '';
@@ -505,17 +513,18 @@
             }
         }
 
-        // BAGONG FETCHING LOGIC PARA SA SPECIFIC SUBJECT
+        // NEW FETCHING LOGIC FOR SPECIFIC SUBJECT
         async function loadSubjectData(subjectKey) {
             const config = subjectsConfig[subjectKey];
             
-            // I-update ang UI ng Main Menu
+            // Update Main Menu UI
             document.getElementById('current-subject-title').innerText = config.name;
             document.getElementById('current-subject-icon').innerHTML = `<i class="fa-solid ${config.icon} text-transparent bg-clip-text bg-gradient-to-br ${config.color}"></i>`;
             
-            // Pumunta sa main screen at ipakita muna ang loader
+            // Go to main screen and show loader first
             switchScreen('screen-main');
             document.getElementById('loading-indicator').classList.remove('hidden');
+            document.getElementById('error-indicator').classList.add('hidden');
             document.getElementById('main-menu-content').classList.add('hidden');
             
             appData = []; // Clear previous subject data
@@ -524,7 +533,7 @@
             try {
                 for (const file of config.files) {
                     try {
-                        loaderText.innerText = `Nilo-load ang ${file}...`;
+                        loaderText.innerText = `Loading ${file}...`;
                         
                         // CACHE-BUSTING
                         const cacheBuster = new Date().getTime();
@@ -537,30 +546,26 @@
                             console.warn(`File not found: ${file}`);
                         }
                     } catch (err) {
-                        console.error(`Error sa pag-fetch ng ${file}:`, err);
+                        console.error(`Error fetching ${file}:`, err);
                     }
                 }
 
                 if (appData.length === 0) {
-                    throw new Error(`Walang valid na JSON files para sa ${subjectKey}.`);
+                    throw new Error(`No valid JSON files found for ${subjectKey}.`);
                 }
 
                 renderReviewContent();
                 renderModeButtons();
                 
-                // Pagtago ng loader at pagpapakita ng menu
+                // Hide loader and show menu
                 document.getElementById('loading-indicator').classList.add('hidden');
                 document.getElementById('main-menu-content').classList.remove('hidden');
                 
             } catch (err) {
                 console.error("Initialization Error:", err);
-                const loader = document.getElementById('loading-indicator');
-                loader.innerHTML = `
-                    <i class="fa-solid fa-triangle-exclamation text-5xl text-rose-500 mb-4"></i>
-                    <h2 class="text-xl text-slate-300 font-bold">Data Error</h2>
-                    <p class="text-sm text-rose-400 mt-2 text-center max-w-xs">${err.message}<br/>Gumawa ba ng JSON file para sa subject na ito?</p>
-                    <button onclick="switchScreen('screen-subjects')" class="mt-6 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-lg text-sm transition-colors border border-slate-700">Bumalik</button>
-                `;
+                document.getElementById('loading-indicator').classList.add('hidden');
+                document.getElementById('error-indicator').classList.remove('hidden');
+                document.getElementById('error-text').innerHTML = `${err.message}<br/>Did you create a JSON file for this subject?`;
             }
         }
 
@@ -577,7 +582,7 @@
         }
 
         // ==========================================
-        // UI RENDERING BUILDERS (Kasama ang Images sa Reviewer)
+        // UI RENDERING BUILDERS (Including Images in Reviewer)
         // ==========================================
         
         function renderReviewContent() {
@@ -616,6 +621,7 @@
                             </div>
                         `;
 
+                        // If there's an image, insert it below the text
                         if (factImg.trim() !== "") {
                             contentHTML += `
                                 <div class="w-full flex justify-center mt-4 p-2 sm:p-4 bg-slate-900 rounded-xl border border-slate-800">
@@ -932,8 +938,8 @@
                     lives--; 
                 }
 
-                let expText = q.explanation || "Repasuhin ang technical documentation.";
-                if (isTimeout) expText = "NAUBOS ANG ORAS: " + expText;
+                let expText = q.explanation || "Review the technical documentation.";
+                if (isTimeout) expText = "TIMED OUT: " + expText;
                 showExplanation(expText, false);
             }
 
@@ -946,10 +952,10 @@
                 nextBtn.innerHTML = `System Failure <i class="fa-solid fa-triangle-exclamation ml-2"></i>`;
                 nextBtn.className = "bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-[0_0_15px_rgba(225,29,72,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base w-full sm:w-auto uppercase tracking-widest";
             } else if (currentQIndex >= activeQuestions.length - 1) {
-                nextBtn.innerHTML = `Kumpletuhin ang Test <i class="fa-solid fa-flag-checkered ml-2"></i>`;
+                nextBtn.innerHTML = `Complete Test <i class="fa-solid fa-flag-checkered ml-2"></i>`;
                 nextBtn.className = "bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base w-full sm:w-auto uppercase tracking-widest";
             } else {
-                nextBtn.innerHTML = `Susunod na Sequence <i class="fa-solid fa-angles-right ml-2"></i>`;
+                nextBtn.innerHTML = `Next Sequence <i class="fa-solid fa-angles-right ml-2"></i>`;
                 nextBtn.className = "bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 sm:px-8 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base w-full sm:w-auto uppercase tracking-widest";
             }
         }
@@ -1056,13 +1062,13 @@
                 icon.className = "text-5xl sm:text-7xl mb-4 sm:mb-6 shrink-0 drop-shadow-[0_0_20px_rgba(225,29,72,0.6)] animate-pop";
                 title.innerText = "System Failure";
                 title.className = "text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-rose-400";
-                msg.innerText = "Naabot na ang limitasyon sa pag-kakamali. Powering down.";
+                msg.innerText = "Critical error limit reached. Powering down.";
             } else {
                 icon.innerHTML = '<i class="fa-solid fa-microchip text-cyan-400"></i>';
                 icon.className = "text-5xl sm:text-7xl mb-4 sm:mb-6 shrink-0 drop-shadow-[0_0_20px_rgba(6,182,212,0.6)] animate-pop";
-                title.innerText = "Tapos na ang Diagnostics";
+                title.innerText = "Diagnostics Complete";
                 title.className = "text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-white";
-                msg.innerText = "Lahat ng sistema ay na-verify at gumagana nang ayos.";
+                msg.innerText = "All systems verified and operational.";
                 triggerConfetti();
             }
         }
