@@ -695,20 +695,23 @@
             activeQuestions = [];
             
             if (mode === 'all') {
+                // Kung "Full System Test", kunin lahat ng tanong at i-SHUFFLE
                 appData.forEach(t => {
                     if (t.questions) {
                         t.questions.forEach(q => activeQuestions.push({...q, topic: t.topic}));
                     }
                 });
+                activeQuestions = shuffleArray(activeQuestions);
             } else {
+                // Kung Specific Module, kunin ang mga tanong pero WAG I-SHUFFLE
                 const tData = appData.find(t => t.topic === mode);
                 if (tData && tData.questions) {
                     tData.questions.forEach(q => activeQuestions.push({...q, topic: tData.topic}));
                 }
+                // Pansinin: Inalis natin ang `shuffleArray()` dito para sunod-sunod pa rin.
             }
 
-            activeQuestions = shuffleArray(activeQuestions);
-
+            // Shuffle internal choices (A, B, C, D) para hindi kabisado ang pwesto
             activeQuestions.forEach(q => {
                 q.shuffledChoices = shuffleArray([...q.choices]);
             });
