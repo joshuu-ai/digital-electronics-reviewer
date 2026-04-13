@@ -74,15 +74,18 @@
             
             <div class="w-full max-w-sm bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-inner">
                 <div class="mb-4">
-                    <label class="block text-cyan-400 text-xs font-bold mb-2 uppercase tracking-widest">Student ID Number</label>
-                    <input type="text" id="auth-id" placeholder="e.g. 202112345" class="w-full bg-slate-800 text-white border border-slate-700 rounded-lg py-3 px-4 focus:outline-none focus:border-cyan-500 transition-colors">
+                    <label class="block text-cyan-400 text-xs font-bold mb-2 uppercase tracking-widest">CvSU Email Address</label>
+                    <input type="email" id="auth-email" placeholder="e.g. joshuamichael.tuto@cvsu.edu.ph" class="w-full bg-slate-800 text-white border border-slate-700 rounded-lg py-3 px-4 focus:outline-none focus:border-cyan-500 transition-colors">
                 </div>
                 <div class="mb-6">
                     <label class="block text-cyan-400 text-xs font-bold mb-2 uppercase tracking-widest">Password</label>
                     <input type="password" id="auth-pass" placeholder="••••••••" class="w-full bg-slate-800 text-white border border-slate-700 rounded-lg py-3 px-4 focus:outline-none focus:border-cyan-500 transition-colors">
+                    <div class="flex justify-end mt-2">
+                        <button onclick="handleForgotPassword()" class="text-cyan-500 hover:text-cyan-400 text-xs font-bold transition-colors">Forgot Password?</button>
+                    </div>
                 </div>
                 
-                <div id="auth-error" class="hidden text-rose-500 text-xs font-bold mb-4 text-center bg-rose-500/10 py-2 rounded border border-rose-500/20">Error Message</div>
+                <div id="auth-error" class="hidden text-xs font-bold mb-4 text-center py-2 rounded border">Message Box</div>
 
                 <div class="flex flex-col gap-3">
                     <button id="btn-login" onclick="handleLogin()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-4 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 uppercase tracking-wider">
@@ -397,10 +400,45 @@
         // 🚨 2. SUBJECTS CONFIGURATION 🚨
         // ==========================================
         const subjectsConfig = {
-            "CPEN": { name: "CPEN (Computer Eng.)", icon: "fa-microchip", color: "from-cyan-500 to-blue-500", files: ['CPEN/Lecture1.json', 'CPEN/Lecture2.json', 'CPEN/Lecture3.json', 'CPEN/Lecture4.json'] },
-            "GNED": { name: "GNED", icon: "fa-book-open", color: "from-emerald-500 to-teal-500", files: ['GNED/GNED.json'] },
-            "DCEE24": { name: "DCEE 24", icon: "fa-tower-cell", color: "from-purple-500 to-pink-500", files: ['DCEE24/Lesson1.json'] },
-            "ECEN196": { name: "ECEN 196", icon: "fa-satellite-dish", color: "from-rose-500 to-orange-500", files: ['ECEN196/ECEN196.json'] }
+            "CPEN": {
+                name: "CPEN (Computer Eng.)",
+                icon: "fa-microchip",
+                color: "from-cyan-500 to-blue-500",
+                files: [
+                    'CPEN/Lecture1.json',
+                    'CPEN/Lecture2.json',
+                    'CPEN/Lecture3.json',
+                    'CPEN/Lecture4.json'
+                ]
+            },
+            "GNED": {
+                name: "GNED",
+                icon: "fa-book-open",
+                color: "from-emerald-500 to-teal-500",
+                files: [
+                    'GNED.json'
+                ]
+            },
+            "DCEE24": {
+                name: "DCEE 24",
+                icon: "fa-tower-cell",
+                color: "from-purple-500 to-pink-500",
+                files: [
+                    'DCEE24/Lesson1.json',
+                    'DCEE24/Lesson2.json',
+                    'DCEE24/Lesson3.json',
+                    'DCEE24/Lesson4.json',
+                    'DCEE24/Lesson5.json'
+                ]
+            },
+            "ECEN196": {
+                name: "ECEN 196",
+                icon: "fa-satellite-dish",
+                color: "from-rose-500 to-orange-500",
+                files: [
+                    'ECEN196.json'
+                ]
+            }
         };
 
         // ==========================================
@@ -434,8 +472,8 @@
         auth.onAuthStateChanged(user => {
             if (user) {
                 currentUser = user;
-                const studentId = user.email.split('@')[0];
-                document.getElementById('dash-student-id').innerText = studentId;
+                const displayName = user.email.split('@')[0];
+                document.getElementById('dash-student-id').innerText = displayName;
                 fetchUserData(user.uid);
                 switchScreen('screen-dashboard');
                 renderSubjectButtons();
@@ -446,13 +484,17 @@
         });
 
         async function handleSignUp() {
-            const id = document.getElementById('auth-id').value.trim();
+            const email = document.getElementById('auth-email').value.trim().toLowerCase();
             const pass = document.getElementById('auth-pass').value;
-            const errBox = document.getElementById('auth-error');
             const btn = document.getElementById('btn-signup');
             
-            if(!id || !pass || pass.length < 6) {
-                showAuthError("Please provide an ID and a password (min. 6 characters).");
+            if(!email || !pass || pass.length < 6) {
+                showAuthMessage("Please provide your email and a password (min. 6 characters).");
+                return;
+            }
+
+            if(!email.endsWith('@cvsu.edu.ph')) {
+                showAuthMessage("Please use your official @cvsu.edu.ph email address.");
                 return;
             }
 
@@ -460,53 +502,76 @@
             btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Registering...`;
 
             try {
-                // Fake email for Firebase requirement
-                const email = `${id}@bsece.edu`; 
                 const userCredential = await auth.createUserWithEmailAndPassword(email, pass);
+                const displayName = email.split('@')[0];
                 
-                // Create blank data in Firestore
                 await db.collection('users').doc(userCredential.user.uid).set({
-                    studentId: id,
+                    email: email,
+                    displayName: displayName,
                     totalScore: 0,
                     maxStreak: 0,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 
-                errBox.classList.add('hidden');
+                document.getElementById('auth-error').classList.add('hidden');
             } catch(error) {
                 let msg = "An error occurred.";
-                if(error.code === 'auth/email-already-in-use') msg = "Student ID is already registered.";
-                showAuthError(msg);
+                if(error.code === 'auth/email-already-in-use') msg = "Email is already registered.";
+                if(error.code === 'auth/invalid-email') msg = "Invalid email format.";
+                showAuthMessage(msg);
             }
             btn.disabled = false;
             btn.innerHTML = `Sign Up`;
         }
 
         async function handleLogin() {
-            const id = document.getElementById('auth-id').value.trim();
+            const email = document.getElementById('auth-email').value.trim().toLowerCase();
             const pass = document.getElementById('auth-pass').value;
             const btn = document.getElementById('btn-login');
             
-            if(!id || !pass) { showAuthError("Please enter your Student ID and Password."); return; }
+            if(!email || !pass) { showAuthMessage("Please enter your Email and Password."); return; }
 
             btn.disabled = true;
             btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Logging in...`;
 
             try {
-                const email = `${id}@bsece.edu`; 
                 await auth.signInWithEmailAndPassword(email, pass);
                 document.getElementById('auth-error').classList.add('hidden');
             } catch(error) {
-                showAuthError("Incorrect Student ID or Password.");
+                showAuthMessage("Incorrect Email or Password.");
             }
             btn.disabled = false;
             btn.innerHTML = `Log In`;
         }
 
-        function showAuthError(msg) {
-            const errBox = document.getElementById('auth-error');
-            errBox.innerText = msg;
-            errBox.classList.remove('hidden');
+        // NEW: Forgot Password Function
+        async function handleForgotPassword() {
+            const email = document.getElementById('auth-email').value.trim().toLowerCase();
+            
+            if(!email) {
+                showAuthMessage("Please enter your Email first to reset password.");
+                return;
+            }
+
+            try {
+                await auth.sendPasswordResetEmail(email);
+                showAuthMessage("Password reset link sent! Please check your student email.", true);
+            } catch(error) {
+                showAuthMessage("Error: Could not send reset link. Ensure email is correct.");
+            }
+        }
+
+        function showAuthMessage(msg, isSuccess = false) {
+            const msgBox = document.getElementById('auth-error');
+            msgBox.innerText = msg;
+            
+            // Set dynamic styling based on success or error
+            msgBox.className = `text-xs font-bold mb-4 text-center py-2 rounded border ${
+                isSuccess ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' 
+                          : 'text-rose-500 bg-rose-500/10 border-rose-500/20'
+            }`;
+            
+            msgBox.classList.remove('hidden');
         }
 
         function handleLogout() {
@@ -554,13 +619,15 @@
                     if(rank === 2) rankIcon = `<i class="fa-solid fa-medal text-slate-300 text-xl w-8 text-center"></i>`;
                     if(rank === 3) rankIcon = `<i class="fa-solid fa-medal text-amber-600 text-xl w-8 text-center"></i>`;
 
+                    const displayName = data.displayName || (data.email ? data.email.split('@')[0] : 'Student');
+
                     const row = document.createElement('div');
                     row.className = `flex items-center justify-between p-4 border-b border-slate-800/50 ${isCurrentUser ? 'bg-cyan-900/20' : 'hover:bg-slate-900'}`;
                     row.innerHTML = `
                         <div class="flex items-center gap-4">
                             ${rankIcon}
                             <div>
-                                <p class="text-white font-bold tracking-wider ${isCurrentUser ? 'text-cyan-400' : ''}">${data.studentId}</p>
+                                <p class="text-white font-bold tracking-wider ${isCurrentUser ? 'text-cyan-400' : ''}">${displayName}</p>
                                 <p class="text-xs text-slate-500 uppercase">Max Streak: ${data.maxStreak || 0}</p>
                             </div>
                         </div>
