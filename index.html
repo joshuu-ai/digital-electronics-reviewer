@@ -264,6 +264,7 @@
                         </div>
                     </div>
                 </button>
+                
                 <div class="flex items-center gap-4 my-2 shrink-0">
                     <div class="h-px bg-slate-800 flex-grow"></div>
                     <span class="text-cyan-600 font-bold text-xs uppercase tracking-widest">Specific Modules</span>
@@ -272,14 +273,14 @@
                 
                 <div id="topic-buttons-container" class="grid grid-cols-1 gap-3 sm:gap-4"></div>
 
-                <!-- RECENTLY OPENED SESSION -->
+                <!-- MULTIPLE RECENTLY OPENED SESSIONS -->
                 <div id="resume-section" class="hidden mt-6 shrink-0">
                     <div class="flex items-center gap-4 my-2 shrink-0">
                         <div class="h-px bg-slate-800 flex-grow"></div>
                         <span class="text-orange-500 font-bold text-xs uppercase tracking-widest text-center">Recently Opened</span>
                         <div class="h-px bg-slate-800 flex-grow"></div>
                     </div>
-                    <div id="resume-button-container" class="mt-4"></div>
+                    <div id="resume-button-container" class="flex flex-col gap-3 mt-4"></div>
                 </div>
             </div>
         </div>
@@ -387,8 +388,7 @@
     <!-- Application Logic -->
     <script>
         // ==========================================
-        // 🚨 1. PASTE YOUR FIREBASE CONFIG HERE 🚨
-        // Replace this entire block with the config from Firebase Console
+        // 🚨 1. YOUR EXACT FIREBASE CONFIG 🚨
         // ==========================================
         const firebaseConfig = {
             apiKey: "AIzaSyB8hdK8UXUImyLrjvLqjua7h1yKSwTqcsw",
@@ -694,7 +694,7 @@
                 if (appData.length === 0) throw new Error();
                 renderReviewContent();
                 renderModeButtons();
-                checkResumeSession(); // NEW: Check if there's a saved session
+                checkResumeSession(); 
                 
                 document.getElementById('loading-indicator').classList.add('hidden');
                 document.getElementById('main-menu-content').classList.remove('hidden');
@@ -763,21 +763,22 @@
             gameStyle = style;
             const sBtn = document.getElementById('btn-style-survival'), cBtn = document.getElementById('btn-style-classic');
             if(style === 'survival') {
-                sBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-cyan-600 text-white border border-cyan-500 uppercase";
-                cBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-slate-900 text-slate-500 border border-slate-800 uppercase";
+                sBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-cyan-600 text-white border border-cyan-500 uppercase tracking-wider";
+                cBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-slate-900 text-slate-500 hover:text-white border border-slate-800 uppercase tracking-wider";
             } else {
-                cBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-cyan-600 text-white border border-cyan-500 uppercase";
-                sBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-slate-900 text-slate-500 border border-slate-800 uppercase";
+                cBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-cyan-600 text-white border border-cyan-500 uppercase tracking-wider";
+                sBtn.className = "flex-1 py-2 px-2 rounded-lg font-bold text-xs sm:text-sm bg-slate-900 text-slate-500 hover:text-white border border-slate-800 uppercase tracking-wider";
             }
+            checkResumeSession(); // Re-render the resume list based on the selected game style tab
         }
 
         function shuffleArray(array) { let curId = array.length, randId, tmp; while (0 !== curId) { randId = Math.floor(Math.random() * curId); curId -= 1; tmp = array[curId]; array[curId] = array[randId]; array[randId] = tmp; } return array; }
 
         // ==========================================
-        // 🚨 SESSION RESUME LOGIC 🚨
+        // 🚨 SESSION RESUME LOGIC (MULTI-TOPIC) 🚨
         // ==========================================
         function saveSession() {
-            if (!currentUser || !currentSubjectKey || activeQuestions.length === 0) return;
+            if (!currentUser || !currentSubjectKey || !currentModeId || activeQuestions.length === 0) return;
             
             // Do not save if quiz is completed or survival lives depleted
             if (currentQIndex >= activeQuestions.length || (gameStyle === 'survival' && lives <= 0)) return;
@@ -796,32 +797,44 @@
                 timeLeft: timeLeft,
                 timeLimit: TIME_LIMIT
             };
-            localStorage.setItem(`resume_${currentUser.uid}_${currentSubjectKey}`, JSON.stringify(sessionData));
+            
+            // Format: bsece_resume_UID_SUBJECT_STYLE_MODE
+            localStorage.setItem(`bsece_resume_${currentUser.uid}_${currentSubjectKey}_${gameStyle}_${currentModeId}`, JSON.stringify(sessionData));
             checkResumeSession();
         }
 
-        function clearSession() {
-            if (!currentUser || !currentSubjectKey) return;
-            localStorage.removeItem(`resume_${currentUser.uid}_${currentSubjectKey}`);
+        function clearSession(modeId) {
+            if (!currentUser || !currentSubjectKey || !modeId) return;
+            localStorage.removeItem(`bsece_resume_${currentUser.uid}_${currentSubjectKey}_${gameStyle}_${modeId}`);
             checkResumeSession();
         }
 
         function checkResumeSession() {
             if (!currentUser || !currentSubjectKey) return;
-            const saved = localStorage.getItem(`resume_${currentUser.uid}_${currentSubjectKey}`);
+            
             const resumeSec = document.getElementById('resume-section');
             const resumeBtnContainer = document.getElementById('resume-button-container');
+            resumeBtnContainer.innerHTML = '';
             
-            if (saved) {
-                const data = JSON.parse(saved);
-                resumeSec.classList.remove('hidden');
-                
-                const modeName = data.currentModeId === 'all' ? 'Full System Test' : data.currentModeId;
-                const styleIcon = data.gameStyle === 'survival' ? 'fa-battery-quarter text-rose-400' : 'fa-infinity text-cyan-400';
-                const styleLabel = data.gameStyle === 'survival' ? 'Survival' : 'Classic';
-                
-                resumeBtnContainer.innerHTML = `
-                    <button onclick="resumeGame()" class="w-full bg-slate-900 border-2 border-orange-500/50 hover:border-orange-400 text-white p-4 sm:p-5 rounded-2xl shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-transform hover:scale-[1.02] text-left flex items-center gap-4">
+            let hasSavedSessions = false;
+            
+            // Get all possible mode IDs (the "all" button, and all individual topics)
+            const possibleModes = ['all', ...appData.map(t => t.topic)];
+
+            possibleModes.forEach(modeId => {
+                const saved = localStorage.getItem(`bsece_resume_${currentUser.uid}_${currentSubjectKey}_${gameStyle}_${modeId}`);
+                if (saved) {
+                    hasSavedSessions = true;
+                    const data = JSON.parse(saved);
+                    
+                    const modeName = modeId === 'all' ? 'Full System Test' : modeId;
+                    const styleIcon = data.gameStyle === 'survival' ? 'fa-battery-quarter text-rose-400' : 'fa-infinity text-cyan-400';
+                    const styleLabel = data.gameStyle === 'survival' ? 'Survival' : 'Classic';
+                    
+                    const btn = document.createElement('button');
+                    btn.onclick = () => resumeGame(modeId);
+                    btn.className = `w-full bg-slate-900 border-2 border-orange-500/50 hover:border-orange-400 text-white p-4 sm:p-5 rounded-2xl shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-transform hover:scale-[1.02] text-left flex items-center gap-4 mb-3`;
+                    btn.innerHTML = `
                         <div class="bg-orange-500/20 w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 text-orange-400 border border-orange-500/30">
                             <i class="fa-solid fa-clock-rotate-left"></i>
                         </div>
@@ -837,17 +850,21 @@
                             <p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Score</p>
                             <p class="text-lg font-black text-emerald-400">${data.score}</p>
                         </div>
-                    </button>
-                `;
+                    `;
+                    resumeBtnContainer.appendChild(btn);
+                }
+            });
+
+            if (hasSavedSessions) {
+                resumeSec.classList.remove('hidden');
             } else {
                 resumeSec.classList.add('hidden');
-                resumeBtnContainer.innerHTML = '';
             }
         }
 
-        function resumeGame() {
+        function resumeGame(modeId) {
             if (!currentUser || !currentSubjectKey) return;
-            const saved = localStorage.getItem(`resume_${currentUser.uid}_${currentSubjectKey}`);
+            const saved = localStorage.getItem(`bsece_resume_${currentUser.uid}_${currentSubjectKey}_${gameStyle}_${modeId}`);
             if (!saved) return;
 
             const data = JSON.parse(saved);
@@ -871,12 +888,12 @@
             setGameStyle(gameStyle);
             updateHUD();
             switchScreen('screen-game');
-            loadQuestion(true); // pass true to indicate it's a resume action
+            loadQuestion(true); 
         }
 
         function initiateGame(mode) {
             currentModeId = mode;
-            clearSession(); // Remove any existing saved session for a fresh start
+            clearSession(currentModeId); // Clean the slot for this specific topic before starting fresh
 
             activeQuestions = [];
             if (mode === 'all') {
@@ -1090,7 +1107,7 @@
         // 🚨 FIREBASE DATA SAVING 🚨
         // ==========================================
         async function endGame(survived) {
-            clearSession(); // Remove saved session when test naturally ends
+            clearSession(currentModeId); // Clean the specific topic's save slot when finished
             
             switchScreen('screen-end');
             animateValue("final-score", 0, score, 1000);
