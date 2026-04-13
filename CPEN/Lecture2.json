@@ -95,7 +95,7 @@
     "questions": [
       {
         "type": "single",
-        "image": "Step1.png",
+        "image": "CPEN/Images/Step1.png",
         "question": "In Step 1 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Address is placed on the bus",
@@ -108,7 +108,7 @@
       },
       {
         "type": "single",
-        "image": "Step2.png",
+        "image": "CPEN/Images/Step2.png",
         "question": "In Step 2 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Instruction is decoded",
@@ -121,7 +121,7 @@
       },
       {
         "type": "single",
-        "image": "Step3.png",
+        "image": "CPEN/Images/Step3.png",
         "question": "In Step 3 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Instruction is fetched from the memory",
@@ -134,7 +134,7 @@
       },
       {
         "type": "single",
-        "image": "Step4.png",
+        "image": "CPEN/Images/Step4.png",
         "question": "In Step 4 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Operands are fetched",
@@ -147,7 +147,7 @@
       },
       {
         "type": "single",
-        "image": "Step5.png",
+        "image": "CPEN/Images/Step5.png",
         "question": "In Step 5 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Flags are updated",
@@ -160,7 +160,7 @@
       },
       {
         "type": "single",
-        "image": "Step6.png",
+        "image": "CPEN/Images/Step6.png",
         "question": "In Step 6 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Operands are fetched",
@@ -173,7 +173,7 @@
       },
       {
         "type": "single",
-        "image": "Step7.png",
+        "image": "CPEN/Images/Step7.png",
         "question": "In Step 7 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Instruction is fetched from the memory",
@@ -186,7 +186,7 @@
       },
       {
         "type": "single",
-        "image": "Step8.png",
+        "image": "CPEN/Images/Step8.png",
         "question": "In Step 8 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Operands are fetched",
@@ -199,7 +199,7 @@
       },
       {
         "type": "single",
-        "image": "Step9.png",
+        "image": "CPEN/Images/Step9.png",
         "question": "In Step 9 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Flags are updated",
@@ -212,7 +212,7 @@
       },
       {
         "type": "single",
-        "image": "Step10.png",
+        "image": "CPEN/Images/Step10.png",
         "question": "In Step 10 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "ALU performs the operation",
@@ -225,7 +225,7 @@
       },
       {
         "type": "single",
-        "image": "Step11.png",
+        "image": "CPEN/Images/Step11.png",
         "question": "In Step 11 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Program counter updates",
@@ -238,7 +238,7 @@
       },
       {
         "type": "single",
-        "image": "Step12.png",
+        "image": "CPEN/Images/Step12.png",
         "question": "In Step 12 of the 8085 Microprocessor operation, what happens?",
         "choices": [
           "Program counter sends address",
@@ -399,7 +399,7 @@
       },
       {
         "type": "single",
-        "image": "MRO1.png",
+        "image": "CPEN/Images/MRO1.png",
         "question": "In Step 1 of the Memory Read Operation, what happens?",
         "choices": [
           "The Program Counter places this address on the address bus.",
@@ -412,7 +412,7 @@
       },
       {
         "type": "single",
-        "image": "MRO2.png",
+        "image": "CPEN/Images/MRO2.png",
         "question": "In Step 2 of the Memory Read Operation, what happens?",
         "choices": [
           "The address decoder decodes the address.",
@@ -425,7 +425,7 @@
       },
       {
         "type": "single",
-        "image": "MRO3.png",
+        "image": "CPEN/Images/MRO3.png",
         "question": "In Step 3 of the Memory Read Operation, what happens?",
         "choices": [
           "The memory IC is enabled for two clock cycles.",
@@ -438,7 +438,7 @@
       },
       {
         "type": "single",
-        "image": "MRO4.png",
+        "image": "CPEN/Images/MRO4.png",
         "question": "In Step 4 of the Memory Read Operation, what happens?",
         "choices": [
           "The control unit activates the RD (Read) control signal.",
@@ -451,7 +451,7 @@
       },
       {
         "type": "single",
-        "image": "MRO5.png",
+        "image": "CPEN/Images/MRO5.png",
         "question": "In Step 5 of the Memory Read Operation, what happens?",
         "choices": [
           "The address decoder decodes the address.",
@@ -464,7 +464,7 @@
       },
       {
         "type": "single",
-        "image": "MRO6.png",
+        "image": "CPEN/Images/MRO6.png",
         "question": "In Step 6 of the Memory Read Operation, what happens?",
         "choices": [
           "The control unit activates the RD control signal.",
@@ -477,7 +477,7 @@
       },
       {
         "type": "single",
-        "image": "MRO7.png",
+        "image": "CPEN/Images/MRO7.png",
         "question": "In Step 7 of the Memory Read Operation, what happens?",
         "choices": [
           "The memory IC is enabled for two clock cycles.",
@@ -510,7 +510,7 @@
       },
       {
         "type": "single",
-        "image": "SAO1.png",
+        "image": "CPEN/Images/SAO1.png",
         "question": "In Step 1 of the Sequence of ALU Operation, what is the initial state?",
         "choices": [
           "Second operand is fetched from register or memory.",
@@ -523,7 +523,7 @@
       },
       {
         "type": "single",
-        "image": "SAO2.png",
+        "image": "CPEN/Images/SAO2.png",
         "question": "In Step 2 of the Sequence of ALU Operation, what happens to the second operand?",
         "choices": [
           "It is sent back to the Accumulator.",
@@ -536,7 +536,7 @@
       },
       {
         "type": "single",
-        "image": "SAO3.png",
+        "image": "CPEN/Images/SAO3.png",
         "question": "In Step 3 of the Sequence of ALU Operation, what does the ALU do?",
         "choices": [
           "The specified arithmetic or logical operation is performed.",
@@ -549,7 +549,7 @@
       },
       {
         "type": "single",
-        "image": "SAO4.png",
+        "image": "CPEN/Images/SAO4.png",
         "question": "In Step 4 of the Sequence of ALU Operation, what takes place?",
         "choices": [
           "The result is sent back to the Accumulator.",
@@ -562,7 +562,7 @@
       },
       {
         "type": "single",
-        "image": "SAO5.png",
+        "image": "CPEN/Images/SAO5.png",
         "question": "In Step 5 of the Sequence of ALU Operation, where does the result go?",
         "choices": [
           "The result is stored permanently in the Flag Register.",
@@ -575,7 +575,7 @@
       },
       {
         "type": "single",
-        "image": "SAO6.png",
+        "image": "CPEN/Images/SAO6.png",
         "question": "In Step 6 of the Sequence of ALU Operation, what is the final action?",
         "choices": [
           "The Program Counter increments.",
@@ -933,7 +933,7 @@
       },
       {
         "type": "single",
-        "image": "Ex1Z.png",
+        "image": "CPEN/Images/Ex1Z.png",
         "question": "In Example 1, after performing the addition of 07H and CFH, what is the status of the Zero Flag (Z)?",
         "choices": [
           "Z = 1, because the result is zero.",
@@ -946,7 +946,7 @@
       },
       {
         "type": "single",
-        "image": "Ex1P.png",
+        "image": "CPEN/Images/Ex1P.png",
         "question": "In Example 1 (07H + CFH), what is the status of the Parity Flag (P) and why?",
         "choices": [
           "P = 1, because there are four 1s (even parity).",
@@ -959,7 +959,7 @@
       },
       {
         "type": "single",
-        "image": "Ex1S.png",
+        "image": "CPEN/Images/Ex1S.png",
         "question": "In Example 1 (07H + CFH), what is the status of the Sign Flag (S)?",
         "choices": [
           "S = 0, indicating a positive number.",
@@ -972,7 +972,7 @@
       },
       {
         "type": "single",
-        "image": "Ex2CS.png",
+        "image": "CPEN/Images/Ex2CS.png",
         "question": "In Example 2, after adding CEH and 9BH, the sum generates a 9th bit. What happens to the Carry Flag (CS/CY)?",
         "choices": [
           "CS = 0, because no carry was generated.",
@@ -985,7 +985,7 @@
       },
       {
         "type": "single",
-        "image": "Ex2P.png",
+        "image": "CPEN/Images/Ex2P.png",
         "question": "In Example 2 (CEH + 9BH), what is the status of the Parity Flag (P)?",
         "choices": [
           "P = 0, because there are five 1s.",
@@ -998,7 +998,7 @@
       },
       {
         "type": "single",
-        "image": "Ex2S.png",
+        "image": "CPEN/Images/Ex2S.png",
         "question": "In Example 2 (CEH + 9BH), the 8-bit result is 0110 1001. What is the status of the Sign Flag (S)?",
         "choices": [
           "S = 1",
@@ -1011,7 +1011,7 @@
       },
       {
         "type": "single",
-        "image": "Ex1Ex2AC.png",
+        "image": "CPEN/Images/Ex1Ex2AC.png",
         "question": "In BOTH Example 1 and Example 2, what happens to the Auxiliary Carry (AC) flag?",
         "choices": [
           "It is set to 0 in both examples.",

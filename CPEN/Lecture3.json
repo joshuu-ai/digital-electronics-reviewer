@@ -227,7 +227,7 @@
       },
       {
         "type": "single",
-        "image": "ImpAdd1.png",
+        "image": "CPEN/Images/ImpAdd1.png",
         "question": "Which addressing mode does NOT mention the operand directly, relying instead on the CPU knowing what to use from the instruction itself (such as the accumulator)?",
         "choices": [
           "Direct Addressing",
@@ -240,7 +240,7 @@
       },
       {
         "type": "single",
-        "image": "ImpAdd2.png",
+        "image": "CPEN/Images/ImpAdd2.png",
         "question": "The instruction 'CMA' (Complement the accumulator) is an example of which addressing mode?",
         "choices": [
           "Register Addressing",
@@ -253,7 +253,7 @@
       },
       {
         "type": "single",
-        "image": "ImmAdd1.png",
+        "image": "CPEN/Images/ImmAdd1.png",
         "question": "In which addressing mode is the operand actually a part of the instruction itself, typically used when the value is known while writing the program?",
         "choices": [
           "Immediate Addressing",
@@ -266,7 +266,7 @@
       },
       {
         "type": "single",
-        "image": "ImmAdd2.png",
+        "image": "CPEN/Images/ImmAdd2.png",
         "question": "The instruction 'ADI 05H' (Add immediate value 05H to accumulator) represents which addressing mode?",
         "choices": [
           "Direct Addressing",
@@ -279,7 +279,7 @@
       },
       {
         "type": "single",
-        "image": "DirAdd1.png",
+        "image": "CPEN/Images/DirAdd1.png",
         "question": "Which addressing mode contains the exact memory address of the operand within the instruction, allowing the CPU to access data directly from that address?",
         "choices": [
           "Register Indirect Addressing",
@@ -292,7 +292,7 @@
       },
       {
         "type": "multiple",
-        "image": "DirAdd2.png",
+        "image": "CPEN/Images/DirAdd2.png",
         "question": "Which of the following instructions are examples of Direct Addressing?",
         "choices": [
           "LDA 2050H",
@@ -310,7 +310,7 @@
       },
       {
         "type": "single",
-        "image": "IndAdd1.png",
+        "image": "CPEN/Images/IndAdd1.png",
         "question": "Which addressing mode contains the address of a register or memory location that holds the ACTUAL address of the operand?",
         "choices": [
           "Direct Addressing",
@@ -323,7 +323,7 @@
       },
       {
         "type": "single",
-        "image": "RegAdd1.png",
+        "image": "CPEN/Images/RegAdd1.png",
         "question": "In which addressing mode is the operand located strictly in a CPU register specified by the instruction?",
         "choices": [
           "Register Addressing",
@@ -336,7 +336,7 @@
       },
       {
         "type": "single",
-        "image": "RegAdd2.png",
+        "image": "CPEN/Images/RegAdd2.png",
         "question": "The instruction 'MOV A, B' (Copy contents of B into accumulator) uses which addressing mode?",
         "choices": [
           "Register Indirect Addressing",
@@ -349,7 +349,7 @@
       },
       {
         "type": "single",
-        "image": "RegIndAdd1.png",
+        "image": "CPEN/Images/RegIndAdd1.png",
         "question": "Which addressing mode specifies a register that *contains* the memory address of the operand (for example, using the HL pair to point to a location)?",
         "choices": [
           "Register Addressing",
@@ -362,7 +362,7 @@
       },
       {
         "type": "single",
-        "image": "RegIndAdd2.png",
+        "image": "CPEN/Images/RegIndAdd2.png",
         "question": "The instruction 'MOV A, M' (Move data from memory location pointed by HL to A) is an example of which addressing mode?",
         "choices": [
           "Direct Addressing",
@@ -375,7 +375,7 @@
       },
       {
         "type": "single",
-        "image": "DispAdd1.png",
+        "image": "CPEN/Images/DispAdd1.png",
         "question": "How is the effective address calculated in Displacement Addressing?",
         "choices": [
           "By fetching the address from the top of the stack.",
@@ -388,7 +388,7 @@
       },
       {
         "type": "single",
-        "image": "StaAdd1.png",
+        "image": "CPEN/Images/StaAdd1.png",
         "question": "In which addressing mode is the operand implicitly taken from the top of the stack without needing an explicit operand field?",
         "choices": [
           "Register Indirect Addressing",
@@ -401,7 +401,7 @@
       },
       {
         "type": "multiple",
-        "image": "StaAdd2.png",
+        "image": "CPEN/Images/StaAdd2.png",
         "question": "Which of the following instructions fall under Stack Addressing?",
         "choices": [
           "PUSH B",

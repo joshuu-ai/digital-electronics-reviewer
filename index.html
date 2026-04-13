@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Electronics: Review & Quiz App</title>
+    <title>BSECE 3-2: Review & Quiz App</title>
     <!-- Tailwind CSS para sa styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome para sa mga icons -->
@@ -52,7 +52,7 @@
         }
         .option-btn:hover:not(:disabled) {
             transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); /* Cyan shadow */
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
             border-color: #06b6d4 !important;
         }
         .option-btn:active:not(:disabled) {
@@ -60,20 +60,20 @@
         }
         
         .correct-ans {
-            background-color: #059669 !important; /* Emerald 600 */
-            border-color: #10b981 !important; /* Emerald 500 */
+            background-color: #059669 !important;
+            border-color: #10b981 !important;
             color: white !important;
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
         }
         .wrong-ans {
-            background-color: #e11d48 !important; /* Rose 600 */
-            border-color: #f43f5e !important; /* Rose 500 */
+            background-color: #e11d48 !important;
+            border-color: #f43f5e !important;
             color: white !important;
             box-shadow: 0 0 20px rgba(225, 29, 72, 0.5);
         }
         .selected-multi {
             background-color: rgba(6, 182, 212, 0.2) !important;
-            border-color: #06b6d4 !important; /* Cyan 500 */
+            border-color: #06b6d4 !important;
             box-shadow: 0 0 10px rgba(6, 182, 212, 0.4) inset;
         }
         .disabled-ans {
@@ -82,13 +82,11 @@
             filter: grayscale(0.5);
         }
 
-        /* Customization ng Scrollbar para sa review section */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0f172a; border-radius: 8px; }
         ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 8px; }
         ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 
-        /* Confetti Canvas */
         #confetti-canvas {
             position: fixed;
             top: 0;
@@ -99,12 +97,10 @@
             z-index: 100;
         }
 
-        /* Timer Bar */
         .timer-transition {
             transition: width 1s linear, background-color 0.3s ease;
         }
 
-        /* Tech grid background overlay */
         .grid-bg {
             background-size: 40px 40px;
             background-image: 
@@ -125,27 +121,54 @@
     <div class="max-w-4xl w-full bg-slate-900/90 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-[0_0_40px_rgba(6,182,212,0.15)] overflow-hidden border border-slate-800 relative z-10 flex flex-col h-full max-h-full sm:max-h-[95vh]">
         
         <!-- ==============================
+             SCREEN 0: SUBJECT SELECTION (BAGONG FEATURE)
+             ============================== -->
+        <div id="screen-subjects" class="p-6 sm:p-8 md:p-12 text-center flex-grow flex flex-col justify-center overflow-y-auto animate-pop">
+            <div class="text-4xl sm:text-6xl mb-3 sm:mb-4 text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black mb-1 sm:mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 shrink-0 tracking-wide">
+                BSECE 3-2 Reviewer
+            </h1>
+            <p class="text-slate-400 mb-8 sm:mb-10 text-sm sm:text-base md:text-lg max-w-2xl mx-auto shrink-0 font-semibold tracking-wider uppercase">
+                Pumili ng Subject na I-rereview
+            </p>
+            
+            <!-- Dito lilitaw ang mga subjects dynamically mula sa JS -->
+            <div id="subject-buttons-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto w-full">
+                <!-- Pupunuin ng JS -->
+            </div>
+        </div>
+
+        <!-- ==============================
              SCREEN 1: LANDING/MAIN MENU
              ============================== -->
-        <div id="screen-main" class="p-6 sm:p-8 md:p-16 text-center flex-grow flex flex-col justify-center overflow-y-auto">
+        <div id="screen-main" class="hidden p-6 sm:p-8 md:p-16 text-center flex-grow flex flex-col justify-center overflow-y-auto">
             
+            <!-- Button pabalik sa subjects -->
+            <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
+                <button onclick="switchScreen('screen-subjects')" class="text-slate-500 hover:text-cyan-400 transition-colors flex items-center gap-2 font-semibold text-sm sm:text-base bg-slate-900/50 px-3 py-2 rounded-lg border border-slate-800 backdrop-blur-sm">
+                    <i class="fa-solid fa-arrow-left"></i> <span class="hidden sm:inline">Palitan ang Subject</span>
+                </button>
+            </div>
+
             <!-- Loading Indicator -->
             <div id="loading-indicator" class="flex flex-col items-center justify-center animate-pop">
                 <i class="fa-solid fa-circle-notch fa-spin text-5xl text-cyan-500 mb-4"></i>
-                <h2 class="text-xl text-slate-300 font-bold">Starting the System...</h2>
-                <p id="loading-text" class="text-sm text-slate-500 mt-2">Loading data files...</p>
+                <h2 class="text-xl text-slate-300 font-bold">Kinukuha ang modules...</h2>
+                <p id="loading-text" class="text-sm text-slate-500 mt-2">Nilo-load ang data files...</p>
             </div>
 
-            <!-- Main Menu Content (Nakatago habang naglo-load) -->
-            <div id="main-menu-content" class="hidden animate-pop flex flex-col items-center justify-center h-full">
-                <div class="text-5xl sm:text-7xl mb-4 sm:mb-8 text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0">
-                    <i class="fa-solid fa-microchip"></i>
+            <!-- Main Menu Content -->
+            <div id="main-menu-content" class="hidden animate-pop flex flex-col items-center justify-center h-full pt-8">
+                <div id="current-subject-icon" class="text-5xl sm:text-6xl mb-4 sm:mb-6 text-cyan-400 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] shrink-0">
+                    <!-- Icon will be inserted here -->
                 </div>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 pb-2 shrink-0 tracking-wide">
-                    Digital Electronics
+                <h1 id="current-subject-title" class="text-2xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-4 text-white shrink-0 tracking-wide uppercase">
+                    SUBJECT TITLE
                 </h1>
-                <p class="text-slate-400 mb-8 sm:mb-12 text-sm sm:text-base md:text-xl max-w-2xl mx-auto shrink-0 font-semibold tracking-wider uppercase">
-                    Tara review. Ano tara?
+                <p class="text-cyan-200/70 mb-8 sm:mb-12 text-sm sm:text-base md:text-xl max-w-2xl mx-auto shrink-0 font-semibold tracking-wider uppercase">
+                    System Review & Diagnostics
                 </p>
                 
                 <div class="flex flex-col md:flex-row gap-4 sm:gap-6 justify-center items-center shrink-0 w-full md:w-auto">
@@ -153,7 +176,7 @@
                         <i class="fa-solid fa-database text-cyan-400"></i> Reviewer Logs
                     </button>
                     <button onclick="switchScreen('screen-mode')" class="w-full md:w-auto bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-black text-lg sm:text-xl py-3 sm:py-4 px-6 sm:px-10 rounded-xl sm:rounded-2xl shadow-lg transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95 flex items-center justify-center gap-3 uppercase tracking-wider">
-                        <i class="fa-solid fa-power-off"></i> Start the Quiz
+                        <i class="fa-solid fa-power-off"></i> Simulan ang Quiz
                     </button>
                 </div>
             </div>
@@ -170,14 +193,13 @@
                 </button>
             </div>
             
-            <!-- Mga Katotohanan na Ma-scroll -->
             <div class="overflow-y-auto p-4 sm:p-6 md:p-8 flex-grow min-h-0 space-y-6" id="review-content-container">
                 <!-- Pupunuin ito nang pabago-bago ng JS -->
             </div>
 
             <div class="bg-slate-950 p-4 sm:p-6 border-t border-slate-800 shrink-0 text-center">
                 <button onclick="switchScreen('screen-mode')" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-base sm:text-lg py-3 px-8 sm:px-12 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 uppercase tracking-widest">
-                    Let's Quiz <i class="fa-solid fa-angles-right ml-2"></i>
+                    Tumungo sa Diagnostics <i class="fa-solid fa-angles-right ml-2"></i>
                 </button>
             </div>
         </div>
@@ -188,8 +210,8 @@
         <div id="screen-mode" class="hidden flex flex-col h-full animate-pop flex-grow p-4 sm:p-8 md:p-12 overflow-y-auto relative">
             <div class="flex justify-between items-start mb-6 sm:mb-8 shrink-0">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white mb-1 sm:mb-2 tracking-wide">Choose Quiz Mode</h2>
-                    <p class="text-sm sm:text-base text-cyan-200/60 font-semibold tracking-wider uppercase">Configure the testing parameters</p>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white mb-1 sm:mb-2 tracking-wide">Piliin ang Diagnostic Mode</h2>
+                    <p class="text-sm sm:text-base text-cyan-200/60 font-semibold tracking-wider uppercase">I-configure ang mga testing parameters</p>
                 </div>
                 <button onclick="switchScreen('screen-main')" class="text-slate-500 hover:text-rose-400 transition-colors p-1">
                     <i class="fa-solid fa-xmark text-2xl"></i>
@@ -213,14 +235,14 @@
                         <div class="bg-white/20 p-3 sm:p-4 rounded-xl text-xl sm:text-2xl shrink-0"><i class="fa-solid fa-network-wired"></i></div>
                         <div>
                             <h3 class="text-xl sm:text-2xl font-bold mb-0 sm:mb-1 tracking-widest uppercase">Full System Test</h3>
-                            <p class="text-emerald-100 text-xs sm:text-sm hidden sm:block font-medium">Comprehensive Tesst of all modules.</p>
+                            <p class="text-emerald-100 text-xs sm:text-sm hidden sm:block font-medium">Komprehensibong pagsubok sa buong subject na ito.</p>
                         </div>
                     </div>
                 </button>
 
                 <div class="flex items-center gap-4 my-2 sm:my-4 shrink-0">
                     <div class="h-px bg-slate-800 flex-grow"></div>
-                    <span class="text-cyan-600 font-bold text-xs sm:text-sm uppercase tracking-widest text-center">Particular Lecture</span>
+                    <span class="text-cyan-600 font-bold text-xs sm:text-sm uppercase tracking-widest text-center">Partikular na Modules</span>
                     <div class="h-px bg-slate-800 flex-grow"></div>
                 </div>
 
@@ -277,7 +299,7 @@
                 </div>
 
                 <h2 id="question-text" class="text-lg sm:text-xl md:text-2xl font-semibold mb-6 sm:mb-8 leading-snug sm:leading-relaxed min-h-[3rem] sm:min-h-[4rem] text-slate-100">
-                    Loading Sequence...
+                    Nilo-load ang Sequence...
                 </h2>
 
                 <!-- Grid ng Options -->
@@ -316,19 +338,19 @@
             <div id="end-icon" class="text-5xl sm:text-7xl mb-4 sm:mb-6 text-cyan-400 shrink-0 drop-shadow-[0_0_20px_rgba(6,182,212,0.6)]">
                 <i class="fa-solid fa-microchip"></i>
             </div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-white" id="end-title">Quiz is Done</h2>
-            <p class="text-cyan-200/70 mb-6 sm:mb-8 text-sm sm:text-lg shrink-0 font-semibold uppercase tracking-wider" id="end-message">All systems have been successfully checked.</p>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-2 shrink-0 tracking-widest uppercase text-white" id="end-title">Tapos na ang Diagnostics</h2>
+            <p class="text-cyan-200/70 mb-6 sm:mb-8 text-sm sm:text-lg shrink-0 font-semibold uppercase tracking-wider" id="end-message">Matagumpay na nasuri ang lahat ng system.</p>
             
             <div class="bg-slate-950 rounded-2xl p-6 sm:p-8 inline-block mx-auto mb-6 sm:mb-8 border border-slate-800 shadow-inner w-full max-w-md shrink-0 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent pointer-events-none"></div>
-                <div class="text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest mb-2">System Score</div>
+                <div class="text-xs sm:text-sm text-slate-500 font-bold uppercase tracking-widest mb-2">Marka ng System</div>
                 <div class="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 drop-shadow-sm" id="final-score">
                     0
                 </div>
                 <div class="grid grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm divide-x divide-slate-800">
                     <div class="text-center">
                         <span class="block text-emerald-500 font-bold text-xl sm:text-2xl" id="final-correct">0</span>
-                        <span class="text-slate-500 uppercase font-bold text-[10px] sm:text-xs tracking-widest">Corrects</span>
+                        <span class="text-slate-500 uppercase font-bold text-[10px] sm:text-xs tracking-widest">Wasto</span>
                     </div>
                     <div class="text-center">
                         <span class="block text-rose-500 font-bold text-xl sm:text-2xl" id="final-wrong">0</span>
@@ -346,7 +368,7 @@
                     Main Terminal
                 </button>
                 <button onclick="switchScreen('screen-mode')" class="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-widest">
-                    Retry
+                    Ulitin
                 </button>
             </div>
         </div>
@@ -360,14 +382,14 @@
                 <div class="text-5xl sm:text-6xl text-rose-500 mb-3 sm:mb-4 drop-shadow-lg">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-black text-white mb-2 uppercase tracking-widest">Stop Process?</h3>
-                <p class="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8 font-medium">Are you sure you want to stop the current quiz?</p>
+                <h3 class="text-xl sm:text-2xl font-black text-white mb-2 uppercase tracking-widest">Itigil ang Proseso?</h3>
+                <p class="text-sm sm:text-base text-slate-400 mb-6 sm:mb-8 font-medium">Sigurado ka bang nais mong itigil ang kasalukuyang diagnostics?</p>
                 <div class="flex flex-col-reverse sm:flex-row justify-center gap-3 sm:gap-4">
                     <button onclick="cancelQuit()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded-xl transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-wider">
-                        Cancel
+                        Kanselahin
                     </button>
                     <button onclick="confirmQuit()" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-transform hover:scale-105 active:scale-95 text-sm sm:text-base uppercase tracking-wider">
-                        Stop
+                        Itigil
                     </button>
                 </div>
             </div>
@@ -378,30 +400,66 @@
     <!-- Application Logic -->
     <script>
         // ==========================================
+        // 🚨 CONFIGURATION NG MGA SUBJECTS 🚨
+        // Dito mo idadagdag ang mga JSON files para sa bawat subject
+        // ==========================================
+        const subjectsConfig = {
+            "CPEN": {
+                name: "CPEN (Computer Eng.)",
+                icon: "fa-microchip",
+                color: "from-cyan-500 to-blue-500",
+                files: [
+                    'CPEN/Lecture1.json',
+                    'CPEN/Lecture2.json',
+                    'CPEN/Lecture3.json',
+                    'CPEN/Lecture4.json'
+                ]
+            },
+            "GNED": {
+                name: "GNED",
+                icon: "fa-book-open",
+                color: "from-emerald-500 to-teal-500",
+                files: [
+                    'GNED.json' // Halimbawa lang: gumawa ka ng GNED.json
+                ]
+            },
+            "DCEE24": {
+                name: "DCEE 24",
+                icon: "fa-tower-cell",
+                color: "from-purple-500 to-pink-500",
+                files: [
+                    'DCEE24.json' // Halimbawa
+                ]
+            },
+            "ECEN196": {
+                name: "ECEN 196",
+                icon: "fa-satellite-dish",
+                color: "from-rose-500 to-orange-500",
+                files: [
+                    'ECEN196.json' // Halimbawa
+                ]
+            }
+        };
+
+        // ==========================================
         // APP LOGIC & STATE
         // ==========================================
         
-        // 🚨 MGA PANGALAN NG JSON FILES MO 🚨
-        const jsonFilesToLoad = [
-            'Lecture1.json',
-            'Lecture2.json',
-            'Lecture3.json',
-            'Lecture4.json'
-        ];
-
         let appData = []; 
-        let screens = ['screen-main', 'screen-review', 'screen-mode', 'screen-game', 'screen-end'];
+        let screens = ['screen-subjects', 'screen-main', 'screen-review', 'screen-mode', 'screen-game', 'screen-end'];
         let activeQuestions = [];
         let currentQIndex = 0;
-        
         let selectedMultiChoices = [];
 
         let gameStyle = 'survival';
         let score = 0;
         let streak = 0;
         let maxStreak = 0;
+        
+        // 8 LIVES CONFIGURATION
         let lives = 8;
         const MAX_LIVES = 8;
+        
         const BASE_POINTS = 100;
 
         let correctAnswersCount = 0;
@@ -419,17 +477,56 @@
             { icon: "fa-laptop-code", color: "from-rose-500 to-orange-500", text: "text-rose-400" }
         ];
 
-        // Initialization Pipeline
-        window.onload = async () => {
+        // Initialization: Ipakita ang Subject Selection Screen
+        window.onload = () => {
+            renderSubjectButtons();
+        };
+
+        // Function para i-render ang mga Subject Buttons sa Screen 0
+        function renderSubjectButtons() {
+            const container = document.getElementById('subject-buttons-container');
+            container.innerHTML = '';
+
+            for (const [subjectKey, config] of Object.entries(subjectsConfig)) {
+                const btn = document.createElement('button');
+                btn.onclick = () => loadSubjectData(subjectKey);
+                btn.className = `group bg-slate-900 hover:bg-slate-800 border-2 border-slate-800 hover:border-slate-500 text-white p-6 rounded-2xl shadow-md transition-all hover:scale-[1.03] active:scale-[0.98] text-left flex flex-col items-center justify-center gap-4`;
+                
+                btn.innerHTML = `
+                    <div class="bg-gradient-to-br ${config.color} w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg shrink-0 group-hover:rotate-6 transition-transform">
+                        <i class="fa-solid ${config.icon}"></i>
+                    </div>
+                    <div class="text-center w-full">
+                        <h4 class="font-bold text-xl sm:text-2xl text-slate-100 group-hover:text-white transition-colors tracking-wider uppercase truncate w-full px-2" title="${config.name}">${subjectKey}</h4>
+                        <p class="text-sm text-slate-500 mt-1 font-semibold uppercase tracking-widest truncate">${config.files.length} Files</p>
+                    </div>
+                `;
+                container.appendChild(btn);
+            }
+        }
+
+        // BAGONG FETCHING LOGIC PARA SA SPECIFIC SUBJECT
+        async function loadSubjectData(subjectKey) {
+            const config = subjectsConfig[subjectKey];
+            
+            // I-update ang UI ng Main Menu
+            document.getElementById('current-subject-title').innerText = config.name;
+            document.getElementById('current-subject-icon').innerHTML = `<i class="fa-solid ${config.icon} text-transparent bg-clip-text bg-gradient-to-br ${config.color}"></i>`;
+            
+            // Pumunta sa main screen at ipakita muna ang loader
+            switchScreen('screen-main');
+            document.getElementById('loading-indicator').classList.remove('hidden');
+            document.getElementById('main-menu-content').classList.add('hidden');
+            
+            appData = []; // Clear previous subject data
             const loaderText = document.getElementById('loading-text');
-            appData = []; 
 
             try {
-                for (const file of jsonFilesToLoad) {
+                for (const file of config.files) {
                     try {
                         loaderText.innerText = `Nilo-load ang ${file}...`;
                         
-                        // CACHE-BUSTING: Nagdadagdag ng timestamp para laging bago ang kunin ng browser
+                        // CACHE-BUSTING
                         const cacheBuster = new Date().getTime();
                         const response = await fetch(`${file}?v=${cacheBuster}`);
                         
@@ -437,7 +534,7 @@
                             const data = await response.json();
                             appData = appData.concat(data);
                         } else {
-                            console.warn(`File not found or error loading: ${file}`);
+                            console.warn(`File not found: ${file}`);
                         }
                     } catch (err) {
                         console.error(`Error sa pag-fetch ng ${file}:`, err);
@@ -445,12 +542,13 @@
                 }
 
                 if (appData.length === 0) {
-                    throw new Error("Walang nai-load na data.");
+                    throw new Error(`Walang valid na JSON files para sa ${subjectKey}.`);
                 }
 
                 renderReviewContent();
                 renderModeButtons();
                 
+                // Pagtago ng loader at pagpapakita ng menu
                 document.getElementById('loading-indicator').classList.add('hidden');
                 document.getElementById('main-menu-content').classList.remove('hidden');
                 
@@ -459,11 +557,12 @@
                 const loader = document.getElementById('loading-indicator');
                 loader.innerHTML = `
                     <i class="fa-solid fa-triangle-exclamation text-5xl text-rose-500 mb-4"></i>
-                    <h2 class="text-xl text-slate-300 font-bold">Fatal Error</h2>
-                    <p class="text-sm text-rose-400 mt-2 text-center max-w-xs">Hindi ma-load ang mga files.<br/>Siguraduhing tama ang pangalan ng files at gumagamit ka ng Live Server.</p>
+                    <h2 class="text-xl text-slate-300 font-bold">Data Error</h2>
+                    <p class="text-sm text-rose-400 mt-2 text-center max-w-xs">${err.message}<br/>Gumawa ba ng JSON file para sa subject na ito?</p>
+                    <button onclick="switchScreen('screen-subjects')" class="mt-6 bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-lg text-sm transition-colors border border-slate-700">Bumalik</button>
                 `;
             }
-        };
+        }
 
         function switchScreen(screenId) {
             screens.forEach(s => document.getElementById(s).classList.add('hidden'));
@@ -507,11 +606,9 @@
                         const li = document.createElement('li');
                         li.className = "text-slate-300 font-medium leading-relaxed text-sm md:text-base flex flex-col gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800/80";
                         
-                        // Kunin ang text at image. Flexible ito (tatanggapin kung ordinaryong text lang o kaya object)
                         let factText = typeof fact === 'string' ? fact : fact.text;
                         let factImg = typeof fact === 'object' && fact.image ? fact.image : "";
 
-                        // Buuin ang HTML content
                         let contentHTML = `
                             <div class="flex items-start gap-3 w-full">
                                 <i class="fa-solid fa-terminal text-cyan-500 mt-1 shrink-0"></i>
@@ -519,7 +616,6 @@
                             </div>
                         `;
 
-                        // Kung may image, isingit sa ilalim ng text
                         if (factImg.trim() !== "") {
                             contentHTML += `
                                 <div class="w-full flex justify-center mt-4 p-2 sm:p-4 bg-slate-900 rounded-xl border border-slate-800">
