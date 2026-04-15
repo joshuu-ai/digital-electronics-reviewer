@@ -1,0 +1,693 @@
+[
+  {
+    "topic": "Lecture 3: Review of Laplace Transform",
+    "reviewerFacts": [
+      "Finding a system's sinusoidal steady-state response directly in the time domain using Differential Equation models requires complex trigonometric manipulation, described as a 'TRIG NIGHTMARE!'.",
+      "The Laplace Transform makes solving Ordinary Differential Equations (ODEs) easier by converting calculus problems in the time domain (t-domain) into algebraic problems in the s-domain.",
+      "After solving a problem algebraically in the s-domain, the Inverse Laplace Transform is used to convert the solution back to the time domain.",
+      "Laplace Transform is preferred over Fourier for system analysis because it covers both Sinusoids (Fourier Transform) AND/OR Exponentials.",
+      "The Laplace s-Domain is a complex-valued Frequency Domain where $s = \\sigma + j\\omega$.",
+      "The standard Laplace transform integral considers only $x(t)$ defined at $t \\ge 0$.",
+      "The Laplace Transform of an Impulse function $\\delta(t)$ is: $\\mathcal{L}[\\delta(t)] = 1$.",
+      "The Laplace Transform of $\\sin(at)$ is derived using Euler's Formula, resulting in: $\\mathcal{L}\\{\\sin(at)\\} = \\frac{a}{s^2 + a^2}$.",
+      "The Laplace Transform of $\\cos(at)$ is: $\\mathcal{L}\\{\\cos(at)\\} = \\frac{s}{s^2 + a^2}$.",
+      "The Laplace Transform of the exponential function $e^{-at}$ is: $\\mathcal{L}\\{e^{-at}\\} = \\frac{1}{s+a}$.",
+      "The Laplace Transform of $t$ is: $\\mathcal{L}\\{t\\} = \\frac{1}{s^2}$.",
+      "The general formula for the Laplace Transform of $t^n$ is: $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$.",
+      "Time Shift Property: A shift in time $x(t-t_0)u(t-t_0)$ transforms into $X(s)e^{-st_0}$ in the frequency domain.",
+      "Frequency Shift Property: $e^{s_0t}x(t)$ transforms into $X(s-s_0)$.",
+      "Time Scaling Property: $x(at)$ for $a>0$ transforms into $\\frac{1}{|a|}X(s/a)$.",
+      "Time Reversal Property: $x(-t)$ transforms into $X(-s)$.",
+      "Differentiation Property (First Derivative): $\\frac{dx(t)}{dt}$ transforms into $sX(s) - x(0^-)$. Initial conditions are substituted during this step.",
+      "Integration Property: $\\int_{0}^{t} x(\\tau)d\\tau$ transforms into $\\frac{1}{s}X(s)$.",
+      "Frequency Differentiation Property: $t^n x(t)$ transforms into $(-1)^n \\frac{d^n}{ds^n} X(s)$.",
+      "Convolution Property: Convolution in the time domain $x(t) * h(t)$ (which requires complex calculus) transforms into simple multiplication $X(s)H(s)$ in the s-domain.",
+      "Initial Value Theorem (IVT): The initial value $x(0^+)$ can be found using $\\lim_{s \\to \\infty} sX(s)$.",
+      "Final Value Theorem (FVT): The final steady-state value $\\lim_{t \\to \\infty} x(t)$ can be found using $\\lim_{s \\to 0} sX(s)$.",
+      "The IVT and FVT are applicable if and only if the Laplace Transform exists and the limit exists.",
+      "If there is 'No Pattern Match in Table' when finding an inverse Laplace transform, you must apply Partial Fraction Decomposition (PFD).",
+      "Partial Fraction Decomposition (PFD) is used to decompose rational expressions into simpler partial fractions.",
+      "The 6 cases for PFD include: Linear Factors, Repeated Linear Factors, Quadratic Factors, Repeated Quadratic Factors, Improper Fractions, and Complex Roots.",
+      "The Cover Up Rule is a shortcut technique used in PFD to find the coefficients of linear terms. It is only applicable when the denominator is a product of linear factors.",
+      "The Cover Up Rule does not work directly for Repeated Roots, although the rule can be extended via differentiation and cross multiplication.",
+      "Irrational/Transcendental Functions (like square roots, exponentials, or trig functions) cannot use standard PFD and usually require the Time Shifting Theorem or Convolution Theorem.",
+      "Irreducible Factors cannot be broken down into simpler terms without using complex numbers.",
+      "The 3 Simple Steps for Solving ODEs are: 1) Laplace Transform, 2) Algebraic Manipulation, and 3) Inverse Laplace Transform.",
+      "The Laplace Transform converts complex linear ODEs from the time domain into simple algebraic equations, making it a cornerstone of classical control system analysis and design.",
+      "Impulse Response represents the system behavior $g(t)$ when the differential equation equals the impulse function $\\delta(t)$ (e.g., $g'' + Bg' + Cg = \\delta(t)$).",
+      "In the characteristic equation $s^2 + Bs + C = 0$ for an impulse response, $s_1$ and $s_2$ represent the roots of the equation."
+    ],
+    "questions": [
+      {
+        "type": "single",
+        "image": "",
+        "question": "Finding a system's sinusoidal steady-state response using a Differential Equation model directly in the time domain is described in the slides as a \"________\".",
+        "choices": [
+          "Simple calculation",
+          "TRIG NIGHTMARE",
+          "Frequency Shift",
+          "Complex operation"
+        ],
+        "correctAnswer": "TRIG NIGHTMARE",
+        "explanation": "The slide shows that doing this with trig identities works but is slow and hard, describing it as a \"TRIG NIGHTMARE!\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Laplace makes solving ODEs easier by transforming a problem in the t-domain involving ________ into the s-domain.",
+        "choices": [
+          "algebra",
+          "matrices",
+          "calculus",
+          "discrete logic"
+        ],
+        "correctAnswer": "calculus",
+        "explanation": "The flowchart shows the t-domain problem relies on \"calculus\" while the s-domain relies on \"algebra\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Once a solution is found in the s-domain, what operation is used to return the solution to the t-domain?",
+        "choices": [
+          "Integration",
+          "Frequency Differentiation",
+          "Inverse Laplace Transform",
+          "Euler's Formula"
+        ],
+        "correctAnswer": "Inverse Laplace Transform",
+        "explanation": "The flowchart shows the \"Inverse Laplace Transform\" converts the solution in the s-domain back to the t-domain."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Why use Laplace over Fourier for System Analysis?",
+        "choices": [
+          "Fourier handles exponentials, while Laplace handles only sinusoids.",
+          "Laplace is computationally faster for digital systems.",
+          "Laplace Transform covers the Fourier Transform (Sinusoids) AND/OR Exponentials.",
+          "Fourier is strictly for non-linear systems."
+        ],
+        "correctAnswer": "Laplace Transform covers the Fourier Transform (Sinusoids) AND/OR Exponentials.",
+        "explanation": "The Venn diagram slide explains that Laplace is used because it encompasses Fourier (Sinusoids) AND/OR Exponentials."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Laplace s-Domain is a complex-valued ________ Domain.",
+        "choices": [
+          "Frequency",
+          "Spatial",
+          "Time",
+          "Continuous"
+        ],
+        "correctAnswer": "Frequency",
+        "explanation": "The slide explicitly states the s-Domain is a \"complex-valued Frequency Domain\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The standard Laplace transform integral considers only $x(t)$ defined at ________.",
+        "choices": [
+          "$t < 0$",
+          "$t \\ge 0$",
+          "$t = \\infty$",
+          "$t \\le 1$"
+        ],
+        "correctAnswer": "$t \\ge 0$",
+        "explanation": "The slide notes \"Consider only $x(t)$ defined at $t \\ge 0$\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the value of the complex variable $s$ in the Laplace transform?",
+        "choices": [
+          "$s = j\\omega$",
+          "$s = \\sigma + j\\omega$",
+          "$s = a + jb$",
+          "$s = \\sigma - \\omega$"
+        ],
+        "correctAnswer": "$s = \\sigma + j\\omega$",
+        "explanation": "The slide defines $s = \\sigma + j\\omega$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the Laplace transform of the impulse function $\\mathcal{L}[\\delta(t)]$?",
+        "choices": [
+          "$0$",
+          "$1/s$",
+          "$1$",
+          "$s$"
+        ],
+        "correctAnswer": "$1$",
+        "explanation": "Based on the integration slide, $\\mathcal{L}[\\delta(t)] = 1$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What formula is applied to derive the Laplace transform of $\\sin(at)$?",
+        "choices": [
+          "Newton's Formula",
+          "Fourier's Formula",
+          "Laplace Operator Formula",
+          "Euler's Formula"
+        ],
+        "correctAnswer": "Euler's Formula",
+        "explanation": "The slide explicitly notes to \"apply Euler's Formula\" to derive the Laplace of $\\sin(at)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the Laplace transform of $\\sin(at)$?",
+        "choices": [
+          "$\\frac{s}{s^2 + a^2}$",
+          "$\\frac{a}{s^2 + a^2}$",
+          "$\\frac{1}{s+a}$",
+          "$\\frac{a}{s^2 - a^2}$"
+        ],
+        "correctAnswer": "$\\frac{a}{s^2 + a^2}$",
+        "explanation": "The derived formula on the slide is $\\mathcal{L}\\{\\sin(at)\\} = \\frac{a}{s^2 + a^2}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the Laplace transform of $\\cos(at)$?",
+        "choices": [
+          "$\\frac{s}{s^2 + a^2}$",
+          "$\\frac{a}{s^2 + a^2}$",
+          "$\\frac{1}{s+a}$",
+          "$\\frac{1}{s}$"
+        ],
+        "correctAnswer": "$\\frac{s}{s^2 + a^2}$",
+        "explanation": "The derived formula on the slide is $\\mathcal{L}\\{\\cos(at)\\} = \\frac{s}{s^2 + a^2}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the Laplace transform of the exponential function $e^{-at}$?",
+        "choices": [
+          "$\\frac{1}{s-a}$",
+          "$\\frac{a}{s+a}$",
+          "$\\frac{1}{s+a}$",
+          "$\\frac{1}{s^2}$"
+        ],
+        "correctAnswer": "$\\frac{1}{s+a}$",
+        "explanation": "The slide shows the derivation concluding that $\\mathcal{L}\\{e^{-at}\\} = \\frac{1}{s+a}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the Laplace transform of $t$?",
+        "choices": [
+          "$\\frac{1}{s}$",
+          "$\\frac{1}{s^2}$",
+          "$\\frac{2}{s^3}$",
+          "$\\frac{1}{s+1}$"
+        ],
+        "correctAnswer": "$\\frac{1}{s^2}$",
+        "explanation": "The slide shows the derivation concluding that $\\mathcal{L}\\{t\\} = \\frac{1}{s^2}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In general, what is the Laplace transform of $t^n$?",
+        "choices": [
+          "$\\frac{n!}{s^{n+1}}$",
+          "$\\frac{n}{s^n}$",
+          "$\\frac{1}{s^n}$",
+          "$\\frac{n!}{s^n}$"
+        ],
+        "correctAnswer": "$\\frac{n!}{s^{n+1}}$",
+        "explanation": "The general formula provided is $\\mathcal{L}(t^n) = \\frac{n!}{s^{n+1}}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "According to the Laplace Transform Properties, the Time Shift property $x(t-t_0)u(t-t_0)$ transforms into:",
+        "choices": [
+          "$X(s-s_0)$",
+          "$X(s)e^{-st_0}$",
+          "$X(s)/s$",
+          "$sX(s)$"
+        ],
+        "correctAnswer": "$X(s)e^{-st_0}$",
+        "explanation": "The properties table lists Time Shift as $X(s)e^{-st_0}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Frequency Shift property $e^{s_0t}x(t)$ transforms into:",
+        "choices": [
+          "$X(s)e^{-st_0}$",
+          "$X(s/a)$",
+          "$X(s-s_0)$",
+          "$X(-s)$"
+        ],
+        "correctAnswer": "$X(s-s_0)$",
+        "explanation": "The properties table lists Frequency Shift as $X(s-s_0)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "According to the properties table, Time Scaling $x(at)$ for $a>0$ transforms into:",
+        "choices": [
+          "$aX(as)$",
+          "$\\frac{1}{|a|} X(s/a)$",
+          "$X(s-a)$",
+          "$X(s) + a$"
+        ],
+        "correctAnswer": "$\\frac{1}{|a|} X(s/a)$",
+        "explanation": "Time Scaling is shown as $\\frac{1}{|a|} X(s/a)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Time Reversal property $x(-t)$ transforms into:",
+        "choices": [
+          "$-X(s)$",
+          "$X(s)^{-1}$",
+          "$X(-s)$",
+          "$\\frac{1}{X(s)}$"
+        ],
+        "correctAnswer": "$X(-s)$",
+        "explanation": "The properties table lists Time Reversal as $X(-s)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The first derivative Differentiation property $\\frac{dx(t)}{dt}$ transforms into:",
+        "choices": [
+          "$sX(s) - x(0^-)$",
+          "$s^2X(s) - sx(0) - x'(0)$",
+          "$\\frac{1}{s}X(s)$",
+          "$X(s-1)$"
+        ],
+        "correctAnswer": "$sX(s) - x(0^-)$",
+        "explanation": "The Differentiation property for the first derivative is $sX(s) - x(0^-)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Integration property $\\int_{0}^{t} x(\\tau) d\\tau$ transforms into:",
+        "choices": [
+          "$sX(s)$",
+          "$\\frac{1}{s}X(s)$",
+          "$X(s) + C$",
+          "$X(s-1)$"
+        ],
+        "correctAnswer": "$\\frac{1}{s}X(s)$",
+        "explanation": "The Integration property is listed as $\\frac{1}{s}X(s)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Frequency Differentiation property $t^n x(t)$ transforms into:",
+        "choices": [
+          "$s^n X(s)$",
+          "$(-1)^n \\frac{d^n}{ds^n} X(s)$",
+          "$\\int X(s) ds$",
+          "$\\frac{n!}{s^{n+1}} X(s)$"
+        ],
+        "correctAnswer": "$(-1)^n \\frac{d^n}{ds^n} X(s)$",
+        "explanation": "The Frequency Differentiation property is $(-1)^n \\frac{d^n}{ds^n} X(s)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Convolution in the time domain, $x(t) * h(t)$, transforms into what operation in the s-domain?",
+        "choices": [
+          "$X(s) + H(s)$",
+          "$X(s) * H(s)$",
+          "$X(s)H(s)$",
+          "$\\frac{X(s)}{H(s)}$"
+        ],
+        "correctAnswer": "$X(s)H(s)$",
+        "explanation": "The Convolution property states that convolution in the t-domain becomes multiplication $X(s)H(s)$ in the s-domain."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Convolution in the t-domain requires complex calculus, whereas in the s-domain it requires:",
+        "choices": [
+          "Complex integration",
+          "Simple calculation",
+          "Eigenvalue decomposition",
+          "Fourier transforms"
+        ],
+        "correctAnswer": "Simple calculation",
+        "explanation": "The slide compares the two, labeling the s-domain method as \"simple calculation!\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Initial Value Theorem (IVT) states that $x(0^+)$ or $\\lim_{t \\to 0} x(t)$ is equal to:",
+        "choices": [
+          "$\\lim_{s \\to 0} sX(s)$",
+          "$\\lim_{s \\to \\infty} sX(s)$",
+          "$\\lim_{s \\to 0} X(s)$",
+          "$\\lim_{s \\to \\infty} X(s)$"
+        ],
+        "correctAnswer": "$\\lim_{s \\to \\infty} sX(s)$",
+        "explanation": "The IVT formula is $\\lim_{s \\to \\infty} sX(s)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Final Value Theorem (FVT) states that $\\lim_{t \\to \\infty} x(t)$ is equal to:",
+        "choices": [
+          "$\\lim_{s \\to 0} sX(s)$",
+          "$\\lim_{s \\to \\infty} sX(s)$",
+          "$\\lim_{s \\to 0} X(s)$",
+          "$\\lim_{s \\to \\infty} X(s)$"
+        ],
+        "correctAnswer": "$\\lim_{s \\to 0} sX(s)$",
+        "explanation": "The FVT formula is $\\lim_{s \\to 0} sX(s)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The IVT & FVT are applicable iff the Laplace Transform exists and the ________.",
+        "choices": [
+          "system is non-linear",
+          "poles are zero",
+          "Limit exists",
+          "function is sinusoidal"
+        ],
+        "correctAnswer": "Limit exists",
+        "explanation": "The footnote states \"IVT & FVT are applicable iff Laplace Transform exists and Limit exists\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In finding the inverse Laplace transform, if there is \"No Pattern Match in Table\", what technique should be applied?",
+        "choices": [
+          "Euler's Formula",
+          "Partial Fraction Decomposition",
+          "Time Shifting Theorem",
+          "Final Value Theorem"
+        ],
+        "correctAnswer": "Partial Fraction Decomposition",
+        "explanation": "The slide explicitly directs to \"Apply Partial Fraction Decomposition\" when there is no pattern match in the table."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The purpose of Partial Fraction Decomposition (PFD) is to decompose ________ into simpler partial fractions.",
+        "choices": [
+          "exponential functions",
+          "state-space matrices",
+          "rational expressions",
+          "differential equations"
+        ],
+        "correctAnswer": "rational expressions",
+        "explanation": "The definition states PFD is used to \"decompose rational expressions into simpler partial fractions.\""
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which of the following is NOT listed as a standard \"Case\" for Partial Fraction Decomposition in the slides?",
+        "choices": [
+          "Linear Factors",
+          "Improper Fractions",
+          "Complex Roots",
+          "Transcendental Roots"
+        ],
+        "correctAnswer": "Transcendental Roots",
+        "explanation": "The 6 cases listed are: Linear Factors, Repeated Linear Factors, Quadratic Factors, Repeated Quadratic Factors, Improper Fractions, and Complex Roots."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "A denominator like $(s-4)(s+1)$ corresponds to which Partial Fraction Decomposition case?",
+        "choices": [
+          "Linear Factor",
+          "Repeated Linear Factor",
+          "Quadratic Factor",
+          "Improper Fraction"
+        ],
+        "correctAnswer": "Linear Factor",
+        "explanation": "$(s-4)(s+1)$ are distinct first-degree polynomials, making them Linear Factors."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "A denominator like $(s-2)^2$ corresponds to which Partial Fraction Decomposition case?",
+        "choices": [
+          "Linear Factor",
+          "Repeated Linear Factor",
+          "Quadratic Factor",
+          "Complex Roots"
+        ],
+        "correctAnswer": "Repeated Linear Factor",
+        "explanation": "The squared linear term makes it a Repeated Linear Factor."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "A denominator like $(s^2+3)(s+5)$ contains which types of factors?",
+        "choices": [
+          "Repeated Linear Factors",
+          "Only Quadratic Factors",
+          "Quadratic Factor and Linear Factor",
+          "Improper Fractions"
+        ],
+        "correctAnswer": "Quadratic Factor and Linear Factor",
+        "explanation": "$(s^2+3)$ is a Quadratic Factor and $(s+5)$ is a Linear Factor."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "An expression like $\\frac{s^3+3}{s^2-2s-3}$ is classified as an ________ because the numerator's degree is higher than the denominator's.",
+        "choices": [
+          "Irreducible Factor",
+          "Improper Fraction",
+          "Exponential Function",
+          "Equivalent Fraction"
+        ],
+        "correctAnswer": "Improper Fraction",
+        "explanation": "The slide labels this specific example as an \"Improper Fraction\" and uses long division to solve it."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the \"Cover Up Rule\"?",
+        "choices": [
+          "A technique to find the inverse of exponential functions.",
+          "A shortcut technique used in PFD to find the coefficients of linear terms.",
+          "A rule used to bypass the Initial Value Theorem.",
+          "A method to multiply matrices in the s-domain."
+        ],
+        "correctAnswer": "A shortcut technique used in PFD to find the coefficients of linear terms.",
+        "explanation": "The slide defines it as \"A shortcut technique used in PFD to find the coefficients of linear terms\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Cover Up Rule is ONLY applicable when the denominator is a product of ________.",
+        "choices": [
+          "quadratic factors",
+          "repeated roots",
+          "linear factors",
+          "improper fractions"
+        ],
+        "correctAnswer": "linear factors",
+        "explanation": "The slide explicitly states it is \"Only applicable when the denominator is a product of linear factors\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Does the standard Cover-up method work for Repeated Roots?",
+        "choices": [
+          "Yes, always.",
+          "Yes, but only if the roots are positive.",
+          "No, but the rule can be extended via differentiation and cross multiplication.",
+          "No, it is mathematically impossible to solve repeated roots."
+        ],
+        "correctAnswer": "No, but the rule can be extended via differentiation and cross multiplication.",
+        "explanation": "The slide notes: \"Cover up method don't work for Repeated Roots. Though rule can be extended via differentiation and cross multiplication\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "The Laplace transform is a powerful mathematical tool used to convert complex linear Ordinary Differential Equations (ODEs) from the time domain into simple ________.",
+        "choices": [
+          "integrals",
+          "algebraic equations in the complex frequency domain",
+          "boolean logic tables",
+          "matrix transformations"
+        ],
+        "correctAnswer": "algebraic equations in the complex frequency domain",
+        "explanation": "It converts them \"into simple algebraic equations in the complex frequency domain\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "By utilizing the Laplace transformation, engineers can solve DEs by applying algebraic manipulation, making it a cornerstone of ________.",
+        "choices": [
+          "digital logic design",
+          "quantum mechanics",
+          "classical control system analysis and design",
+          "fluid dynamics"
+        ],
+        "correctAnswer": "classical control system analysis and design",
+        "explanation": "The slide states this makes it a \"cornerstone of classical control system analysis and design\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is Step 1 in the \"3 Simple Steps of Solving ODEs\"?",
+        "choices": [
+          "Algebraic Manipulation",
+          "Inverse Laplace Transform",
+          "Partial Fraction Decomposition",
+          "Laplace Transform"
+        ],
+        "correctAnswer": "Laplace Transform",
+        "explanation": "Step 1 is \"Laplace Transform\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is Step 2 in the \"3 Simple Steps of Solving ODEs\"?",
+        "choices": [
+          "Laplace Transform",
+          "Algebraic Manipulation",
+          "Inverse Laplace Transform",
+          "Integration"
+        ],
+        "correctAnswer": "Algebraic Manipulation",
+        "explanation": "Step 2 is \"Algebraic Manipulation\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is Step 3 in the \"3 Simple Steps of Solving ODEs\"?",
+        "choices": [
+          "Partial Fraction Decomposition",
+          "Inverse Laplace Transform",
+          "Laplace Transform",
+          "Differentiation"
+        ],
+        "correctAnswer": "Inverse Laplace Transform",
+        "explanation": "Step 3 is \"Inverse Laplace Transform\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Which functions CANNOT be applied with PFD and usually require the Time Shifting Theorem or Convolution Theorem?",
+        "choices": [
+          "Proper Fractions",
+          "Linear Factors",
+          "Irrational/Transcendental Functions (square roots, exponentials, trig functions)",
+          "Constants"
+        ],
+        "correctAnswer": "Irrational/Transcendental Functions (square roots, exponentials, trig functions)",
+        "explanation": "The slide \"Other cases PFD can't be applied\" lists \"Irrational/Transcendental Functions... usually requires Time Shifting Theorem or Convolution Theorem)\"."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "For Irreducible Factors, PFD cannot be broken down into simpler terms without using ________.",
+        "choices": [
+          "complex numbers",
+          "integrals",
+          "derivatives",
+          "matrices"
+        ],
+        "correctAnswer": "complex numbers",
+        "explanation": "The slide states \"cannot be broken down into simpler terms w/o using complex numbers.\""
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In solving an ODE like $\\frac{dy}{dt} - ay = e^{ct}$, the term $\\frac{dy}{dt}$ transforms into what using the differentiation property?",
+        "choices": [
+          "$s^2 Y(s)$",
+          "$s Y(s) - y(0)$",
+          "$\\frac{Y(s)}{s}$",
+          "$Y(s-a)$"
+        ],
+        "correctAnswer": "$s Y(s) - y(0)$",
+        "explanation": "The first step of the solution shows $\\frac{dy}{dt}$ becoming $s Y(s) - y(0)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What represents the Impulse Response of a system in the provided ODE example?",
+        "choices": [
+          "$g(t)$ when the input is a step function",
+          "$g(t)$ when the differential equation equals $\\delta(t)$",
+          "$y(t)$ when the limits reach infinity",
+          "The steady-state error"
+        ],
+        "correctAnswer": "$g(t)$ when the differential equation equals $\\delta(t)$",
+        "explanation": "The slide labeled \"Impulse Response\" uses the equation $g'' + Bg' + Cg = \\delta(t)$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "Using the Linearity property, the transform $\\mathcal{L}\\{e^{2t}\\} - \\mathcal{L}\\{e^{5t}\\}$ is evaluated as:",
+        "choices": [
+          "$\\mathcal{L}\\{e^{2t}\\} * \\mathcal{L}\\{e^{5t}\\}$",
+          "$\\mathcal{L}\\{e^{2t}\\} - \\mathcal{L}\\{e^{5t}\\}$",
+          "$\\mathcal{L}\\{e^{-3t}\\}$",
+          "$\\frac{\\mathcal{L}\\{e^{2t}\\}}{\\mathcal{L}\\{e^{5t}\\}}$"
+        ],
+        "correctAnswer": "$\\mathcal{L}\\{e^{2t}\\} - \\mathcal{L}\\{e^{5t}\\}$",
+        "explanation": "The slide shows it breaks down into $\\mathcal{L}\\{e^{2t}\\} - \\mathcal{L}\\{e^{5t}\\}$ due to the linearity summation property."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If the Final Value Theorem is applied to $X(s) = \\frac{1}{s(s-3)}$, what expression is evaluated?",
+        "choices": [
+          "$\\lim_{s \\to \\infty} s \\frac{1}{s(s-3)}$",
+          "$\\lim_{s \\to 0} s \\frac{1}{s(s-3)}$",
+          "$\\lim_{t \\to \\infty} \\frac{1}{t(t-3)}$",
+          "$\\lim_{s \\to 0} \\frac{1}{s(s-3)}$"
+        ],
+        "correctAnswer": "$\\lim_{s \\to 0} s \\frac{1}{s(s-3)}$",
+        "explanation": "The FVT uses $\\lim_{s \\to 0} sX(s)$, so it evaluates $\\lim_{s \\to 0} s \\frac{1}{s(s-3)}$."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "In the Impulse Response example where $s^2 + Bs + C = 0$, what are $s_1$ and $s_2$?",
+        "choices": [
+          "The roots of the characteristic equation",
+          "The limits of integration",
+          "The initial conditions",
+          "The amplitudes of the impulse"
+        ],
+        "correctAnswer": "The roots of the characteristic equation",
+        "explanation": "$s_1$ and $s_2$ are derived from factoring the denominator $s^2 + Bs + C = (s - s_1)(s - s_2)$, which are the roots."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "If an ODE system features initial conditions $g(0) = 0$ and $g'(0) = 1$, these are substituted during which step of the ODE solving process?",
+        "choices": [
+          "After the Inverse Laplace Transform",
+          "During the initial Laplace Transform step",
+          "Only if the system has complex roots",
+          "They are ignored for impulse responses"
+        ],
+        "correctAnswer": "During the initial Laplace Transform step",
+        "explanation": "Initial conditions like $y(0)$ or $x(0^-)$ are substituted directly when applying the differentiation property during the initial Laplace Transform step (e.g., $sX(s) - x(0)$)."
+      },
+      {
+        "type": "single",
+        "image": "",
+        "question": "What is the fundamental advantage of utilizing the Laplace Transform in classical control systems over working strictly in the time domain?",
+        "choices": [
+          "It provides higher accuracy in measurement devices.",
+          "It eliminates all noise and disturbances automatically.",
+          "It replaces solving complex calculus with simple algebraic manipulation.",
+          "It allows open-loop systems to act as closed-loop systems."
+        ],
+        "correctAnswer": "It replaces solving complex calculus with simple algebraic manipulation.",
+        "explanation": "A major recurring theme of the slides (like the flowcharts and the \"3 Simple Steps\") is that it converts complex calculus in the t-domain into simple algebraic manipulation in the s-domain."
+      }
+    ]
+  }
+]
