@@ -624,7 +624,7 @@
 
         async function handleForgotPassword() {
             const email = document.getElementById('auth-email').value.trim().toLowerCase();
-            
+
             if(!email) {
                 showAuthMessage("Please enter your Email first to reset password.");
                 return;
@@ -632,9 +632,13 @@
 
             try {
                 await auth.sendPasswordResetEmail(email);
-                showAuthMessage("Password reset link sent! Please check your student email.", true);
+                showAuthMessage("Reset link sent! Please check your Inbox and SPAM/JUNK folder.", true);
             } catch(error) {
-                showAuthMessage("Error: Could not send reset link. Ensure email is correct.");
+                if(error.code === 'auth/user-not-found') {
+                    showAuthMessage("No account found with this email address.");
+                } else {
+                    showAuthMessage("Error: Could not send reset link. Try again later.");
+                }
             }
         }
 
