@@ -179,7 +179,7 @@
             <div class="text-center mt-10 mb-8 shrink-0">
                 <i class="fa-solid fa-ranking-star text-5xl text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] mb-4"></i>
                 <h2 class="text-3xl font-black text-white tracking-widest uppercase">Class Leaderboard</h2>
-                <p class="text-slate-400 text-sm font-semibold uppercase tracking-widest mt-2">Top 10 Students of BSECE 3-2</p>
+                <p class="text-slate-400 text-sm font-semibold uppercase tracking-widest mt-2">BSECE 3-2 Official Rankings</p>
             </div>
 
             <div id="leaderboard-list" class="bg-slate-950 rounded-2xl border border-slate-800 overflow-y-auto min-h-0 flex-grow max-w-2xl mx-auto w-full shadow-inner">
@@ -710,9 +710,9 @@
             listContainer.innerHTML = `<div class="flex items-center justify-center h-32"><i class="fa-solid fa-circle-notch fa-spin text-3xl text-cyan-500"></i></div>`;
 
             try {
+                // Inalis ang .limit(10) para i-fetch lahat ng students sa section
                 const snapshot = await db.collection('users')
                     .orderBy('totalScore', 'desc')
-                    .limit(10)
                     .get();
 
                 listContainer.innerHTML = '';
